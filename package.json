@@ -20,6 +20,7 @@
   "author": "siddharthkp",
   "license": "MIT",
   "dependencies": {
+    "axios": "0.16.1",
     "bytes": "2.5.0",
     "glob": "7.1.2",
     "gzip-size": "3.0.0",
@@ -28,7 +29,7 @@
   },
   "bundlesize": [
     {
-      "path": "./*.js",
+      "path": "./index.js",
       "threshold": "600B"
     }
   ]
