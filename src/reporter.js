@@ -38,6 +38,7 @@ const compare = (files, masterValues = {}) => {
         message += `(${bytes(diff)} larger than master, careful!)`
         warn(message)
       } else {
+        message += `(same as master)`
         info('PASS', message)
       }
     }
