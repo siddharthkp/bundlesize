@@ -15,7 +15,8 @@
     "threshold"
   ],
   "files": [
-    "index.js"
+    "index.js",
+    "src"
   ],
   "author": "siddharthkp",
   "license": "MIT",
