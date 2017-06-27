@@ -27,6 +27,6 @@
   },
   "libsize": {
     "path": "./index.js",
-    "threshold": "400 B"
+    "threshold": "500B"
   }
 }

@@ -55,12 +55,6 @@ Add the path and threshold in your `package.json`
 
 &nbsp;
 
-#### todo
-
-- support multiple files
-
-&nbsp;
-
 #### license
 
 MIT © [siddharthkp](https://github.com/siddharthkp)
