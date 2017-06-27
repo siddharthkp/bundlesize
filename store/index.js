@@ -15,18 +15,16 @@ server.get('/values', (req, res) => {
   else if (!token) res.status(401).end('token missing')
   else {
     get(repo, token).then(response => {
-      /* Firebase returns a list */
-      const values = Object.values(response)[0]
-      res.end(JSON.stringify(values))
+      res.end(JSON.stringify(response))
     })
   }
 })
 
 server.post('/values', (req, res) => {
-  const { repo, sha, values, token } = req.body
+  const { repo, values, token } = req.body
   if (!token) res.status(401).end('token missing')
   else {
-    set(repo, sha, values, token)
+    set(repo, values, token)
     res.status(200).end()
   }
 })
