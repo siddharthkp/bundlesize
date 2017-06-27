@@ -8,6 +8,4 @@ const travis = {
     : process.env.TRAVIS_PULL_REQUEST_BRANCH
 }
 
-console.log(travis.sha)
-
 module.exports = travis
