@@ -11,8 +11,8 @@ const token = code => {
     'Content-type': 'application/x-www-form-urlencoded',
     data: {
       code: code,
-      client_id: process.env.client_id,
-      client_secret: process.env.client_secret
+      client_id: process.env.githubId,
+      client_secret: process.env.githubSecret
     }
   })
     .then(response => response.data)
