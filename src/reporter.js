@@ -6,6 +6,7 @@ const { event_type, branch } = require('./travis')
 
 const compare = (files, masterValues = {}) => {
   let fail = false
+  let globalMessage
 
   files.map(file => (file.master = masterValues[file.path]))
 
@@ -41,16 +42,18 @@ const compare = (files, masterValues = {}) => {
         message += `(same as master)`
         info('PASS', message)
       }
+
+      if (files.length === 1) globalMessage = message
     }
 
-    if (fail) build.fail()
+    if (fail) build.fail(globalMessage || 'bundle size > threshold')
     else {
       if (event_type === 'push' && branch === 'master') {
         const values = []
         files.map(file => values.push({ path: file.path, size: file.size }))
         api.set(values)
       }
-      build.pass()
+      build.pass(globalMessage || 'Good job! bundle size < threshold')
     }
   })
 }
