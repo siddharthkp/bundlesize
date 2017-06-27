@@ -7,7 +7,7 @@ const { event_type, branch } = require('./travis')
 const compare = (files, masterValues = {}) => {
   let fail = false
 
-  files.map(file => (file.master = bytes(masterValues[file.path])))
+  files.map(file => (file.master = masterValues[file.path]))
 
   files.map(file => {
     const { path, size, master, threshold } = file
