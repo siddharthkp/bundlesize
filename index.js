@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const fs = require('fs')
 const glob = require('glob')
 const readPkgUp = require('read-pkg-up')
