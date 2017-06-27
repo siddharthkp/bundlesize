@@ -2,20 +2,10 @@
 
 const fs = require('fs')
 const glob = require('glob')
-const readPkgUp = require('read-pkg-up')
 const gzip = require('gzip-size')
 const bytes = require('bytes')
 const { error, info } = require('prettycli')
-
-const getConfig = () => {
-  return new Promise((resolve, reject) => {
-    readPkgUp().then(result => {
-      if (!result.pkg.bundlesize) error('Config not found', { silent: true })
-      const config = result.pkg.bundlesize
-      resolve(config)
-    })
-  })
-}
+const config = require('./src/config')
 
 const getFiles = config => {
   const files = []
@@ -60,4 +50,4 @@ const compare = files => {
   if (fail) process.exit(1)
 }
 
-getConfig().then(getFiles).then(getSize).then(compare)
+getFiles(config).then(getSize).then(compare)
