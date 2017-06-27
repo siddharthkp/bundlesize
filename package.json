@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Keep your library size in check",
   "main": "index.js",
+  "bin": "index.js",
   "scripts": {
     "test": "node index"
   },
@@ -12,6 +13,9 @@
     "check",
     "build",
     "threshold"
+  ],
+  "files": [
+    "index.js"
   ],
   "author": "siddharthkp",
   "license": "MIT",
