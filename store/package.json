@@ -12,7 +12,9 @@
   "now": {
     "env": {
       "apiKey": "@bundlesize_apikey",
-      "databaseURL": "@bundlesize_databaseurl"
+      "databaseURL": "@bundlesize_databaseurl",
+      "githubId": "@bundlesize_githubid",
+      "githubSecret": "@bundlesize_githubsecret"
     },
     "files": [
       "index.js",
