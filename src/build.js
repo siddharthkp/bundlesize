@@ -5,8 +5,8 @@ const pass = () => {} // noop
 const fail = () => process.exit(1)
 const error = () => process.exit(1)
 
-const label = 'perfbench'
-const description = 'Running performance tests...'
+const label = 'bundlesize'
+const description = 'Checking output size...'
 const meta = { repo, sha, token, label, description }
 
 const build = new Build(meta)
