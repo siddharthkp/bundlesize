@@ -7,8 +7,8 @@ const { error, info } = require('prettycli')
 const getConfig = () => {
   return new Promise((resolve, reject) => {
     readPkgUp().then(result => {
-      if (!result.pkg.libsize) error('Config not found', { silent: true })
-      const config = result.pkg.libsize
+      if (!result.pkg.bundlesize) error('Config not found', { silent: true })
+      const config = result.pkg.bundlesize
       resolve(config)
     })
   })
