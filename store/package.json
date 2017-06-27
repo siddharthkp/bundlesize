@@ -26,6 +26,7 @@
   "author": "siddharthkp",
   "license": "MIT",
   "dependencies": {
+    "axios": "0.16.1",
     "body-parser": "1.17.2",
     "dotenv": "4.0.0",
     "express": "4.15.2",
