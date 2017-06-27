@@ -1,4 +1,5 @@
 const fs = require('fs')
+const glob = require('glob')
 const readPkgUp = require('read-pkg-up')
 const gzip = require('gzip-size')
 const bytes = require('bytes')
@@ -8,9 +9,20 @@ const getConfig = () => {
   return new Promise((resolve, reject) => {
     readPkgUp().then(result => {
       if (!result.pkg.bundlesize) error('Config not found', { silent: true })
-      const files = result.pkg.bundlesize
-      resolve(files)
+      const config = result.pkg.bundlesize
+      resolve(config)
     })
+  })
+}
+
+const getFiles = config => {
+  const files = []
+  return new Promise(resolve => {
+    config.map(file => {
+      const paths = glob.sync(file.path)
+      paths.map(path => files.push({ threshold: file.threshold, path }))
+    })
+    resolve(files)
   })
 }
 
@@ -46,4 +58,4 @@ const compare = files => {
   if (fail) process.exit(1)
 }
 
-getConfig().then(getSize).then(compare)
+getConfig().then(getFiles).then(getSize).then(compare)
