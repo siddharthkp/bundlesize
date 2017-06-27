@@ -1,9 +1,9 @@
 const Build = require('github-build')
 const { repo, sha, token, event_type } = require('./travis')
 
-const pass = () => {} // noop
-const fail = () => process.exit(1)
-const error = () => process.exit(1)
+let pass = () => {} // noop
+let fail = () => process.exit(1)
+let error = () => process.exit(1)
 
 const label = 'bundlesize'
 const description = 'Checking output size...'
