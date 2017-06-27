@@ -1,7 +1,9 @@
 const express = require('express')
 const server = express()
 const bodyParser = require('body-parser')
+const querystring = require('querystring')
 const { get, set } = require('./firebase')
+const github = require('./github')
 
 server.use(bodyParser.json())
 
@@ -27,6 +29,16 @@ server.post('/values', (req, res) => {
     set(repo, values, token)
     res.status(200).end()
   }
+})
+
+server.get('/auth', (req, res) => {
+  const { code } = req.query
+  if (!code) res.status(400).end('code missing')
+  else
+    github
+      .token(code)
+      .then(response => res.end(querystring.parse(response).access_token))
+      .catch(() => res.status(500).end('Oops'))
 })
 
 server.listen(3001)
