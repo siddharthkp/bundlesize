@@ -1,5 +1,6 @@
 const bytes = require('bytes')
 const { error, info } = require('prettycli')
+const build = require('./build')
 
 const reporter = files => {
   let fail = false
@@ -21,7 +22,8 @@ const reporter = files => {
     }
   })
 
-  if (fail) process.exit(1)
+  if (fail) build.fail()
+  else build.pass()
 }
 
 module.exports = reporter
