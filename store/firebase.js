@@ -31,7 +31,7 @@ const get = (repo, token) => {
   authenticate(token)
   const ref = `${token}/${repo}`
   return firebase.database().ref(ref).once('value').then(snapshot => {
-    return snapshot.val() || {}
+    return snapshot.val() || []
   })
   logout()
 }
