@@ -1,22 +1,10 @@
 #!/usr/bin/env node
 
 const fs = require('fs')
-const glob = require('glob')
 const gzip = require('gzip-size')
 const bytes = require('bytes')
 const { error, info } = require('prettycli')
-const config = require('./src/config')
-
-const getFiles = config => {
-  const files = []
-  return new Promise(resolve => {
-    config.map(file => {
-      const paths = glob.sync(file.path)
-      paths.map(path => files.push({ threshold: file.threshold, path }))
-    })
-    resolve(files)
-  })
-}
+const files = require('./src/files')
 
 const getSize = files => {
   return new Promise(resolve => {
@@ -50,4 +38,4 @@ const compare = files => {
   if (fail) process.exit(1)
 }
 
-getFiles(config).then(getSize).then(compare)
+getSize(files).then(compare)
