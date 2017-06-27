@@ -8,31 +8,42 @@ const getConfig = () => {
   return new Promise((resolve, reject) => {
     readPkgUp().then(result => {
       if (!result.pkg.bundlesize) error('Config not found', { silent: true })
-      const config = result.pkg.bundlesize
-      resolve(config)
+      const files = result.pkg.bundlesize
+      resolve(files)
     })
   })
 }
 
-const getSize = config => {
+const getSize = files => {
   return new Promise(resolve => {
-    const content = fs.readFileSync(config.path, 'utf8')
-    const size = gzip.sync(content)
-    resolve({ size, config })
+    files.map(
+      file => (file.size = gzip.sync(fs.readFileSync(file.path, 'utf8')))
+    )
+    resolve(files)
   })
 }
 
-const compare = ({ size, config }) => {
-  const threshold = bytes(config.threshold)
+const compare = files => {
+  let fail = false
 
-  const prettySize = bytes(size)
-  const prettyThreshold = bytes(threshold)
+  files.map(file => {
+    const prettySize = bytes(file.size)
+    const prettyThreshold = bytes(bytes(file.threshold))
 
-  if (size > threshold) {
-    error(`size ${prettySize} > threshold ${prettyThreshold}`, { silent: true })
-  } else {
-    info('LIB', `size ${prettySize} < threshold ${prettyThreshold}`)
-  }
+    if (file.size <= bytes(file.threshold)) {
+      info(
+        `PASS`,
+        `${file.path}: ${prettySize} <= threshold ${prettyThreshold}`
+      )
+    } else {
+      fail = true
+      error(`${file.path}: ${prettySize} > threshold ${prettyThreshold}`, {
+        fail: false
+      })
+    }
+  })
+
+  if (fail) process.exit(1)
 }
 
 getConfig().then(getSize).then(compare)
