@@ -55,7 +55,7 @@ Add the path and threshold in your `package.json`
 
 Works only with [Travis CI](https://travis-ci.org) for now.
 
-- Enable `Build branch updates` on travis-ci. ([screenshot](https://raw.githubusercontent.com/siddharthkp/bundlesize/master/art/travis.png))
+- Enable `Build branch updates` and `Build pull request updates` on travis-ci. ([screenshot](https://raw.githubusercontent.com/siddharthkp/bundlesize/master/art/travis.png))
 - [Authorize `bundlesize` for status access](https://github.com/login/oauth/authorize?scope=repo%3Astatus&client_id=6756cb03a8d6528aca5a), copy the token provided.
 - Add this token as `github_token` as environment parameter in travis settings
 
