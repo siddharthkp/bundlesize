@@ -40,10 +40,12 @@ Add the path and threshold in your `package.json`
 {
   "name": "your cool library",
   "version": "1.1.2",
-  "bundlesize": {
-    "path": "./dist.js",
-    "threshold": "3 Kb"
-  }
+  "bundlesize": [
+    {
+      "path": "./dist.js",
+      "threshold": "3 Kb"
+    }
+  ]
 }
 ```
 
