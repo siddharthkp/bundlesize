@@ -49,9 +49,28 @@ Add the path and threshold in your `package.json`
 
 &nbsp;
 
+#### build status
+
+Works only with [Travis CI](https://travis-ci.org) for now.
+
+- Enable `Build branch updates` on travis-ci
+- [Authorize `bundlesize` for status access](https://github.com/login/oauth/authorize?scope=repo%3Astatus&client_id=6756cb03a8d6528aca5a), copy the token provided.
+- Add this token as `github_token` as environment parameter in travis settings
+
+(Ask me for help if you're stuck)
+
+
+&nbsp;
+
 #### like it?
 
 :star: this repo
+
+&nbsp;
+
+#### todo
+
+- work with other CI tools (circle, appveyor, etc.)
 
 &nbsp;
 
