@@ -11,7 +11,7 @@ const meta = { repo, sha, token, label, description }
 
 const build = new Build(meta)
 
-if (token && event_type === 'push') {
+if (token && event_type === 'pull_request') {
   build.start()
   pass = message => build.pass(message)
   fail = message => build.fail(message)
