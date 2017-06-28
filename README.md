@@ -71,6 +71,7 @@ Works only with [Travis CI](https://travis-ci.org) for now.
 #### todo
 
 - work with other CI tools (circle, appveyor, etc.)
+- automate setup (setting env_var)
 
 &nbsp;
 
