@@ -1,6 +1,6 @@
 {
   "name": "bundlesize",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "description": "Keep your library size in check",
   "main": "index.js",
   "bin": "index.js",
