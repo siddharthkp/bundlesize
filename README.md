@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/siddharthkp/bundlesize/master/logo.png" height="200px"/>
+  <img src="https://raw.githubusercontent.com/siddharthkp/bundlesize/master/art/logo.png" height="200px"/>
   <br><br>
   <b>Keep your bundle size in check</b>
   <br>
