@@ -23,13 +23,13 @@ const compare = (files, masterValues = {}) => {
 
     if (size > threshold) {
       fail = true
-      message += `> threshold ${bytes(threshold)}`
+      message += `> threshold ${bytes(threshold)} (gzip)`
       error(message, { fail: false, label: 'FAIL' })
     } else if (!master) {
-      message += `< threshold ${bytes(threshold)}`
+      message += `< threshold ${bytes(threshold)} (gzip)`
       info('PASS', message)
     } else {
-      message += `< threshold ${bytes(threshold)} `
+      message += `< threshold ${bytes(threshold)} (gzip) `
       const diff = size - master
 
       if (diff < 0) {
