@@ -42,4 +42,8 @@ server.get('/auth', (req, res) => {
       .catch(() => res.status(500).end('Oops'))
 })
 
+server.get('/', (req, res) => {
+  res.redirect('/status')
+})
+
 server.listen(3001)
