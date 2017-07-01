@@ -33,7 +33,9 @@ Add it to your scripts in `package.json`
 
 #### configuration
 
-Add the path and threshold in your `package.json`
+&nbsp;
+
+1) Add the path and threshold in your `package.json`
 
 
 ```json
@@ -51,7 +53,7 @@ Add the path and threshold in your `package.json`
 
 &nbsp;
 
-#### build status
+2) build status
 
 ![build status](https://raw.githubusercontent.com/siddharthkp/bundlesize/master/art/status.png)
 
