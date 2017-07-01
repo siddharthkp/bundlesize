@@ -78,6 +78,7 @@ Works only with [Travis CI](https://travis-ci.org) for now.
 
 - [styled-components](https://github.com/styled-components/styled-components)
 - [emotion](https://github.com/tkh44/emotion)
+- [glamorous](https://github.com/paypal/glamorous)
 - [css-constructor](https://github.com/siddharthkp/css-constructor)
 
 &nbsp;
