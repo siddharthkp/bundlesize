@@ -72,6 +72,14 @@ Works only with [Travis CI](https://travis-ci.org) for now.
 
 &nbsp;
 
+#### who uses bundlesize?
+
+- [styled-components](https://github.com/styled-components/styled-components)
+- [emotion](https://github.com/tkh44/emotion)
+- [css-constructor](https://github.com/siddharthkp/css-constructor)
+
+&nbsp;
+
 #### todo
 
 - work with other CI tools (circle, appveyor, etc.)
