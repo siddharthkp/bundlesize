@@ -14,7 +14,8 @@
       "apiKey": "@bundlesize_apikey",
       "databaseURL": "@bundlesize_databaseurl",
       "githubId": "@bundlesize_githubid",
-      "githubSecret": "@bundlesize_githubsecret"
+      "githubSecret": "@bundlesize_githubsecret",
+      "newrelicKey": "@bundlesize_newrelickey"
     },
     "files": [
       "index.js",
@@ -30,6 +31,7 @@
     "body-parser": "1.17.2",
     "dotenv": "4.0.0",
     "express": "4.15.2",
-    "firebase": "4.1.2"
+    "firebase": "4.1.2",
+    "newrelic": "1.40.0"
   }
 }
