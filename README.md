@@ -57,11 +57,12 @@ Add it to your scripts in `package.json`
 
 ![build status](https://raw.githubusercontent.com/siddharthkp/bundlesize/master/art/status.png)
 
-Works only with [Travis CI](https://travis-ci.org) for now.
+Currently works for [Travis CI](https://travis-ci.org) and [CircleCI](https://circleci.com/).
 
-- Enable `Build branch updates` and `Build pull request updates` on travis-ci. ([screenshot](https://raw.githubusercontent.com/siddharthkp/bundlesize/master/art/travis.png))
 - [Authorize `bundlesize` for status access](https://github.com/login/oauth/authorize?scope=repo%3Astatus&client_id=6756cb03a8d6528aca5a), copy the token provided.
-- Add this token as `github_token` as environment parameter in travis settings
+- Add this token as `github_token` as environment parameter in your CIs project settings.
+- On travis-ci: Enable `Build branch updates` and `Build pull request updates`. ([screenshot](https://raw.githubusercontent.com/siddharthkp/bundlesize/master/art/travis.png))
+- On CircleCi: Enable `GitHub Status updates` in your advanced project settings (this should be enabled by default).
 
 (Ask me for help if you're stuck)
 
