@@ -20,7 +20,8 @@
     "files": [
       "index.js",
       "github.js",
-      "firebase.js"
+      "firebase.js",
+      "newrelic.js"
     ]
   },
   "keywords": [],
