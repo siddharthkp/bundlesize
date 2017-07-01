@@ -1,6 +1,6 @@
 const axios = require('axios')
 const url = 'https://bundlesize-store.now.sh/values'
-const { repo, token, sha } = require('./travis')
+const { repo, token, sha } = require('./environment')
 
 let enabled = false
 

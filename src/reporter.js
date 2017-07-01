@@ -2,7 +2,7 @@ const bytes = require('bytes')
 const { error, warn, info } = require('prettycli')
 const build = require('./build')
 const api = require('./api')
-const { event_type, branch } = require('./travis')
+const { event_type, branch } = require('./environment')
 
 const compare = (files, masterValues = {}) => {
   let fail = false
