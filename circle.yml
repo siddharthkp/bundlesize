@@ -4,4 +4,4 @@ machine:
 
 dependencies:
   cache_directories:
-    - "npm_modules"
+    - "node_modules"
