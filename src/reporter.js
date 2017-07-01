@@ -45,17 +45,17 @@ const compare = (files, masterValues = {}) => {
 
       if (files.length === 1) globalMessage = message
     }
-
-    if (fail) build.fail(globalMessage || 'bundle size > threshold')
-    else {
-      if (event_type === 'push' && branch === 'master') {
-        const values = []
-        files.map(file => values.push({ path: file.path, size: file.size }))
-        api.set(values)
-      }
-      build.pass(globalMessage || 'Good job! bundle size < threshold')
-    }
   })
+
+  if (fail) build.fail(globalMessage || 'bundle size > threshold')
+  else {
+    if (event_type === 'push' && branch === 'master') {
+      const values = []
+      files.map(file => values.push({ path: file.path, size: file.size }))
+      api.set(values)
+    }
+    build.pass(globalMessage || 'Good job! bundle size < threshold')
+  }
 }
 
 const reporter = files => {
