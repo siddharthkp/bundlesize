@@ -1,5 +1,5 @@
 const Build = require('github-build')
-const { repo, sha, token, event_type } = require('./travis')
+const { repo, sha, token, event_type } = require('./environment')
 
 let pass = () => {} // noop
 let fail = () => process.exit(1)
