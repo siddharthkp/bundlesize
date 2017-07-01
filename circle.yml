@@ -1,0 +1,18 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/bundlesize
+    parallelism: 1
+    docker:
+      - image: node:8.1.2
+    steps:
+      - checkout
+      - run:
+          name: Install Deps
+          command: npm install
+      - run:
+          name: debug
+          command: echo CIRCLE_PROJECT_REPONAME $CIRCLE_PROJECT_REPONAME; CIRCLE_BRANCH $CIRCLE_BRANCH; CIRCLE_SHA1 $CIRCLE_SHA1; CIRCLE_REPOSITORY_URL $CIRCLE_REPOSITORY_URL; CI_PULL_REQUEST $CI_PULL_REQUEST;
+      - run:
+          name: Test
+          command: npm run test
