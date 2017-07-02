@@ -77,6 +77,7 @@ Currently works for [Travis CI](https://travis-ci.org) and [CircleCI](https://ci
 
 #### who uses bundlesize?
 
+- [preact](https://github.com/developit/preact)
 - [styled-components](https://github.com/styled-components/styled-components)
 - [emotion](https://github.com/tkh44/emotion)
 - [glamorous](https://github.com/paypal/glamorous)
