@@ -1,11 +1,12 @@
+const Build = require('github-build');
 module.exports = ciEnvironment => {
   // Not on CI or no pull_request? Don't send results to github.
   if (!ciEnvironment || ciEnvironment.event_type !== 'pull_request') {
     return {
       start: () => {},
       pass: () => {},
-      fail: () => process.exit(1),
-      error: () => process.exit(1),
+      fail: () => {},
+      error: () => {},
     };
   }
 

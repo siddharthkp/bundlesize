@@ -1,5 +1,5 @@
-const axios = require('axios')
-const url = 'https://bundlesize-store-iothfynuyu.now.sh/values'
+const axios = require('axios');
+const url = 'https://bundlesize-store-iothfynuyu.now.sh/values';
 
 module.exports = ciEnvironment => {
   if (!ciEnvironment) {
@@ -10,20 +10,15 @@ module.exports = ciEnvironment => {
 
   return {
     get: () => {
-      return axios
-        .get(`${url}?repo=${repo}&token=${token}`)
-        .then(response => {
-          const values = {};
-          response.data.map(file => (values[file.path] = file.size));
-          return values;
-        })
-        .catch(error => console.log(error));
+      return axios.get(`${url}?repo=${repo}&token=${token}`).then(response => {
+        const values = {};
+        response.data.map(file => (values[file.path] = file.size));
+        return values;
+      });
     },
 
     set: values => {
-      return axios
-        .post(url, { repo, token, sha, values })
-        .catch(error => console.log(error));
+      return axios.post(url, { repo, token, sha, values });
     },
   };
 };
