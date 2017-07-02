@@ -5,7 +5,7 @@
   "main": "index.js",
   "bin": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --verbose"
   },
   "jest": {
     "testEnvironment": "node"
