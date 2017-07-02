@@ -24,10 +24,10 @@ server.get('/values', (req, res) => {
 })
 
 server.post('/values', (req, res) => {
-  const { repo, values, token } = req.body
+  const { repo, values, sha, token } = req.body
   if (!token) res.status(401).end('token missing')
   else {
-    set(repo, values, token)
+    set(repo, values, sha, token)
     res.status(200).end()
   }
 })

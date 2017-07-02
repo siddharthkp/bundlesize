@@ -1,5 +1,5 @@
-const axios = require('axios');
-const url = 'https://bundlesize-store.now.sh/values';
+const axios = require('axios')
+const url = 'https://bundlesize-store-iothfynuyu.now.sh/values'
 
 module.exports = ciEnvironment => {
   if (!ciEnvironment) {
