@@ -5,8 +5,8 @@ module.exports = (ciEnvironment, api, reporter, parse) => {
       if (api && ciEnvironment) {
         api
           .get()
-          .then(masterValues => parse(files, masterValues))
-          .then(result => {
+          .then(masterValues => {
+            const result = parse(files, masterValues);
             if (
               result.files &&
               result.status !== 'fail' &&
@@ -18,8 +18,7 @@ module.exports = (ciEnvironment, api, reporter, parse) => {
             reporter.reportResult(result);
           })
           .catch(err => {
-            reporter.reportError(err);
-            process.exit(1);
+            reporter.reportFatal(err);
           });
       } else {
         reporter.reportResult(parse(files));

@@ -6,9 +6,10 @@ module.exports = build => {
       build.start();
     },
 
-    reportError: err => {
+    reportFatal: err => {
       build.fail();
       error(err, { fail: true, label: 'FATAL' });
+      process.exit(1);
     },
 
     reportResult: report => {

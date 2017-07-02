@@ -17,5 +17,5 @@ runner.run(files);
 
 process.on('unhandledRejection', function(reason, p) {
   console.log('Unhandled Promise: ', p, ' reason: ', reason);
-  reporter.reportError();
+  reporter.reportFatal();
 });
