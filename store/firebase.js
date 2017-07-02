@@ -20,19 +20,28 @@ const authenticate = token => {
 
 const logout = () => firebase.auth().signOut()
 
-const set = (repo, values, token) => {
+const set = (repo, values, sha, token) => {
   authenticate(token)
   const ref = `${token}/${repo}`
-  firebase.database().ref(ref).set(values)
+  values[0].sha = sha
+  firebase.database().ref(ref).push(values)
   logout()
 }
 
 const get = (repo, token) => {
   authenticate(token)
+  const values = []
   const ref = `${token}/${repo}`
-  return firebase.database().ref(ref).once('value').then(snapshot => {
-    return snapshot.val() || []
-  })
+  return firebase
+    .database()
+    .ref(ref)
+    .limitToLast(1)
+    .once('value')
+    .then(snapshot => {
+      snapshot.forEach(child => values.push(child.val()[0]))
+      console.log(values)
+      return values
+    })
   logout()
 }
 
