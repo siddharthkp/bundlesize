@@ -30,7 +30,7 @@ const set = (repo, values, sha, token) => {
 
 const get = (repo, token) => {
   authenticate(token)
-  const values = []
+  let values = []
   const ref = `${token}/${repo}`
   return firebase
     .database()
@@ -39,6 +39,7 @@ const get = (repo, token) => {
     .once('value')
     .then(snapshot => {
       snapshot.forEach(child => values.push(child.val()[0]))
+      if (!values[0]) values = snapshot.val()
       console.log(values)
       return values
     })
