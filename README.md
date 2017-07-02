@@ -13,7 +13,7 @@
 
 #### minimal setup
 ```
-npm install bundlesize --save
+npm install bundlesize --save-dev
 ```
 
 &nbsp;
