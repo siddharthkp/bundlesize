@@ -34,23 +34,23 @@ function getSizes (files, opts) {
   if (typeof files === 'string') files = [files]
   if (!opts) opts = { }
 
-  return pack(files, opts).then(stats => {
-    if (stats.hasErrors()) {
-      throw new Error(stats.toString('errors-only'))
-    }
+  return Promise.all(files.map(file => {
+    return pack(file, opts).then(stats => {
+      if (stats.hasErrors()) {
+        throw new Error(stats.toString('errors-only'))
+      }
 
-    const dir = stats.compilation.outputOptions.path
-    const fs = stats.compilation.compiler.outputFileSystem
-    return Promise.all(files.map((file, i) => {
-      const bundle = path.join(dir, i + '.js')
+      const dir = stats.compilation.outputOptions.path
+      const fs = stats.compilation.compiler.outputFileSystem
+      const bundle = path.join(dir, 'bundle.js')
       return promisify(done => fs.readFile(bundle, 'utf8', done))
         .then(content => {
           return promisify(done => gzipSize(content, done))
         }).then(size => {
           return { path: file, size: size - 284 }
         })
-    }))
-  })
+    })
+  }))
 }
 
 module.exports = getSizes

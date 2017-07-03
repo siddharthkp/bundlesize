@@ -25,10 +25,10 @@ it('shows project size', () => {
 })
 
 it('accepts array', () => {
-  return getSize([fixture('big'), fixture('index/index')]).then(sizes => {
+  return getSize([fixture('big'), fixture('empty')]).then(sizes => {
     expect(sizes).toEqual([
       { path: fixture('big'), size: 2451 },
-      { path: fixture('index/index'), size: 23 }
+      { path: fixture('empty'), size: 0 }
     ])
   })
 })
