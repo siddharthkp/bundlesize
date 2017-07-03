@@ -8,10 +8,14 @@ const Babili = require('babili-webpack-plugin')
 const promisify = require('./promisify')
 
 function getConfig (files, opts) {
+  const entry = { }
+  for (let i = 0; i < files.length; i++) {
+    entry[i] = files[i]
+  }
   const config = {
-    entry: files,
+    entry,
     output: {
-      filename: 'bundle.js'
+      filename: '[name].js'
     },
     plugins: [
       new webpack.DefinePlugin({

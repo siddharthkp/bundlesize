@@ -10,7 +10,7 @@ const pack = require('./src/pack')
  * Return size of project files with all dependencies and after UglifyJS
  * and gzip.
  *
- * @param {string|string[]} files Files to get size.
+ * @param {string[]} files Files to get size.
  * @param {object} [opts] Extra options.
  * @param {"server"|"static"|false} [opts.analyzer] Show package content
  *                                                  in browser.
@@ -24,13 +24,13 @@ const pack = require('./src/pack')
  * const index = path.join(__dirname, 'index.js')
  * const extra = path.join(__dirname, 'extra.js')
  *
- * getSize([index, extra]).then(size => {
- *   if (size > 1 * 1024 * 1024) {
- *     console.error('Project become bigger than 1MB')
+ * getSizes([index, extra]).then(sizes => {
+ *   for (const data of sizes) {
+ *     console.log(data.file, data.size)
  *   }
  * })
  */
-function getSize (files, opts) {
+function getSizes (files, opts) {
   if (typeof files === 'string') files = [files]
   if (!opts) opts = { }
 
@@ -39,15 +39,17 @@ function getSize (files, opts) {
       throw new Error(stats.toString('errors-only'))
     }
 
-    const out = stats.compilation.outputOptions
-    const file = path.join(out.path, out.filename)
+    const dir = stats.compilation.outputOptions.path
     const fs = stats.compilation.compiler.outputFileSystem
-
-    return promisify(done => fs.readFile(file, 'utf8', done))
-  }).then(content => {
-    return promisify(done => gzipSize(content, done))
-  }).then(size => {
-    return size - 293
+    return Promise.all(files.map((file, i) => {
+      const bundle = path.join(dir, i + '.js')
+      return promisify(done => fs.readFile(bundle, 'utf8', done))
+        .then(content => {
+          return promisify(done => gzipSize(content, done))
+        }).then(size => {
+          return { file, size: size - 284 }
+        })
+    }))
   })
 }
 
