@@ -1,0 +1,5 @@
+{
+  "name": "test2",
+  "private": true,
+  "main": "lib.js"
+}
