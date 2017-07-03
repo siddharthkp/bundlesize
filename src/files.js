@@ -10,8 +10,8 @@ config.map(file => {
   const paths = glob.sync(file.path)
   paths.map(path => {
     const size = gzip.sync(fs.readFileSync(path, 'utf8'))
-    const threshold = bytes(file.threshold)
-    files.push({ threshold, path, size })
+    const maxSize = bytes(file.threshold || file.maxSize)
+    files.push({ maxSize, path, size })
   })
 })
 
