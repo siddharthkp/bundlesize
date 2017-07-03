@@ -1,7 +1,9 @@
 dist: trusty
 language: node_js
 node_js:
+  - "stable"
   - "6"
+  - "4"
 cache:
   directories:
     - node_modules
