@@ -11,25 +11,25 @@ const compare = (files, masterValues = {}) => {
   files.map(file => (file.master = masterValues[file.path]))
 
   files.map(file => {
-    const { path, size, master, threshold } = file
+    const { path, size, master, maxSize } = file
 
     let message = `${path}: ${bytes(size)} `
 
     /*
-      if size > threshold, fail
+      if size > maxSize, fail
       else if size > master, warn + pass
       else yay + pass
     */
 
-    if (size > threshold) {
+    if (size > maxSize) {
       fail = true
-      message += `> threshold ${bytes(threshold)} gzip`
+      message += `> maxSize ${bytes(maxSize)} gzip`
       error(message, { fail: false, label: 'FAIL' })
     } else if (!master) {
-      message += `< threshold ${bytes(threshold)} gzip`
+      message += `< maxSize ${bytes(maxSize)} gzip`
       info('PASS', message)
     } else {
-      message += `< threshold ${bytes(threshold)} gzip `
+      message += `< maxSize ${bytes(maxSize)} gzip `
       const diff = size - master
 
       if (diff < 0) {
@@ -47,14 +47,14 @@ const compare = (files, masterValues = {}) => {
     }
   })
 
-  if (fail) build.fail(globalMessage || 'bundle size > threshold')
+  if (fail) build.fail(globalMessage || 'bundle size > maxSize')
   else {
     if (event_type === 'push' && branch === 'master') {
       const values = []
       files.map(file => values.push({ path: file.path, size: file.size }))
       api.set(values)
     }
-    build.pass(globalMessage || 'Good job! bundle size < threshold')
+    build.pass(globalMessage || 'Good job! bundle size < maxSize')
   }
 }
 

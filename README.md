@@ -35,7 +35,7 @@ Add it to your scripts in `package.json`
 
 &nbsp;
 
-1) Add the path and threshold in your `package.json`
+1) Add the path and maxSize in your `package.json`
 
 
 ```json
@@ -45,7 +45,7 @@ Add it to your scripts in `package.json`
   "bundlesize": [
     {
       "path": "./dist.js",
-      "threshold": "3 Kb"
+      "maxSize": "3 Kb"
     }
   ]
 }

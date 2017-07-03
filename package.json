@@ -12,7 +12,7 @@
     "size",
     "check",
     "build",
-    "threshold"
+    "maxSize"
   ],
   "files": [
     "index.js",
@@ -32,7 +32,8 @@
   "bundlesize": [
     {
       "path": "./index.js",
-      "threshold": "600B"
+      "threshold": "600B",
+      "maxSize": "600B"
     }
   ]
 }
