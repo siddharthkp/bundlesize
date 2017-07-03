@@ -59,8 +59,11 @@ const compare = (files, masterValues = {}) => {
 }
 
 const reporter = files => {
-  if (api.enabled) api.get().then(masterValues => compare(files, masterValues))
-  else compare(files)
+  if (api.enabled) {
+    api.get().then(masterValues => compare(files, masterValues))
+  } else {
+    compare(files)
+  }
 }
 
 module.exports = reporter

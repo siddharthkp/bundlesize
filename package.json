@@ -5,7 +5,7 @@
   "main": "index.js",
   "bin": "cli.js",
   "scripts": {
-    "test": "node index"
+    "test": "jest"
   },
   "keywords": [
     "library",
@@ -34,13 +34,8 @@
     "webpack": "^3.0.0",
     "webpack-bundle-analyzer": "^2.8.2"
   },
-  "bundlesize": [
-    {
-      "path": "./index.js",
-      "threshold": "600B"
-    }
-  ],
   "devDependencies": {
+    "cross-spawn": "^5.1.0",
     "jest": "^20.0.4",
     "redux": "^3.7.1"
   }

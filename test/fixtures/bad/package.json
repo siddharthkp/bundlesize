@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "bundlesize": [
+    {
+      "path": "index.js",
+      "threshold": "2 KB"
+    },
+    {
+      "path": "index.js",
+      "threshold": "2KB"
+    }
+  ]
+}
