@@ -11,7 +11,7 @@ const get = () => {
     .get(`${url}?repo=${repo}&token=${token}`)
     .then(response => {
       const values = {}
-      response.data.map(file => (values[file.path] = file.size))
+      response.data.forEach(file => (values[file.path] = file.size))
       return values
     })
     .catch(error => console.log(error))
