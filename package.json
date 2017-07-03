@@ -3,7 +3,7 @@
   "version": "0.6.1",
   "description": "Keep your library size in check",
   "main": "index.js",
-  "bin": "index.js",
+  "bin": "cli.js",
   "scripts": {
     "test": "node index"
   },
@@ -16,6 +16,7 @@
   ],
   "files": [
     "index.js",
+    "cli.js",
     "src"
   ],
   "author": "siddharthkp",
