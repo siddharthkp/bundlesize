@@ -32,7 +32,6 @@
   "bundlesize": [
     {
       "path": "./index.js",
-      "threshold": "600B",
       "maxSize": "600B"
     }
   ]
