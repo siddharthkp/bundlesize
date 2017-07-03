@@ -1,12 +1,56 @@
-#!/usr/bin/env node
+'use strict'
 
-const files = require('./src/files')
-const reporter = require('./src/reporter')
-const build = require('./src/build')
+const gzipSize = require('gzip-size')
+const path = require('path')
 
-reporter(files)
+const promisify = require('./src/promisify')
+const pack = require('./src/pack')
 
-process.on('unhandledRejection', function(reason, p) {
-  console.log('Unhandled Promise: ', p, ' reason: ', reason)
-  build.error()
-})
+/**
+ * Return size of project files with all dependencies and after UglifyJS
+ * and gzip.
+ *
+ * @param {string[]} files Files to get size.
+ * @param {object} [opts] Extra options.
+ * @param {"server"|"static"|false} [opts.analyzer] Show package content
+ *                                                  in browser.
+ * @param {"uglifyjs"|"babili"} [opts.minifier="uglifyjs"] Minifier.
+ *
+ * @return {Promise} Promise with size of files
+ *
+ * @example
+ * const getSize = require('size-limit')
+ *
+ * const index = path.join(__dirname, 'index.js')
+ * const extra = path.join(__dirname, 'extra.js')
+ *
+ * getSizes([index, extra]).then(sizes => {
+ *   for (const data of sizes) {
+ *     console.log(data.path, data.size)
+ *   }
+ * })
+ */
+function getSizes (files, opts) {
+  if (typeof files === 'string') files = [files]
+  if (!opts) opts = { }
+
+  return Promise.all(files.map(file => {
+    return pack(file, opts).then(stats => {
+      if (stats.hasErrors()) {
+        throw new Error(stats.toString('errors-only'))
+      }
+
+      const dir = stats.compilation.outputOptions.path
+      const fs = stats.compilation.compiler.outputFileSystem
+      const bundle = path.join(dir, 'bundle.js')
+      return promisify(done => fs.readFile(bundle, 'utf8', done))
+        .then(content => {
+          return promisify(done => gzipSize(content, done))
+        }).then(size => {
+          return { path: file, size: size - 284 }
+        })
+    })
+  }))
+}
+
+module.exports = getSizes
