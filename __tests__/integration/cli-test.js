@@ -11,13 +11,13 @@ describe('integration/cli', () => {
 
     runner.run([
       {
-        threshold: 50,
+        maxSize: 50,
         path: 'kittens.js',
         size: 30,
       },
     ])
 
-    expect(console.log.calls.argsFor(0)[1]).toContain('kittens.js: 30B < threshold 50B gzip');
-    expect(console.log.calls.argsFor(1)[1]).toContain('bundle size < threshold');
+    expect(console.log.calls.argsFor(0)[1]).toContain('kittens.js: 30B < maxSize 50B gzip');
+    expect(console.log.calls.argsFor(1)[1]).toContain('bundle size < maxSize');
   });
 });

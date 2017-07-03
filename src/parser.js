@@ -4,24 +4,24 @@ module.exports = (files, masterValues = {}) => {
   files.map(file => (file.master = masterValues[file.path]));
 
   files = files.map(file => {
-    const { path, size, master, threshold } = file;
+    const { path, size, master, maxSize } = file;
 
     file.message = `${path}: ${bytes(size)} `;
     file.status = 'pass';
 
     /*
-      if size > threshold, fail
+      if size > maxSize, fail
       else if size > master, warn + pass
       else yay + pass
     */
 
-    if (size > threshold) {
-      file.message += `> threshold ${bytes(threshold)} gzip`;
+    if (size > maxSize) {
+      file.message += `> maxSize ${bytes(maxSize)} gzip`;
       file.status = 'fail';
     } else if (!master) {
-      file.message += `< threshold ${bytes(threshold)} gzip`;
+      file.message += `< maxSize ${bytes(maxSize)} gzip`;
     } else {
-      file.message += `< threshold ${bytes(threshold)} gzip `;
+      file.message += `< maxSize ${bytes(maxSize)} gzip `;
       const diff = size - master;
 
       if (diff < 0) {
@@ -48,10 +48,10 @@ module.exports = (files, masterValues = {}) => {
   }, 'pass');
 
   const globalMessage = globalStatus === 'pass'
-    ? 'bundle size < threshold'
+    ? 'bundle size < maxSize'
     : globalStatus === 'warn'
       ? 'bundle size > master branch'
-      : 'bundle size > threshold'
+      : 'bundle size > maxSize'
 
   return {
     status: globalStatus,

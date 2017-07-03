@@ -34,7 +34,7 @@ describe('integration/ci', () => {
 
       filesInput = [
         {
-          threshold: 50,
+          maxSize: 50,
           path: 'kittens.js',
           size: 30,
         },
@@ -48,10 +48,10 @@ describe('integration/ci', () => {
         // Expect proper console output
         expect(console.log.calls.count()).toEqual(2);
         expect(console.log.calls.argsFor(0)[1]).toContain(
-          'kittens.js: 30B < threshold 50B gzip'
+          'kittens.js: 30B < maxSize 50B gzip'
         );
         expect(console.log.calls.argsFor(1)[1]).toContain(
-          'bundle size < threshold'
+          'bundle size < maxSize'
         );
         done();
       }, 1);
@@ -74,7 +74,7 @@ describe('integration/ci', () => {
       setTimeout(() => {
         expect(Build.prototype.start).toHaveBeenCalled();
         expect(Build.prototype.pass).toHaveBeenCalledWith(
-          'bundle size < threshold'
+          'bundle size < maxSize'
         );
         done();
       }, 1);
@@ -108,7 +108,7 @@ describe('integration/ci', () => {
 
       filesInput = [
         {
-          threshold: 50,
+          maxSize: 50,
           path: 'kittens.js',
           size: 30,
         },
@@ -130,11 +130,11 @@ describe('integration/ci', () => {
             values: [
               {
                 master: undefined,
-                message: 'kittens.js: 30B < threshold 50B gzip',
+                message: 'kittens.js: 30B < maxSize 50B gzip',
                 path: 'kittens.js',
                 size: 30,
                 status: 'pass',
-                threshold: 50,
+                maxSize: 50,
               },
             ],
           }
