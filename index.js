@@ -26,7 +26,7 @@ const pack = require('./src/pack')
  *
  * getSizes([index, extra]).then(sizes => {
  *   for (const data of sizes) {
- *     console.log(data.file, data.size)
+ *     console.log(data.path, data.size)
  *   }
  * })
  */
@@ -47,10 +47,10 @@ function getSizes (files, opts) {
         .then(content => {
           return promisify(done => gzipSize(content, done))
         }).then(size => {
-          return { file, size: size - 284 }
+          return { path: file, size: size - 284 }
         })
     }))
   })
 }
 
-module.exports = getSize
+module.exports = getSizes

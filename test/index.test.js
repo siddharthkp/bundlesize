@@ -11,7 +11,7 @@ function fixture (name) {
 it('returns 0 for empty project', () => {
   return getSize([fixture('empty')]).then(sizes => {
     expect(sizes).toEqual([
-      { file: fixture('empty'), size: 0 }
+      { path: fixture('empty'), size: 0 }
     ])
   })
 })
@@ -19,7 +19,7 @@ it('returns 0 for empty project', () => {
 it('shows project size', () => {
   return getSize([fixture('big')]).then(sizes => {
     expect(sizes).toEqual([
-      { file: fixture('big'), size: 2451 }
+      { path: fixture('big'), size: 2451 }
     ])
   })
 })
@@ -27,8 +27,8 @@ it('shows project size', () => {
 it('accepts array', () => {
   return getSize([fixture('big'), fixture('index/index')]).then(sizes => {
     expect(sizes).toEqual([
-      { file: fixture('big'), size: 2451 },
-      { file: fixture('index/index'), size: 23 }
+      { path: fixture('big'), size: 2451 },
+      { path: fixture('index/index'), size: 23 }
     ])
   })
 })
@@ -43,7 +43,7 @@ it('supports Babili', () => {
   return getSize([fixture('es2016')], { minifier: 'babili' })
     .then(sizes => {
       expect(sizes).toEqual([
-        { file: fixture('es2016'), size: 36 }
+        { path: fixture('es2016'), size: 36 }
       ])
     })
 })
@@ -51,7 +51,7 @@ it('supports Babili', () => {
 it('removes non-production code', () => {
   return getSize(fixture('production')).then(sizes => {
     expect(sizes).toEqual([
-      { file: fixture('production'), size: 9 }
+      { path: fixture('production'), size: 9 }
     ])
   })
 })
