@@ -23,7 +23,7 @@ const compare = (files, masterValues = {}) => {
 
     if (!maxSize) {
       fail = true
-      message += 'maxSize not specified'
+      message = 'maxSize not specified'
       error(message, { fail: false, label: 'FAIL' })
     } else if (size > maxSize) {
       fail = true
