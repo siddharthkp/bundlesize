@@ -9,11 +9,7 @@ if (repo && token) enabled = true
 const get = () => {
   return axios
     .get(`${url}?repo=${repo}&token=${token}`)
-    .then(response => {
-      const values = {}
-      response.data.map(file => (values[file.path] = file.size))
-      return values
-    })
+    .then(response => response.data.reduce((values, file) => Object.assign({}, values, { [file.path]: file.size }), {}))
     .catch(error => console.log(error))
 }
 
