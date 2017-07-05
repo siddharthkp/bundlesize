@@ -75,8 +75,9 @@ const compare = (files, masterValues = {}) => {
          .map(file => file.message)
   )
 
-  if (fail) build.fail(failedMessages[0] || 'bundle size > maxSize')
-  else {
+  if (fail) {
+    build.fail(failedMessages[0] || 'bundle size > maxSize')
+  } else {
     if (event_type === 'push' && branch === 'master') {
       const values = []
       files.map(file => values.push({ path: file.path, size: file.size }))
@@ -96,6 +97,7 @@ const compare = (files, masterValues = {}) => {
       summary += `${separator}${unchangedMessages.length} unchanged`;
       separator = ', '
     }
+    info('PASS', summary || 'Good job! bundle size < maxSize')
     build.pass(summary || 'Good job! bundle size < maxSize')
   }
 }
