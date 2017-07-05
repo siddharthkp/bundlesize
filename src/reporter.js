@@ -1,3 +1,4 @@
+const { basename } = require('path')
 const bytes = require('bytes')
 const { error, warn, info } = require('prettycli')
 const build = require('./build')
@@ -14,7 +15,7 @@ const compare = (files, masterValues = {}) => {
   files.map(file => {
     const { path, size, master, maxSize } = file
 
-    let message = `${path}: ${bytes(size)} `
+    let message = `${basename(path)}: ${bytes(size)} `
 
     /*
       if size > maxSize, fail
@@ -48,7 +49,7 @@ const compare = (files, masterValues = {}) => {
     messages.push(message)
   })
 
-  if (messages.length === 1) {
+  if (messages.length === 1 || fail) {
     globalMessage = messages[0]
   } else {
     globalMessage = messages.join(', ')
