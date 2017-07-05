@@ -7,6 +7,7 @@ const { event_type, branch } = require('./environment')
 const compare = (files, masterValues = {}) => {
   let fail = false
   let globalMessage
+  let messages = []
 
   files.map(file => (file.master = masterValues[file.path]))
 
@@ -42,10 +43,16 @@ const compare = (files, masterValues = {}) => {
         message += `(same as master)`
         info('PASS', message)
       }
-
-      if (files.length === 1) globalMessage = message
     }
+
+    messages.push(message)
   })
+
+  if (messages.length === 1) {
+    globalMessage = messages[0]
+  } else {
+    globalMessage = messages.join(', ')
+  }
 
   if (fail) build.fail(globalMessage || 'bundle size > maxSize')
   else {
