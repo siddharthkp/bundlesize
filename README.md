@@ -8,6 +8,7 @@
 &nbsp;
 
 [![Build Status](https://travis-ci.org/siddharthkp/bundlesize.svg?branch=master)](https://travis-ci.org/siddharthkp/bundlesize)
+[![NPM Version](https://img.shields.io/npm/v/bundlesize.svg)](https://npmjs.org/package/bundlesize)
 
 &nbsp;
 
@@ -35,7 +36,7 @@ Add it to your scripts in `package.json`
 
 &nbsp;
 
-1) Add the path and maxSize in your `package.json`
+1) Add the path and gzip threshold in your `package.json`
 
 
 ```json
@@ -45,7 +46,7 @@ Add it to your scripts in `package.json`
   "bundlesize": [
     {
       "path": "./dist.js",
-      "maxSize": "3 Kb"
+      "threshold": "3 Kb"
     }
   ]
 }

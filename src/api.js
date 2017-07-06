@@ -12,7 +12,9 @@ module.exports = ciEnvironment => {
     get: () => {
       return axios.get(`${url}?repo=${repo}&token=${token}`).then(response => {
         const values = {};
-        response.data.map(file => (values[file.path] = file.size));
+        if (response && response.data && response.data.length) {
+          response.data.map(file => (values[file.path] = file.size));
+        }
         return values;
       });
     },
