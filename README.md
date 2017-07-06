@@ -63,10 +63,10 @@ or for multiple bundles, chunks.
       "path": "./common.js",
       "maxSize": "5 Kb"
     }, {
-      "path": "./home.js",
+      "path": "./dist/chunk-*.js",
       "maxSize": "2 Kb"
     }, {
-      "path": "./assets/styles.css",
+      "path": "./dist/styles/*.css",
       "maxSize": "5 Kb"
     }
   ]
