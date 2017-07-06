@@ -38,7 +38,6 @@ Add it to your scripts in `package.json`
 
 1) Add the path and max size limit in your `package.json`
 
-
 ```json
 {
   "name": "your-cool-project",
