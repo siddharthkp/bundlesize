@@ -36,17 +36,37 @@ Add it to your scripts in `package.json`
 
 &nbsp;
 
-1) Add the path and gzip threshold in your `package.json`
-
+1) Add the path and max size limit in your `package.json`
 
 ```json
 {
-  "name": "your cool library",
+  "name": "your-cool-project",
   "version": "1.1.2",
   "bundlesize": [
     {
       "path": "./dist.js",
-      "threshold": "3 Kb"
+      "maxSize": "3 Kb"
+    }
+  ]
+}
+```
+
+or for multiple bundles, chunks.
+
+```json
+{
+  "name": "your-cool-project",
+  "version": "1.1.3",
+  "bundlesize": [
+    {
+      "path": "./common.js",
+      "maxSize": "5 Kb"
+    }, {
+      "path": "./dist/chunk-*.js",
+      "maxSize": "2 Kb"
+    }, {
+      "path": "./dist/styles/*.css",
+      "maxSize": "5 Kb"
     }
   ]
 }
