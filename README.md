@@ -36,7 +36,7 @@ Add it to your scripts in `package.json`
 
 &nbsp;
 
-1) Add the path and threshold in your `package.json`
+1) Add the path and gzip threshold in your `package.json`
 
 
 ```json
