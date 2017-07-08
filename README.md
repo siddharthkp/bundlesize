@@ -84,6 +84,7 @@ Currently works for [Travis CI](https://travis-ci.org) and [CircleCI](https://ci
 - [glamorous](https://github.com/paypal/glamorous)
 - [css-constructor](https://github.com/siddharthkp/css-constructor)
 - [Popper.js](https://github.com/FezVrasta/popper.js)
+- [Apollo](https://github.com/apollographql/apollo-client)
 
 &nbsp;
 
