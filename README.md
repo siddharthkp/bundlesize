@@ -52,6 +52,22 @@ Add it to your scripts in `package.json`
 }
 ```
 
+`bundlesize` also supports [glob patterns](https://github.com/isaacs/node-glob)
+
+Example:
+
+```
+"path": "./dist/vendor-*.js",
+"threshold": "3 Kb"
+```
+
+This will match multiple files if necessary and create a new row for each file.
+
+```
+"path": "./dist/chunk-*.js",
+```
+
+
 &nbsp;
 
 2) build status
