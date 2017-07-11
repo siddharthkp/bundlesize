@@ -36,7 +36,7 @@ Add it to your scripts in `package.json`
 
 &nbsp;
 
-1) Add the path and gzip threshold in your `package.json`
+#### 1) Add the path and gzip threshold in your `package.json`
 
 
 ```json
@@ -74,7 +74,7 @@ This will match multiple files if necessary and create a new row for each file.
 
 &nbsp;
 
-2) build status
+#### 2) build status
 
 ![build status](https://raw.githubusercontent.com/siddharthkp/bundlesize/master/art/status.png)
 
