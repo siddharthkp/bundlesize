@@ -96,6 +96,12 @@ Currently works for [Travis CI](https://travis-ci.org) and [CircleCI](https://ci
 
 &nbsp;
 
+#### how to contribute?
+
+- [CONTRIBUTING.md](CONTRIBUTING.md)
+
+&nbsp;
+
 #### who uses bundlesize?
 
 - [preact](https://github.com/developit/preact)
