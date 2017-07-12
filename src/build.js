@@ -1,5 +1,6 @@
 const Build = require('github-build')
-const { repo, sha, token, event_type } = require('./environment')
+const { repo, sha, event } = require('ci-env')
+const token = process.env.github_token || process.env.GITHUB_TOKEN
 
 let pass = () => {} // noop
 let fail = () => process.exit(1)
@@ -11,7 +12,7 @@ const meta = { repo, sha, token, label, description }
 
 const build = new Build(meta)
 
-if (token && event_type === 'pull_request') {
+if (token && event === 'push') {
   build.start()
   pass = message => build.pass(message)
   fail = message => build.fail(message)
