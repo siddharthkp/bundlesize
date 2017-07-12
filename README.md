@@ -105,12 +105,15 @@ Currently works for [Travis CI](https://travis-ci.org) and [CircleCI](https://ci
 #### who uses bundlesize?
 
 - [preact](https://github.com/developit/preact)
+- [lighthouse](https://github.com/GoogleChrome/lighthouse)
 - [styled-components](https://github.com/styled-components/styled-components)
 - [emotion](https://github.com/tkh44/emotion)
 - [glamorous](https://github.com/paypal/glamorous)
-- [css-constructor](https://github.com/siddharthkp/css-constructor)
 - [Popper.js](https://github.com/FezVrasta/popper.js)
-- [Apollo](https://github.com/apollographql/apollo-client)
+- [react-apollo](https://github.com/apollographql/react-apollo)
+- [hyperall](https://github.com/hyperapp/hyperapp)
+- [css-constructor](https://github.com/siddharthkp/css-constructor)
+
 
 &nbsp;
 
