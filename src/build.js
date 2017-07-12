@@ -1,6 +1,6 @@
 const Build = require('github-build')
 const { repo, sha, event } = require('ci-env')
-const token = process.env.github_token || process.env.GITHUB_TOKEN
+const token = require('./token')
 
 let pass = () => {} // noop
 let fail = () => process.exit(1)
