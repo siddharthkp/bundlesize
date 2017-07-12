@@ -2,7 +2,7 @@ const bytes = require('bytes')
 const { error, warn, info } = require('prettycli')
 const build = require('./build')
 const api = require('./api')
-const { event_type, branch } = require('./environment')
+const { event, branch } = require('ci-env')
 
 const compare = (files, masterValues = {}) => {
   let fail = false
@@ -49,7 +49,7 @@ const compare = (files, masterValues = {}) => {
 
   if (fail) build.fail(globalMessage || 'bundle size > maxSize')
   else {
-    if (event_type === 'push' && branch === 'master') {
+    if (event === 'push' && branch === 'master') {
       const values = []
       files.map(file => values.push({ path: file.path, size: file.size }))
       api.set(values)
