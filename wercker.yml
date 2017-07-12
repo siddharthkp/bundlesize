@@ -1,0 +1,11 @@
+box: nodesource/trusty
+build:
+  steps:
+
+    - script:
+        name: set production false
+        code: |
+          npm config set -g production false
+
+    - npm-install
+    - npm-test
