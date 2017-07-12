@@ -81,7 +81,7 @@ This will match multiple files if necessary and create a new row for each file.
 Currently works for [Travis](https://travis-ci.org), [CircleCI](https://circleci.com/) and [Wercker](wercker.com)
 
 - [Authorize `bundlesize` for status access](https://github.com/login/oauth/authorize?scope=repo%3Astatus&client_id=6756cb03a8d6528aca5a), copy the token provided.
-- Add this token as `github_token` as environment parameter in your CIs project settings.
+- Add this token as `BUNDLESIZE_GITHUB_TOKEN` as environment parameter in your CIs project settings.
 - On travis-ci: Make sure you have `Build branch updates` enabled
 - On CircleCi: Enable `GitHub Status updates` in your advanced project settings (this should be enabled by default).
 

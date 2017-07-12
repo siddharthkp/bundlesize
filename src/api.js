@@ -1,7 +1,7 @@
 const axios = require('axios')
 const { repo, sha } = require('ci-env')
+const token = require('./token')
 
-const token = process.env.github_token || process.env.GITHUB_TOKEN
 const url = 'https://bundlesize-store.now.sh/values'
 
 let enabled = false
