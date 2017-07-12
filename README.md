@@ -36,7 +36,7 @@ Add it to your scripts in `package.json`
 
 &nbsp;
 
-#### 1) Add the path and gzip threshold in your `package.json`
+#### 1) Add the path and gzip maxSize in your `package.json`
 
 
 ```json
@@ -46,7 +46,7 @@ Add it to your scripts in `package.json`
   "bundlesize": [
     {
       "path": "./dist.js",
-      "threshold": "3 Kb"
+      "maxSize": "3 Kb"
     }
   ]
 }
@@ -58,7 +58,7 @@ Example:
 
 ```
 "path": "./dist/vendor-*.js",
-"threshold": "3 Kb"
+"maxSize": "3 Kb"
 ```
 
 This makes it great for using with applications that are bundled with another tool.
@@ -67,7 +67,7 @@ Alternate example:
 
 ```
 "path": "./dist/chunk-*.js",
-"threshold": "3 Kb"
+"maxSize": "3 Kb"
 ```
 
 This will match multiple files if necessary and create a new row for each file.
