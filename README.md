@@ -95,15 +95,10 @@ Currently works for [Travis](https://travis-ci.org), [CircleCI](https://circleci
 example usage:
 
 ```sh
-bundlesize --files 'dist/*.js' --max-size '20 kb'
+bundlesize -f 'dist/*.js' -s '20 kb'
 ```
 
-`maxSize` defaults to `'3 kb'` if not passed.
-
-Currently only accept one argument for `--files` and `--max-size` and the size will apply to all files covered by a glob passed to `--files`. For more granular configuration we would recommend configuring it in the `package.json` (documented above).
-
-Passing `--files` argument will force `package.json` config to be ignored.
-
+For more granular configuration, we would recommend configuring it in the `package.json` (documented above).
 
 &nbsp;
 
