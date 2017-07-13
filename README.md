@@ -90,6 +90,23 @@ Currently works for [Travis](https://travis-ci.org), [CircleCI](https://circleci
 
 &nbsp;
 
+#### CLI
+
+example usage:
+
+```sh
+bundlesize --files 'dist/*.js' --max-size '20 kb'
+```
+
+`maxSize` defaults to `'3 kb'` if not passed.
+
+Currently only accept one argument for `--files` and `--max-size` and the size will apply to all files covered by a glob passed to `--files`. For more granular configuration we would recommend configuring it in the `package.json` (documented above).
+
+Passing `--files` argument will force `package.json` config to be ignored.
+
+
+&nbsp;
+
 #### like it?
 
 :star: this repo
