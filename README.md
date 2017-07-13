@@ -57,20 +57,20 @@ Add it to your scripts in `package.json`
 Example:
 
 ```
-"path": "./dist/vendor-*.js",
-"maxSize": "3 Kb"
+"bundlesize": [
+  {
+    "path": "./dist/vendor-*.js",
+    "maxSize": "3 Kb"
+  },
+  {
+    "path": "./dist/chunk-*.js",
+    "maxSize": "3 Kb"
+  }
+]
+
 ```
 
-This makes it great for using with applications that are bundled with another tool.
-
-Alternate example:
-
-```
-"path": "./dist/chunk-*.js",
-"maxSize": "3 Kb"
-```
-
-This will match multiple files if necessary and create a new row for each file.
+This makes it great for using with applications that are bundled with another tool. It will match multiple files if necessary and create a new row for each file.
 
 &nbsp;
 
