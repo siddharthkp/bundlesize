@@ -2,10 +2,6 @@ dist: trusty
 language: node_js
 node_js:
   - "6"
-script:
-  - node start.js
-  - npm install
-  - npm test
 cache:
   directories:
     - node_modules
