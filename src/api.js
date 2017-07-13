@@ -1,5 +1,6 @@
 const axios = require('axios')
-const { repo, sha } = require('ci-env')
+let { repo, sha } = require('ci-env')
+
 const token = require('./token')
 const debug = require('./debug')
 
@@ -14,6 +15,7 @@ debug('api enabled', enabled)
 const get = () => {
   debug('fetching values', '...')
 
+  repo = repo.replace(/\./g, '_')
   return axios
     .get(`${url}?repo=${repo}&token=${token}`)
     .then(response => {
@@ -32,6 +34,7 @@ const get = () => {
 
 const set = values => {
   if (repo && token) {
+    repo = repo.replace(/\./g, '_')
     debug('saving values')
 
     axios
