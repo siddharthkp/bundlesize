@@ -15,7 +15,7 @@ const compare = (files, masterValues = {}) => {
     const { path, size, master, maxSize } = file
 
     let message = `${path}: ${bytes(size)} `
-
+    const prettySize = bytes(maxSize)
     /*
       if size > maxSize, fail
       else if size > master, warn + pass
@@ -24,13 +24,13 @@ const compare = (files, masterValues = {}) => {
 
     if (size > maxSize) {
       fail = true
-      message += `> maxSize ${bytes(maxSize)} gzip`
+      if (prettySize) message += `> maxSize ${prettySize} gzip`
       error(message, { fail: false, label: 'FAIL' })
     } else if (!master) {
-      message += `< maxSize ${bytes(maxSize)} gzip`
+      if (prettySize) message += `< maxSize ${prettySize} gzip`
       info('PASS', message)
     } else {
-      message += `< maxSize ${bytes(maxSize)} gzip `
+      if (prettySize) message += `< maxSize ${prettySize} gzip `
       const diff = size - master
 
       if (diff < 0) {

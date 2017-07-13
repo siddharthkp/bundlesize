@@ -17,7 +17,7 @@ program
 
 let cliConfig
 
-if (program.files && program.maxSize) {
+if (program.files) {
   cliConfig = [
     {
       path: program.files,
