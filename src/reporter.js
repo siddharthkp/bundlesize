@@ -1,10 +1,14 @@
 const bytes = require('bytes')
 const { error, warn, info } = require('prettycli')
+const { event, branch } = require('ci-env')
 const build = require('./build')
 const api = require('./api')
-const { event, branch } = require('ci-env')
+const debug = require('./debug')
 
 const compare = (files, masterValues = {}) => {
+  debug('api enabled', api.enabled)
+  debug('master values', masterValues)
+
   let fail = false
   let globalMessage
 
@@ -42,9 +46,10 @@ const compare = (files, masterValues = {}) => {
         message += `(same as master)`
         info('PASS', message)
       }
-
-      if (files.length === 1) globalMessage = message
     }
+
+    if (files.length === 1) globalMessage = message
+    debug('message', message)
   })
 
   if (fail) build.fail(globalMessage || 'bundle size > maxSize')
@@ -56,6 +61,8 @@ const compare = (files, masterValues = {}) => {
     }
     build.pass(globalMessage || 'Good job! bundle size < maxSize')
   }
+
+  debug('global message', globalMessage)
 }
 
 const reporter = files => {
