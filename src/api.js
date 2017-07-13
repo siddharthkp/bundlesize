@@ -12,7 +12,7 @@ if (repo && token) enabled = true
 debug('api enabled', enabled)
 
 const get = () => {
-  debug('fetching values')
+  debug('fetching values', '...')
 
   return axios
     .get(`${url}?repo=${repo}&token=${token}`)
