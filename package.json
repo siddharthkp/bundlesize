@@ -3,7 +3,10 @@
   "version": "0.10.0",
   "description": "Keep your library size in check",
   "main": "index.js",
-  "bin": "index.js",
+  "bin": {
+   "bundlesize": "index.js",
+   "bundlesize-start": "start.js"
+ },
   "scripts": {
     "test": "node index"
   },
@@ -16,6 +19,7 @@
   ],
   "files": [
     "index.js",
+    "start.js",
     "src"
   ],
   "author": "siddharthkp",
