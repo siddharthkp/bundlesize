@@ -1,6 +1,7 @@
 const Build = require('github-build')
 const { repo, sha, event } = require('ci-env')
 const token = require('./token')
+const debug = require('./debug')
 
 let pass = () => {} // noop
 let fail = () => process.exit(1)
@@ -11,6 +12,9 @@ const description = 'Checking output size...'
 const meta = { repo, sha, token, label, description }
 
 const build = new Build(meta)
+
+debug('token exists', !!token)
+debug('event', event)
 
 if (token && event === 'push') {
   build.start()

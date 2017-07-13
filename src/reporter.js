@@ -6,9 +6,6 @@ const api = require('./api')
 const debug = require('./debug')
 
 const compare = (files, masterValues = {}) => {
-  debug('api enabled', api.enabled)
-  debug('master values', masterValues)
-
   let fail = false
   let globalMessage
 
