@@ -1,7 +1,8 @@
 const readPkgUp = require('read-pkg-up')
 const pkg = readPkgUp.sync().pkg
 const program = require('commander')
-const { error } = require('prettycli')
+const { info, error } = require('prettycli')
+const debug = require('./debug')
 
 /* Config from package.json */
 const packageJSONconfig = pkg.bundlesize
@@ -11,6 +12,7 @@ const packageJSONconfig = pkg.bundlesize
 program
   .option('-f, --files [files]', 'files to test against (dist/*.js)')
   .option('-s, --max-size [maxSize]', 'maximum size threshold (3Kb)')
+  .option('--debug', 'run in debug mode')
   .parse(process.argv)
 
 let cliConfig
@@ -38,5 +40,9 @@ if (!packageJSONconfig && !cliConfig) {
 }
 
 const config = cliConfig || packageJSONconfig
+
+debug('cli config', cliConfig)
+debug('package json config', packageJSONconfig)
+debug('selected config', config)
 
 module.exports = config
