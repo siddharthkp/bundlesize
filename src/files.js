@@ -15,7 +15,7 @@ config.map(file => {
   } else {
     paths.map(path => {
       const size = gzip.sync(fs.readFileSync(path, 'utf8'))
-      const maxSize = bytes(file.threshold || file.maxSize)
+      const maxSize = bytes(file.threshold || file.maxSize) || Infinity
       files.push({ maxSize, path, size })
     })
   }
