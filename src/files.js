@@ -4,6 +4,7 @@ const glob = require('glob')
 const gzip = require('gzip-size')
 const { error } = require('prettycli')
 const config = require('./config')
+const debug = require('./debug')
 
 const files = []
 
@@ -19,5 +20,7 @@ config.map(file => {
     })
   }
 })
+
+debug('files', files)
 
 module.exports = files
