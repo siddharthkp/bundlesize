@@ -5,7 +5,7 @@
   "main": "index.js",
   "bin": {
    "bundlesize": "index.js",
-   "bundlesize-start": "start.js"
+   "bundlesize-init": "src/init-status.js"
  },
   "scripts": {
     "test": "node index"
@@ -19,7 +19,6 @@
   ],
   "files": [
     "index.js",
-    "start.js",
     "src"
   ],
   "author": "siddharthkp",
