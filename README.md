@@ -98,7 +98,7 @@ example usage:
 bundlesize -f dist/*.js -s 20kB
 ```
 
-For more granular configuration, we would recommend configuring it in the `package.json` (documented above).
+For more granular configuration, we recommend configuring it in the `package.json` (documented above).
 
 &nbsp;
 
