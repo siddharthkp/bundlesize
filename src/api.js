@@ -1,6 +1,8 @@
 const axios = require('axios')
-const url = 'https://bundlesize-store-iothfynuyu.now.sh/values'
-const { repo, token, sha } = require('./environment')
+const { repo, sha } = require('ci-env')
+const token = require('./token')
+
+const url = 'https://bundlesize-store.now.sh/values'
 
 let enabled = false
 
@@ -11,7 +13,9 @@ const get = () => {
     .get(`${url}?repo=${repo}&token=${token}`)
     .then(response => {
       const values = {}
-      response.data.map(file => (values[file.path] = file.size))
+      if (response && response.data && response.data.length) {
+        response.data.map(file => (values[file.path] = file.size))
+      }
       return values
     })
     .catch(error => console.log(error))

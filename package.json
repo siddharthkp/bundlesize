@@ -1,6 +1,6 @@
 {
   "name": "bundlesize",
-  "version": "0.6.1",
+  "version": "0.7.1",
   "description": "Keep your library size in check",
   "main": "index.js",
   "bin": "index.js",
@@ -24,6 +24,7 @@
     "axios": "0.16.1",
     "bytes": "2.5.0",
     "commander": "^2.11.0",
+    "ci-env": "1.1.0",
     "github-build": "1.1.1",
     "glob": "7.1.2",
     "gzip-size": "3.0.0",
