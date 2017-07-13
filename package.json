@@ -5,7 +5,7 @@
   "main": "index.js",
   "bin": "index.js",
   "scripts": {
-    "test": "node index --debug"
+    "test": "node index"
   },
   "keywords": [
     "library",
