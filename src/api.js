@@ -25,7 +25,7 @@ const get = () => {
       return values
     })
     .catch(error => {
-      debug('fetching failed', error)
+      debug('fetching failed', error.response.data)
       console.log(error)
     })
 }
