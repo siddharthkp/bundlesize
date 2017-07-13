@@ -14,6 +14,8 @@ const meta = { repo, sha, token, label, description }
 const build = new Build(meta)
 
 debug('token exists', !!token)
+debug('repo', repo)
+debug('sha', sha)
 debug('event', event)
 
 if (token && event === 'push') {
