@@ -82,8 +82,6 @@ Currently works for [Travis](https://travis-ci.org), [CircleCI](https://circleci
 
 - [Authorize `bundlesize` for status access](https://github.com/login/oauth/authorize?scope=repo%3Astatus&client_id=6756cb03a8d6528aca5a), copy the token provided.
 - Add this token as `BUNDLESIZE_GITHUB_TOKEN` as environment parameter in your CIs project settings.
-- On travis-ci: Make sure you have `Build branch updates` enabled
-- On CircleCi: Enable `GitHub Status updates` in your advanced project settings (this should be enabled by default).
 
 (Ask me for help if you're stuck)
 
