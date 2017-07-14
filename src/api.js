@@ -1,5 +1,6 @@
 const axios = require('axios')
-let { repo, sha } = require('ci-env')
+let { repo, sha, ci } = require('ci-env')
+const { warn } = require('prettycli')
 
 const token = require('./token')
 const debug = require('./debug')
@@ -9,6 +10,13 @@ const url = 'https://bundlesize-store.now.sh/values'
 let enabled = false
 
 if (repo && token) enabled = true
+else if (ci) {
+  warn(`github token not found
+
+    You are missing out on some cool features.
+    Read more here: https://github.com/siddharthkp/bundlesize#2-build-status
+  `)
+}
 
 debug('api enabled', enabled)
 
