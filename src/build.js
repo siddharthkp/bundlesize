@@ -1,5 +1,5 @@
 const Build = require('github-build')
-const { repo, sha, event } = require('ci-env')
+const { repo, sha } = require('ci-env')
 const token = require('./token')
 const debug = require('./debug')
 
@@ -16,9 +16,8 @@ const build = new Build(meta)
 debug('token exists', !!token)
 debug('repo', repo)
 debug('sha', sha)
-debug('event', event)
 
-if (token && event === 'push') {
+if (token) {
   build.start()
   pass = message => build.pass(message)
   fail = message => build.fail(message)
