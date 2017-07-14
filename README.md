@@ -125,6 +125,7 @@ For more granular configuration, we recommend configuring it in the `package.jso
 - [react-apollo](https://github.com/apollographql/react-apollo)
 - [hyperall](https://github.com/hyperapp/hyperapp)
 - [css-constructor](https://github.com/siddharthkp/css-constructor)
+- [redux-saga](https://github.com/redux-saga/redux-saga)
 
 
 &nbsp;
