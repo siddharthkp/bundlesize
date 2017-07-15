@@ -49,11 +49,11 @@ const compare = (files, masterValues = {}) => {
     debug('message', message)
   })
 
+  /* prepare the build page */
   const params = encodeURIComponent(
     JSON.stringify({ files, commit_message, branch })
   )
   const url = `https://bundlesize-store.now.sh/build?info=${params}`
-
   debug('url', url)
 
   if (fail) build.fail(globalMessage || 'bundle size > maxSize', url)
