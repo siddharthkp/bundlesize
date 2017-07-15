@@ -30,9 +30,11 @@
   "dependencies": {
     "axios": "0.16.1",
     "body-parser": "1.17.2",
+    "bytes": "2.5.0",
     "dotenv": "4.0.0",
     "express": "4.15.2",
     "firebase": "4.1.2",
-    "newrelic": "1.40.0"
+    "newrelic": "1.40.0",
+    "pug": "2.0.0-rc.2"
   }
 }
