@@ -38,6 +38,7 @@ const get = (repo, token) => {
     .once('value')
     .then(snapshot => {
       const object = snapshot.val()
+      if (!object) return []
       const values = Object.values(object)[0]
       return values
     })
