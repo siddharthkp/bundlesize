@@ -56,7 +56,7 @@ server.get('/build', (req, res) => {
 
     if (f.master) {
       f.diff = f.size - f.master
-      if (f.diff < 0) f.diff = '-' + bytes(f.diff)
+      if (f.diff < 0) f.diff = bytes(f.diff)
       else f.diff = '+' + bytes(f.diff)
     }
 
