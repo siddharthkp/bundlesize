@@ -21,7 +21,9 @@
       "index.js",
       "github.js",
       "firebase.js",
-      "newrelic.js"
+      "newrelic.js",
+      "views",
+      "static"
     ]
   },
   "keywords": [],
