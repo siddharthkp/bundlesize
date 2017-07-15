@@ -1,6 +1,6 @@
 const bytes = require('bytes')
 const { error, warn, info } = require('prettycli')
-const { event, branch } = require('ci-env')
+const { event, repo, branch, commit_message, sha } = require('ci-env')
 const build = require('./build')
 const api = require('./api')
 const debug = require('./debug')
@@ -49,14 +49,21 @@ const compare = (files, masterValues = {}) => {
     debug('message', message)
   })
 
-  if (fail) build.fail(globalMessage || 'bundle size > maxSize')
+  /* prepare the build page */
+  const params = encodeURIComponent(
+    JSON.stringify({ files, repo, branch, commit_message, sha })
+  )
+  const url = `https://bundlesize-store.now.sh/build?info=${params}`
+  debug('url', url)
+
+  if (fail) build.fail(globalMessage || 'bundle size > maxSize', url)
   else {
     if (event === 'push' && branch === 'master') {
       const values = []
       files.map(file => values.push({ path: file.path, size: file.size }))
       api.set(values)
     }
-    build.pass(globalMessage || 'Good job! bundle size < maxSize')
+    build.pass(globalMessage || 'Good job! bundle size < maxSize', url)
   }
 
   debug('global message', globalMessage)

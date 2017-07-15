@@ -19,9 +19,9 @@ debug('sha', sha)
 
 if (token) {
   build.start()
-  pass = message => build.pass(message)
-  fail = message => build.fail(message)
-  error = message => build.error(message)
+  pass = (message, url) => build.pass(message, url)
+  fail = (message, url) => build.fail(message, url)
+  error = (message, url) => build.error(message, url)
 }
 
 module.exports = { pass, fail, error }
