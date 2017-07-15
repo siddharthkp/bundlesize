@@ -30,7 +30,6 @@ const set = (repo, values, sha, token) => {
 
 const get = (repo, token) => {
   authenticate(token)
-  let values = []
   const ref = `${token}/${repo}`
   return firebase
     .database()
@@ -38,9 +37,8 @@ const get = (repo, token) => {
     .limitToLast(1)
     .once('value')
     .then(snapshot => {
-      snapshot.forEach(child => values.push(child.val()[0]))
-      if (!values[0]) values = snapshot.val()
-      console.log(values)
+      const object = snapshot.val()
+      const values = Object.values(object)[0]
       return values
     })
   logout()
