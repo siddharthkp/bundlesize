@@ -1,6 +1,6 @@
 const bytes = require('bytes')
 const { error, warn, info } = require('prettycli')
-const { event, branch, commit_message } = require('ci-env')
+const { event, branch, commit_message, sha } = require('ci-env')
 const build = require('./build')
 const api = require('./api')
 const debug = require('./debug')
@@ -51,7 +51,7 @@ const compare = (files, masterValues = {}) => {
 
   /* prepare the build page */
   const params = encodeURIComponent(
-    JSON.stringify({ files, commit_message, sha, branch })
+    JSON.stringify({ files, branch, commit_message, sha })
   )
   const url = `https://bundlesize-store.now.sh/build?info=${params}`
   debug('url', url)
