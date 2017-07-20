@@ -36,7 +36,7 @@ Add it to your scripts in `package.json`
 
 &nbsp;
 
-1) Add the path and threshold in your `package.json`
+#### 1) Add the path and gzip maxSize in your `package.json`
 
 
 ```json
@@ -46,27 +46,57 @@ Add it to your scripts in `package.json`
   "bundlesize": [
     {
       "path": "./dist.js",
-      "threshold": "3 Kb"
+      "maxSize": "3 Kb"
     }
   ]
 }
 ```
 
+`bundlesize` also supports [glob patterns](https://github.com/isaacs/node-glob)
+
+Example:
+
+```
+"bundlesize": [
+  {
+    "path": "./dist/vendor-*.js",
+    "maxSize": "3 Kb"
+  },
+  {
+    "path": "./dist/chunk-*.js",
+    "maxSize": "3 Kb"
+  }
+]
+
+```
+
+This makes it great for using with applications that are bundled with another tool. It will match multiple files if necessary and create a new row for each file.
+
 &nbsp;
 
-2) build status
+#### 2) build status
 
 ![build status](https://raw.githubusercontent.com/siddharthkp/bundlesize/master/art/status.png)
 
-Currently works for [Travis CI](https://travis-ci.org), [CircleCI](https://circleci.com/), and [Drone](http://readme.drone.io/).
+Currently works for [Travis CI](https://travis-ci.org), [CircleCI](https://circleci.com/), [Wercker](wercker.com), and [Drone](http://readme.drone.io/).
 
 - [Authorize `bundlesize` for status access](https://github.com/login/oauth/authorize?scope=repo%3Astatus&client_id=6756cb03a8d6528aca5a), copy the token provided.
-- Add this token as `github_token` as environment parameter in your CIs project settings.
-- On travis-ci: Enable `Build branch updates` and `Build pull request updates`. ([screenshot](https://raw.githubusercontent.com/siddharthkp/bundlesize/master/art/travis.png))
-- On CircleCi: Enable `GitHub Status updates` in your advanced project settings (this should be enabled by default).
+- Add this token as `BUNDLESIZE_GITHUB_TOKEN` as environment parameter in your CIs project settings.
 
 (Ask me for help if you're stuck)
 
+
+&nbsp;
+
+#### CLI
+
+example usage:
+
+```sh
+bundlesize -f dist/*.js -s 20kB
+```
+
+For more granular configuration, we recommend configuring it in the `package.json` (documented above).
 
 &nbsp;
 
@@ -76,14 +106,25 @@ Currently works for [Travis CI](https://travis-ci.org), [CircleCI](https://circl
 
 &nbsp;
 
+#### how to contribute?
+
+- [CONTRIBUTING.md](CONTRIBUTING.md)
+
+&nbsp;
+
 #### who uses bundlesize?
 
 - [preact](https://github.com/developit/preact)
+- [lighthouse](https://github.com/GoogleChrome/lighthouse)
 - [styled-components](https://github.com/styled-components/styled-components)
 - [emotion](https://github.com/tkh44/emotion)
 - [glamorous](https://github.com/paypal/glamorous)
-- [css-constructor](https://github.com/siddharthkp/css-constructor)
 - [Popper.js](https://github.com/FezVrasta/popper.js)
+- [react-apollo](https://github.com/apollographql/react-apollo)
+- [hyperall](https://github.com/hyperapp/hyperapp)
+- [css-constructor](https://github.com/siddharthkp/css-constructor)
+- [redux-saga](https://github.com/redux-saga/redux-saga)
+
 
 &nbsp;
 

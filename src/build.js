@@ -1,5 +1,7 @@
 const Build = require('github-build')
-const { repo, sha, token, event_type } = require('./environment')
+const { repo, sha } = require('ci-env')
+const token = require('./token')
+const debug = require('./debug')
 
 let pass = () => {} // noop
 let fail = () => process.exit(1)
@@ -11,11 +13,15 @@ const meta = { repo, sha, token, label, description }
 
 const build = new Build(meta)
 
-if (token && event_type === 'pull_request') {
+debug('token exists', !!token)
+debug('repo', repo)
+debug('sha', sha)
+
+if (token) {
   build.start()
-  pass = message => build.pass(message)
-  fail = message => build.fail(message)
-  error = message => build.error(message)
+  pass = (message, url) => build.pass(message, url)
+  fail = (message, url) => build.fail(message, url)
+  error = (message, url) => build.error(message, url)
 }
 
 module.exports = { pass, fail, error }

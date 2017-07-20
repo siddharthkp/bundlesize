@@ -1,8 +1,9 @@
 const bytes = require('bytes')
 const { error, warn, info } = require('prettycli')
+const { event, repo, branch, commit_message, sha } = require('ci-env')
 const build = require('./build')
 const api = require('./api')
-const { event_type, branch } = require('./environment')
+const debug = require('./debug')
 
 const compare = (files, masterValues = {}) => {
   let fail = false
@@ -14,7 +15,7 @@ const compare = (files, masterValues = {}) => {
     const { path, size, master, maxSize } = file
 
     let message = `${path}: ${bytes(size)} `
-
+    const prettySize = bytes(maxSize)
     /*
       if size > maxSize, fail
       else if size > master, warn + pass
@@ -23,13 +24,13 @@ const compare = (files, masterValues = {}) => {
 
     if (size > maxSize) {
       fail = true
-      message += `> maxSize ${bytes(maxSize)} gzip`
+      if (prettySize) message += `> maxSize ${prettySize} gzip`
       error(message, { fail: false, label: 'FAIL' })
     } else if (!master) {
-      message += `< maxSize ${bytes(maxSize)} gzip`
+      if (prettySize) message += `< maxSize ${prettySize} gzip`
       info('PASS', message)
     } else {
-      message += `< maxSize ${bytes(maxSize)} gzip `
+      if (prettySize) message += `< maxSize ${prettySize} gzip `
       const diff = size - master
 
       if (diff < 0) {
@@ -42,20 +43,30 @@ const compare = (files, masterValues = {}) => {
         message += `(same as master)`
         info('PASS', message)
       }
-
-      if (files.length === 1) globalMessage = message
     }
+
+    if (files.length === 1) globalMessage = message
+    debug('message', message)
   })
 
-  if (fail) build.fail(globalMessage || 'bundle size > maxSize')
+  /* prepare the build page */
+  const params = encodeURIComponent(
+    JSON.stringify({ files, repo, branch, commit_message, sha })
+  )
+  const url = `https://bundlesize-store.now.sh/build?info=${params}`
+  debug('url', url)
+
+  if (fail) build.fail(globalMessage || 'bundle size > maxSize', url)
   else {
-    if (event_type === 'push' && branch === 'master') {
+    if (event === 'push' && branch === 'master') {
       const values = []
       files.map(file => values.push({ path: file.path, size: file.size }))
       api.set(values)
     }
-    build.pass(globalMessage || 'Good job! bundle size < maxSize')
+    build.pass(globalMessage || 'Good job! bundle size < maxSize', url)
   }
+
+  debug('global message', globalMessage)
 }
 
 const reporter = files => {

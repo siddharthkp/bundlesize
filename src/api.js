@@ -1,24 +1,50 @@
 const axios = require('axios')
-const url = 'https://bundlesize-store-iothfynuyu.now.sh/values'
-const { repo, token, sha } = require('./environment')
+let { repo, sha, ci } = require('ci-env')
+const { warn } = require('prettycli')
+
+const token = require('./token')
+const debug = require('./debug')
+
+const url = 'https://bundlesize-store.now.sh/values'
 
 let enabled = false
 
 if (repo && token) enabled = true
+else if (ci) {
+  warn(`github token not found
+
+    You are missing out on some cool features.
+    Read more here: https://github.com/siddharthkp/bundlesize#2-build-status
+  `)
+}
+
+debug('api enabled', enabled)
 
 const get = () => {
+  debug('fetching values', '...')
+
+  repo = repo.replace(/\./g, '_')
   return axios
     .get(`${url}?repo=${repo}&token=${token}`)
     .then(response => {
       const values = {}
-      response.data.map(file => (values[file.path] = file.size))
+      if (response && response.data && response.data.length) {
+        response.data.map(file => (values[file.path] = file.size))
+      }
+      debug('master values', values)
       return values
     })
-    .catch(error => console.log(error))
+    .catch(error => {
+      debug('fetching failed', error.response.data)
+      console.log(error)
+    })
 }
 
 const set = values => {
   if (repo && token) {
+    repo = repo.replace(/\./g, '_')
+    debug('saving values')
+
     axios
       .post(url, { repo, token, sha, values })
       .catch(error => console.log(error))

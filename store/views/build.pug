@@ -1,0 +1,38 @@
+<html>
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link href="styles.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  </head>
+  <body>
+    <img class="logo" src="https://raw.githubusercontent.com/siddharthkp/bundlesize/master/art/logo.png"/>
+    <div class="card">
+      <div class="build-info">
+        <div>
+          <span class="big dark">#{commit_message}</span>
+          <span class="big light">##{sha}</span>
+        </div>
+        <div class="light">#{repo} : #{branch}</div>
+      </div>
+      <div class="files">
+        <div class="labels desktop">
+          <div class="light label path">PATH</div>
+          <div class="light label threshold"></div>
+          <div class="light label size">SIZE/THRESHOLD</div>
+          <div class="light label master">MASTER</div>
+        </div>
+        each file in files
+          <div class="file">
+            <div class="path">#{file.path}</div>
+            <div class="threshold">
+              <div class="bar first" style="width: #{file.fillLength * 100 / file.length}%"></div>
+              <div class="bar length" style="background-color: #{file.baseColor}"></div>
+            </div>
+            <div class="size light">#{file.prettySize}/#{file.prettyMaxSize}#{file.unit}</div>
+            if file.diff
+              <div class="master light"><span class="mobile">master</span> #{file.diff}</div>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
