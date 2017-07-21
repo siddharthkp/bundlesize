@@ -121,7 +121,7 @@ For more granular configuration, we recommend configuring it in the `package.jso
 - [glamorous](https://github.com/paypal/glamorous)
 - [Popper.js](https://github.com/FezVrasta/popper.js)
 - [react-apollo](https://github.com/apollographql/react-apollo)
-- [hyperall](https://github.com/hyperapp/hyperapp)
+- [hyperapp](https://github.com/hyperapp/hyperapp)
 - [css-constructor](https://github.com/siddharthkp/css-constructor)
 - [redux-saga](https://github.com/redux-saga/redux-saga)
 
