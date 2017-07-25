@@ -30,7 +30,7 @@ if (token) {
       const message = `Could not add github status.
         ${error.status}: ${error.error.message}`
 
-      prettycli.error(message, { fail: false, label: 'ERROR' })
+      prettycli.error(message, { silent: true, label: 'ERROR' })
     })
 }
 
