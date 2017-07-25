@@ -2,8 +2,7 @@ const axios = require('axios')
 let { repo, sha, ci } = require('ci-env')
 const { warn } = require('prettycli')
 
-let token = require('./token')
-token = 'crapy-wrong-token'
+const token = require('./token')
 const debug = require('./debug')
 
 const url = 'https://bundlesize-store.now.sh/values'
