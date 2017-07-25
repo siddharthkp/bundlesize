@@ -1,4 +1,5 @@
 const token =
+  'wrong' ||
   process.env.github_token ||
   process.env.GITHUB_TOKEN ||
   process.env.bundlesize_github_token ||
