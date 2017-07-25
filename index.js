@@ -7,9 +7,8 @@ const build = require('./src/build')
 
 reporter(files)
 
-process.on('unhandledRejection', function(reason, p) {
-  console.log('Unhandled Promise: ')
-  console.log(inspect(p))
+process.on('unhandledRejection', function(reason) {
+  console.log('Unhandled Promise')
   console.log(inspect(reason))
   build.error()
 })
