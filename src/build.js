@@ -1,4 +1,5 @@
 const Build = require('github-build')
+const prettycli = require('prettycli')
 const { repo, sha } = require('ci-env')
 const token = require('./token')
 const debug = require('./debug')
@@ -18,10 +19,17 @@ debug('repo', repo)
 debug('sha', sha)
 
 if (token) {
-  build.start()
-  pass = (message, url) => build.pass(message, url)
-  fail = (message, url) => build.fail(message, url)
-  error = (message, url) => build.error(message, url)
+  build
+    .start()
+    .then(() => {
+      pass = (message, url) => build.pass(message, url)
+      fail = (message, url) => build.fail(message, url)
+      error = (message, url) => build.error(message, url)
+    })
+    .catch(error => {
+      const message = `${error.status}: ${error.error.message}`
+      prettycli.error(message, { fail: false, label: 'ERROR' })
+    })
 }
 
 module.exports = { pass, fail, error }
