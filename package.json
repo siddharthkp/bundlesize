@@ -4,7 +4,7 @@
   "description": "Keep your library size in check",
   "main": "index.js",
   "bin": {
-    "bundlesize": "index.js",
+    "bundlesize": "index.js --debug",
     "bundlesize-init": "src/init-status.js"
   },
   "scripts": {
