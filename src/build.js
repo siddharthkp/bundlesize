@@ -19,19 +19,17 @@ debug('repo', repo)
 debug('sha', sha)
 
 if (token) {
-  build
-    .start()
-    .then(() => {
-      pass = (message, url) => build.pass(message, url)
-      fail = (message, url) => build.fail(message, url)
-      error = (message, url) => build.error(message, url)
-    })
-    .catch(error => {
-      const message = `Could not add github status.
-        ${error.status}: ${error.error.message}`
+  const handleError = error => {
+    const message = `Could not add github status.
+      ${error.status}: ${error.error.message}`
 
-      prettycli.error(message, { silent: true, label: 'ERROR' })
-    })
+    prettycli.error(message, { silent: true, label: 'ERROR' })
+  }
+
+  build.start().catch(handleError)
+  pass = (message, url) => build.pass(message, url).catch(handleError)
+  fail = (message, url) => build.fail(message, url).catch(handleError)
+  error = (message, url) => build.error(message, url).catch(handleError)
 }
 
 module.exports = { pass, fail, error }
