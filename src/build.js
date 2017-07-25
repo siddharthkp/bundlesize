@@ -21,7 +21,7 @@ debug('sha', sha)
 if (token) {
   const handleError = error => {
     const message = `Could not add github status.
-      ${error.status}: ${error.error.message}`
+        ${error.status}: ${error.error.message}`
 
     prettycli.error(message, { silent: true, label: 'ERROR' })
   }
