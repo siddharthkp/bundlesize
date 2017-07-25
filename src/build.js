@@ -27,7 +27,9 @@ if (token) {
       error = (message, url) => build.error(message, url)
     })
     .catch(error => {
-      const message = `${error.status}: ${error.error.message}`
+      const message = `Could not add github status.
+        ${error.status}: ${error.error.message}`
+
       prettycli.error(message, { fail: false, label: 'ERROR' })
     })
 }
