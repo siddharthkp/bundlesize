@@ -27,6 +27,7 @@ const get = () => {
   return axios
     .get(`${url}?repo=${repo}&token=${token}`)
     .then(response => {
+      debug('response', response)
       const values = {}
       if (response && response.data && response.data.length) {
         response.data.map(file => (values[file.path] = file.size))
