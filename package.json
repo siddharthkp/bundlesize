@@ -4,11 +4,11 @@
   "description": "Keep your library size in check",
   "main": "index.js",
   "bin": {
-    "bundlesize": "index.js --debug",
+    "bundlesize": "index.js",
     "bundlesize-init": "src/init-status.js"
   },
   "scripts": {
-    "test": "node index"
+    "test": "node index --debug"
   },
   "keywords": [
     "library",
