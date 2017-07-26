@@ -40,7 +40,27 @@
       "maxSize": "600B"
     },
     {
-      "path": "./src/*.js",
+      "path": "./src/build.js",
+      "maxSize": "600B"
+    },
+    {
+      "path": "./src/build.js",
+      "maxSize": "600B"
+    },
+    {
+      "path": "./src/build.js",
+      "maxSize": "600B"
+    },
+    {
+      "path": "./src/build.js",
+      "maxSize": "600B"
+    },
+    {
+      "path": "./src/build.js",
+      "maxSize": "600B"
+    },
+    {
+      "path": "./src/build.js",
       "maxSize": "600B"
     }
   ]
