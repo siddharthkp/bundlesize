@@ -51,7 +51,7 @@ const compare = (files, masterValues = {}) => {
 
   /* prepare the build page */
   const params = encodeURIComponent(
-    JSON.stringify({ files, repo, branch, commit_message, sha })
+    JSON.stringify({ files, repo, branch, sha })
   )
   const url = `https://bundlesize-store.now.sh/build?info=${params}`
   debug('url', url)
