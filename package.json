@@ -40,7 +40,7 @@
       "maxSize": "600B"
     },
     {
-      "path": "./src/files.js",
+      "path": "./src/*.js",
       "maxSize": "600B"
     }
   ]
