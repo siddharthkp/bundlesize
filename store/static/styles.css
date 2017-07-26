@@ -42,6 +42,7 @@ body {
 }
 .file > div {
   display: inline-block;
+  word-wrap: break-word;
 }
 .path {
   width: 20%;
