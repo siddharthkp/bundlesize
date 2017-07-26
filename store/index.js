@@ -41,7 +41,10 @@ server.get('/auth', (req, res) => {
   else
     github
       .token(code)
-      .then(response => res.end(querystring.parse(response).access_token))
+      .then(response => {
+        const token = querystring.parse(response).access_token
+        res.render('auth', { token })
+      })
       .catch(() => res.status(500).end('Oops'))
 })
 
