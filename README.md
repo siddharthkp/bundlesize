@@ -84,7 +84,7 @@ This makes it great for using with applications that are bundled with another to
 
 ![build status](https://raw.githubusercontent.com/siddharthkp/bundlesize/master/art/status.png)
 
-Currently works for [Travis CI](https://travis-ci.org), [CircleCI](https://circleci.com/), [Wercker](wercker.com), and [Drone](http://readme.drone.io/).
+Currently works for [Travis CI](https://travis-ci.org), [CircleCI](https://circleci.com/), [Wercker](http://www.wercker.com), and [Drone](http://readme.drone.io/).
 
 - [Authorize `bundlesize` for status access](https://github.com/login/oauth/authorize?scope=repo%3Astatus&client_id=6756cb03a8d6528aca5a), copy the token provided.
 - Add this token as `BUNDLESIZE_GITHUB_TOKEN` as environment parameter in your CIs project settings.
