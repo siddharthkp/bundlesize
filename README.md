@@ -32,6 +32,12 @@ Add it to your scripts in `package.json`
 
 &nbsp;
 
+Or you can use `npx` with [NPM 5.2+](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
+
+```bash
+npx bundlesize
+```
+
 #### configuration
 
 &nbsp;
