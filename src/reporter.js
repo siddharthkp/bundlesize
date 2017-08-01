@@ -4,6 +4,7 @@ const { event, repo, branch, commit_message, sha } = require('ci-env')
 const build = require('./build')
 const api = require('./api')
 const debug = require('./debug')
+const shortener = require('./shortener')
 
 const compare = (files, masterValues = {}) => {
   let fail = false
@@ -53,9 +54,24 @@ const compare = (files, masterValues = {}) => {
   const params = encodeURIComponent(
     JSON.stringify({ files, repo, branch, commit_message, sha })
   )
-  const url = `https://bundlesize-store.now.sh/build?info=${params}`
-  debug('url', url)
+  let url = `https://bundlesize-store.now.sh/build?info=${params}`
 
+  debug('url before shortening', url)
+
+  shortener
+    .shorten(url)
+    .then(res => {
+      url = res.data.id;
+      debug('url after shortening', url)
+      setBuildStatus({ url, files, globalMessage, fail, event, branch })
+    })
+    .catch((error) => {
+      debug('error while shortening', error)
+      setBuildStatus({ url, files, globalMessage, fail, event, branch })
+    })
+}
+
+const setBuildStatus = ({ url, files, globalMessage, fail, event, branch }) => {
   if (fail) build.fail(globalMessage || 'bundle size > maxSize', url)
   else {
     if (event === 'push' && branch === 'master') {
