@@ -2,24 +2,20 @@
   <img src="https://raw.githubusercontent.com/siddharthkp/bundlesize/master/art/logo.png" height="200px"/>
   <br><br>
   <b>Keep your bundle size in check</b>
-  <br>
 </p>
 
-&nbsp;
 
 [![Build Status](https://travis-ci.org/siddharthkp/bundlesize.svg?branch=master)](https://travis-ci.org/siddharthkp/bundlesize)
 [![NPM Version](https://img.shields.io/npm/v/bundlesize.svg)](https://npmjs.org/package/bundlesize)
 
-&nbsp;
 
-#### minimal setup
+### Minimal Setup
 ```
 npm install bundlesize --save-dev
 ```
 
-&nbsp;
 
-#### usage
+### Usage
 
 
 Add it to your scripts in `package.json`
@@ -30,7 +26,6 @@ Add it to your scripts in `package.json`
 }
 ```
 
-&nbsp;
 
 Or you can use `npx` with [NPM 5.2+](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
 
@@ -38,12 +33,10 @@ Or you can use `npx` with [NPM 5.2+](https://medium.com/@maybekatz/introducing-n
 npx bundlesize
 ```
 
-#### configuration
+### Configuration
 
-&nbsp;
 
-#### 1) Add the path and gzip maxSize in your `package.json`
-
+#### 1) Add the `path` and gzip `maxSize` in your `package.json`
 
 ```json
 {
@@ -60,9 +53,9 @@ npx bundlesize
 
 `bundlesize` also supports [glob patterns](https://github.com/isaacs/node-glob)
 
-Example:
+**Example:**
 
-```
+```json
 "bundlesize": [
   {
     "path": "./dist/vendor-*.js",
@@ -78,9 +71,8 @@ Example:
 
 This makes it great for using with applications that are bundled with another tool. It will match multiple files if necessary and create a new row for each file.
 
-&nbsp;
 
-#### 2) build status
+#### 2) Build Status
 
 ![build status](https://raw.githubusercontent.com/siddharthkp/bundlesize/master/art/status.png)
 
@@ -92,9 +84,8 @@ Currently works for [Travis CI](https://travis-ci.org), [CircleCI](https://circl
 (Ask me for help if you're stuck)
 
 
-&nbsp;
 
-#### CLI
+### CLI
 
 example usage:
 
@@ -104,21 +95,18 @@ bundlesize -f dist/*.js -s 20kB
 
 For more granular configuration, we recommend configuring it in the `package.json` (documented above).
 
-&nbsp;
 
-#### like it?
+### Like it?
 
 :star: this repo
 
-&nbsp;
 
-#### how to contribute?
+### How to contribute?
 
 - [CONTRIBUTING.md](CONTRIBUTING.md)
 
-&nbsp;
 
-#### who uses bundlesize?
+### Who uses bundlesize?
 
 - [preact](https://github.com/developit/preact)
 - [lighthouse](https://github.com/GoogleChrome/lighthouse)
@@ -132,15 +120,12 @@ For more granular configuration, we recommend configuring it in the `package.jso
 - [redux-saga](https://github.com/redux-saga/redux-saga)
 
 
-&nbsp;
 
-#### todo
+### Todo
 
 - work with other CI tools (circle, appveyor, etc.)
 - automate setup (setting env_var)
 
-&nbsp;
-
-#### license
+### License
 
 MIT © [siddharthkp](https://github.com/siddharthkp)
