@@ -52,7 +52,7 @@ npx bundlesize
   "bundlesize": [
     {
       "path": "./dist.js",
-      "maxSize": "3 Kb"
+      "maxSize": "3 kB"
     }
   ]
 }
@@ -66,11 +66,11 @@ Example:
 "bundlesize": [
   {
     "path": "./dist/vendor-*.js",
-    "maxSize": "3 Kb"
+    "maxSize": "3 kB"
   },
   {
     "path": "./dist/chunk-*.js",
-    "maxSize": "3 Kb"
+    "maxSize": "3 kB"
   }
 ]
 
