@@ -144,3 +144,7 @@ For more granular configuration, we recommend configuring it in the `package.jso
 #### license
 
 MIT © [siddharthkp](https://github.com/siddharthkp)
+
+#### sponsor
+
+[![Sponsor](https://app.codesponsor.io/embed/LhLT2c31ydJzdLUuSR9f8mCA/siddharthkp/bundlesize.svg)](https://app.codesponsor.io/link/LhLT2c31ydJzdLUuSR9f8mCA/siddharthkp/bundlesize)
