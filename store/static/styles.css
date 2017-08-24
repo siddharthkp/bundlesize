@@ -72,6 +72,14 @@ body {
 .guides {
   line-height: 2;
 }
+.sponsor {
+  border-top: 1px solid #EEE;
+  padding-top: 20px;
+}
+.sponsor-image {
+  margin-top: 20px;
+  zoom: 0.75;
+}
 
 .mobile {
   display: none;
