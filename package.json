@@ -12,7 +12,7 @@
     "bundlesize-init": "src/init-status.js"
   },
   "scripts": {
-    "test": "node index"
+    "test": "node index --debug"
   },
   "keywords": [
     "library",
