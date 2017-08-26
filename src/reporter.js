@@ -51,9 +51,7 @@ const compare = (files, masterValues = {}) => {
   })
 
   /* prepare the build page */
-  const params = encodeURIComponent(
-    JSON.stringify({ files, repo, branch, commit_message, sha })
-  )
+  const params = encodeURIComponent(JSON.stringify({ files, repo, branch, commit_message, sha }))
   let url = `https://bundlesize-store.now.sh/build?info=${params}`
 
   debug('url before shortening', url)
@@ -61,11 +59,11 @@ const compare = (files, masterValues = {}) => {
   shortener
     .shorten(url)
     .then(res => {
-      url = res.data.id;
+      url = res.data.id
       debug('url after shortening', url)
       setBuildStatus({ url, files, globalMessage, fail, event, branch })
     })
-    .catch((error) => {
+    .catch(error => {
       debug('error while shortening', error)
       setBuildStatus({ url, files, globalMessage, fail, event, branch })
     })
