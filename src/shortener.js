@@ -1,9 +1,9 @@
-const axios = require('axios');
+const axios = require('axios')
 
-const googleApiKey = ''
+const googleApiKey = 'AIzaSyACIqikanS3eoHsy14JYyFAHU1aU5w1YoA'
 const url = 'https://www.googleapis.com/urlshortener/v1/url'
 
-const shorten = (longUrl) => {
+const shorten = longUrl => {
   return axios({
     method: 'POST',
     url: `${url}?key=${googleApiKey}`,
@@ -15,4 +15,4 @@ const shorten = (longUrl) => {
 
 const shortener = { shorten }
 
-module.exports = shortener;
+module.exports = shortener
