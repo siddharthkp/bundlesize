@@ -20,7 +20,7 @@ Super exciting to see your contribution!
 
 2. Clone it on your machine: `git clone https://github.com/YOUR_USERNAME/bundlesize.git`
 
-3. Run `npm install`
+3. Run `npm install` (bundlesize uses npm5 with a `package-lock.json`, please don't use yarn, sorry)
 
 4. Run `npm test` to ensure the repository is setup correctly. You should see a dummy output:
 
