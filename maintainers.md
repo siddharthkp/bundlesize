@@ -28,6 +28,12 @@ You can contribute in the following ways:
 
 &nbsp;
 
+#### Okay, I've picked something
+
+Assign it to yourself and mark it as "work in progress" so that others don't pick it up too! Feel free to discuss your approach on the issue before starting implementation 🙂
+
+&nbsp;
+
 #### Umm, yeah so how does bundlesize work?
 
 Read the [contribution guide](https://github.com/siddharthkp/bundlesize/blob/master/CONTRIBUTING.md) to get acquainted.
