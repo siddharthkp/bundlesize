@@ -34,3 +34,11 @@ Read the [contribution guide](https://github.com/siddharthkp/bundlesize/blob/mas
 If you think, there is something else that should be mentioned in it, raise an issue and I'll add it :smile:
 
 &nbsp;
+
+#### Take care of yourself!
+
+Don't work too much! Contribute when you feel like. If you feel overwhelmed, ask for help or take a break!
+
+Feel free to add me to your repositories when you need help 🙂
+
+&nbsp;
