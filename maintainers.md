@@ -22,7 +22,7 @@ You can contribute in the following ways:
 
 - Reviewing pull requests
 
-- Add features that you think are useful!
+- Add features that you think are useful! (make sure you read the [contribution guide](https://github.com/siddharthkp/bundlesize/blob/master/CONTRIBUTING.md) first)
 
 - Spreading bundlesize by adding it to an open source library that you like
 
