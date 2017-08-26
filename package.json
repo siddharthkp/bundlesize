@@ -40,7 +40,7 @@
   },
   "bundlesize": [
     {
-      "path": "./index.js",
+      "path": "./dasd.js",
       "maxSize": "600B"
     },
     {
