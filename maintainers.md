@@ -24,6 +24,8 @@ You can contribute in the following ways:
 
 - Add features that you think are useful!
 
+- Spreading bundlesize by adding it to an open source library that you like
+
 &nbsp;
 
 #### Umm, yeah so how does bundlesize work?
