@@ -1,6 +1,6 @@
 {
   "name": "bundlesize",
-  "version": "0.14.0",
+  "version": "0.14.1",
   "description": "Keep your library size in check",
   "repository": {
     "type": "git",
@@ -12,8 +12,9 @@
     "bundlesize-init": "src/init-status.js"
   },
   "scripts": {
-    "test": "node index",
-    "danger": "danger"
+    "danger": "danger",
+    "precommit": "lint-staged",
+    "test": "node index"
   },
   "keywords": [
     "library",
