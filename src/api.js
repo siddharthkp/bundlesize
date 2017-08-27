@@ -1,5 +1,6 @@
 const axios = require('axios')
-let { repo, sha, ci } = require('ci-env')
+let { repo } = require('ci-env')
+const { sha, ci } = require('ci-env')
 const { warn } = require('prettycli')
 
 const token = require('./token')
@@ -29,6 +30,7 @@ const get = () => {
     .then(response => {
       const values = {}
       if (response && response.data && response.data.length) {
+        // eslint-disable-next-line no-return-assign
         response.data.map(file => (values[file.path] = file.size))
       }
       debug('master values', values)
@@ -36,7 +38,7 @@ const get = () => {
     })
     .catch(error => {
       debug('fetching failed', error.response.data)
-      console.log(error)
+      console.log(error) // eslint-disable-line no-console
     })
 }
 
@@ -47,7 +49,7 @@ const set = values => {
 
     axios
       .post(url, { repo, token, sha, values })
-      .catch(error => console.log(error))
+      .catch(error => console.log(error)) // eslint-disable-line no-console
   }
 }
 

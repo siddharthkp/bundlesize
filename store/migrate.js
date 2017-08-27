@@ -1,10 +1,10 @@
-const initial = require('./export.json')
+const initial = require('./export.json') // eslint-disable-line import/no-unresolved
 const fs = require('fs')
 
 const tokens = Object.keys(initial)
 tokens.map(token => {
   const users = Object.keys(initial[token])
-  users.map(user => {
+  users.map(() => {
     const repos = Object.keys(initial[token][users])
     repos.map(repo => {
       const future = {

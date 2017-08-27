@@ -13,7 +13,8 @@
   },
   "scripts": {
     "precommit": "lint-staged",
-    "test": "node index"
+    "test": "node index",
+    "lint": "eslint src store/*.js"
   },
   "keywords": [
     "library",
@@ -51,12 +52,18 @@
   ],
   "lint-staged": {
     "*.js": [
-      "prettier --write --single-quote --no-semi",
+      "eslint",
       "git add"
     ]
   },
   "devDependencies": {
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb-base": "^11.3.2",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-prettier": "^2.2.0",
     "husky": "^0.14.3",
-    "lint-staged": "^4.0.4"
+    "lint-staged": "^4.0.4",
+    "prettier": "^1.5.3"
   }
 }
