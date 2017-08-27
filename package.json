@@ -12,6 +12,7 @@
     "bundlesize-init": "src/init-status.js"
   },
   "scripts": {
+    "precommit": "lint-staged",
     "test": "node index"
   },
   "keywords": [
@@ -47,5 +48,15 @@
       "path": "./src/files.js",
       "maxSize": "600B"
     }
-  ]
+  ],
+  "lint-staged": {
+    "*.js": [
+      "prettier --write --single-quote --no-semi",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "husky": "^0.14.3",
+    "lint-staged": "^4.0.4"
+  }
 }
