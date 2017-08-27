@@ -48,7 +48,7 @@ PASS  ./index.js: 189B < maxSize 600B gzip
 - `src/files.js` Fetches files and their size based on the config
 - `src/reporter.js` Compares with threshold and prints output/message
 - `src/build.js` Handles CI builds
-- `src/environment.js` Holds CI environment information (sha, branch, token, etc.)
+- `src/token.js` Holds token information
 - `src/api.js` Fetches (for comparison) and updates numbers for master from the API layer
 
 API is hosted on zeit/now.
