@@ -40,15 +40,8 @@
     "github-build": "^1.2.0",
     "glob": "^7.1.2",
     "gzip-size": "^3.0.0",
-    "prettier": "^1.5.3",
     "prettycli": "^1.3.0",
     "read-pkg-up": "^2.0.0"
-  },
-  "lint-staged": {
-    "*.js": [
-      "prettier --write --single-quote --no-semi",
-      "git add"
-    ]
   },
   "bundlesize": [
     {
@@ -60,9 +53,24 @@
       "maxSize": "600B"
     }
   ],
+  "lint-staged": {
+    "*.js": [
+      "prettier --write --single-quote --no-semi",
+      "git add"
+    ]
+  },
   "devDependencies": {
     "danger": "^2.0.0-alpha.11",
     "husky": "^0.14.3",
-    "lint-staged": "^4.0.4"
+    "lint-staged": "^4.0.4",
+    "babel-cli": "7.0.0-alpha.19",
+    "babel-core": "7.0.0-alpha.19",
+    "babel-plugin-syntax-async-functions": "7.0.0-alpha.19",
+    "babel-plugin-transform-flow-strip-types": "7.0.0-alpha.19",
+    "babel-plugin-transform-regenerator": "7.0.0-alpha.19",
+    "babel-plugin-transform-typescript": "7.0.0-alpha.19",
+    "babel-preset-es2015": "7.0.0-alpha.19",
+    "babel-preset-stage-3": "7.0.0-alpha.19",
+    "babel-traverse": "7.0.0-alpha.19"
   }
 }
