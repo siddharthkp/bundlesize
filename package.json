@@ -13,7 +13,8 @@
   },
   "scripts": {
     "precommit": "lint-staged",
-    "test": "node index"
+    "test": "node index",
+    "ava": "ava ./__tests__/*.test.js"
   },
   "keywords": [
     "library",
@@ -56,6 +57,9 @@
     ]
   },
   "devDependencies": {
+    "ava": "^0.22.0",
+    "child-process": "^1.0.2",
+    "execa": "^0.8.0",
     "husky": "^0.14.3",
     "lint-staged": "^4.0.4"
   }
