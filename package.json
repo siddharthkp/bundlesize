@@ -37,7 +37,6 @@
     "bytes": "^2.5.0",
     "ci-env": "^1.4.0",
     "commander": "^2.11.0",
-    "danger": "^2.0.0-alpha.11",
     "github-build": "^1.2.0",
     "glob": "^7.1.2",
     "gzip-size": "^3.0.0",
@@ -62,6 +61,7 @@
     }
   ],
   "devDependencies": {
+    "danger": "^2.0.0-alpha.11",
     "husky": "^0.14.3",
     "lint-staged": "^4.0.4"
   }

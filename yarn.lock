@@ -1008,7 +1008,7 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "~1.0.0"
     spdx-expression-parse "~1.0.0"
 
-"vm2@github:patriksimek/vm2":
+vm2@patriksimek/vm2:
   version "3.4.6"
   resolved "https://codeload.github.com/patriksimek/vm2/tar.gz/0711926ba6e6fbfb89277d8033cfd11b69888e46"
 
