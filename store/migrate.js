@@ -1,4 +1,4 @@
-const initial = require('./export.json') // eslint-disable-line import/no-unresolved
+const initial = require('./export.json')
 const fs = require('fs')
 
 const tokens = Object.keys(initial)

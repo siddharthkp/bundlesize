@@ -1,7 +1,7 @@
 const firebase = require('firebase')
 
 if (process.env.dev) {
-  require('dotenv').config() // eslint-disable-line global-require
+  require('dotenv').config()
 }
 
 const { apiKey, databaseURL } = process.env
@@ -15,7 +15,7 @@ const authenticate = token => {
   return firebase
     .auth()
     .signInWithCredential(credential)
-    .catch(error => console.log(error)) // eslint-disable-line no-console
+    .catch(error => console.log(error))
 }
 
 const logout = () => firebase.auth().signOut()

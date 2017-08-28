@@ -1,5 +1,5 @@
 if (process.env.dev) {
-  require('dotenv').config() // eslint-disable-line global-require
+  require('dotenv').config()
 }
 
 exports.config = {

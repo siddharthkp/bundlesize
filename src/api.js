@@ -30,7 +30,6 @@ const get = () => {
     .then(response => {
       const values = {}
       if (response && response.data && response.data.length) {
-        // eslint-disable-next-line no-return-assign
         response.data.map(file => (values[file.path] = file.size))
       }
       debug('master values', values)
@@ -38,7 +37,7 @@ const get = () => {
     })
     .catch(error => {
       debug('fetching failed', error.response.data)
-      console.log(error) // eslint-disable-line no-console
+      console.log(error)
     })
 }
 
@@ -49,7 +48,7 @@ const set = values => {
 
     axios
       .post(url, { repo, token, sha, values })
-      .catch(error => console.log(error)) // eslint-disable-line no-console
+      .catch(error => console.log(error))
   }
 }
 

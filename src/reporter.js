@@ -31,7 +31,6 @@ const compare = (files, masterValues = {}) => {
   let fail = false
   let globalMessage
 
-  // eslint-disable-next-line no-return-assign
   files.map(file => (file.master = masterValues[file.path]))
   files.map(file => {
     const { path, size, master, maxSize } = file

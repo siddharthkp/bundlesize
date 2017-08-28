@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 if (process.env.dev) {
-  require('dotenv').config() // eslint-disable-line global-require
+  require('dotenv').config()
 }
 
 const token = code =>
