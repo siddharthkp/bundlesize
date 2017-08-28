@@ -9,7 +9,6 @@ if (packageChanged && !lockfileChanged) {
 Perhaps you need to run \`rm package-lock.json && npm install\`. Make sure you’re using npm 5+.`)
 }
 
-warn(danger.git.modified_files)
 if (danger.github.pr.body.length < 10) {
   warn('This pull request needs an description.')
 }
