@@ -1,4 +1,4 @@
-import { danger, fail, warn } from 'danger'
+const { danger, fail, warn } = require('danger')
 
 // Thanks to https://github.com/styleguidist/react-styleguidist/blob/master/dangerfile.js and sapegin
 const packageChanged = danger.git.modified_files.includes('package.json')

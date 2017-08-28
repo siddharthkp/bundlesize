@@ -60,15 +60,9 @@
     ]
   },
   "devDependencies": {
-    "danger": "^2.0.0-alpha.11",
+    "danger": "^2.0.0",
     "husky": "^0.14.3",
     "lint-staged": "^4.0.4",
-    "babel-cli": "7.0.0-alpha.19",
-    "babel-core": "7.0.0-alpha.19",
-    "babel-plugin-syntax-async-functions": "7.0.0-alpha.19",
-    "babel-plugin-transform-regenerator": "7.0.0-alpha.19",
-    "babel-preset-es2015": "7.0.0-alpha.19",
-    "babel-preset-stage-3": "7.0.0-alpha.19",
-    "babel-traverse": "7.0.0-alpha.19"
+    "prettier": "^1.6.0"
   }
 }
