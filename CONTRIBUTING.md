@@ -65,7 +65,7 @@ Feel free to open an issue or reach out to me [on twitter](https://twitter.com/s
 
 Once you have made some contribution. 
 
-* Pat on your back! You are oficially awesome now!! 
+* Pat on your back!
 * Give yourself some credit by adding your name as a contributor. 
 
 Use the following command to add your self as a contributor to the repo.
@@ -73,6 +73,5 @@ Use the following command to add your self as a contributor to the repo.
 `all-contributors add <username> <contribution>`
 
 Where username is the user's GitHub username, and contribution is a ,-separated list of ways to contribute. eg; code,bug,infra...
-
 
 Refer to the [documentation](https://www.npmjs.com/package/all-contributors-cli) for further details.
