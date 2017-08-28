@@ -58,5 +58,5 @@ typings/
 .env
 
 # Yarn
-.yarn.lock
-store/.yarn.lock
+yarn.lock
+store/yarn.lock
