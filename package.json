@@ -30,7 +30,7 @@
   "author": "siddharthkp",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.16.1",
+    "axios": "^0.16.2",
     "bytes": "^2.5.0",
     "ci-env": "^1.4.0",
     "commander": "^2.11.0",
@@ -68,6 +68,6 @@
     "eslint-plugin-standard": "^3.0.1",
     "husky": "^0.14.3",
     "lint-staged": "^4.0.4",
-    "prettier": "^1.5.3"
+    "prettier": "^1.6.0"
   }
 }
