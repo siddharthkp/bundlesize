@@ -31,9 +31,9 @@ const compare = (files, masterValues = {}) => {
   let fail = false
   let globalMessage
 
-  files.map(file => (file.master = masterValues[file.path]))
   files.map(file => {
     const { path, size, master, maxSize } = file
+    file.master = masterValues[file.path]
 
     let message = `${path}: ${bytes(size)} `
     const prettySize = bytes(maxSize)
