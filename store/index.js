@@ -1,5 +1,6 @@
 require('newrelic')
 const express = require('express')
+
 const server = express()
 const bodyParser = require('body-parser')
 const querystring = require('querystring')
@@ -37,8 +38,9 @@ server.post('/values', (req, res) => {
 
 server.get('/auth', (req, res) => {
   const { code } = req.query
-  if (!code) res.status(400).end('code missing')
-  else
+  if (!code) {
+    res.status(400).end('code missing')
+  } else {
     github
       .token(code)
       .then(response => {
@@ -46,6 +48,7 @@ server.get('/auth', (req, res) => {
         res.render('auth', { token })
       })
       .catch(() => res.status(500).end('Oops'))
+  }
 })
 
 server.get('/build', (req, res) => {
@@ -60,7 +63,7 @@ server.get('/build', (req, res) => {
     if (f.master) {
       f.diff = f.size - f.master
       if (f.diff < 0) f.diff = bytes(f.diff)
-      else f.diff = '+' + bytes(f.diff)
+      else f.diff = `+${bytes(f.diff)}`
     }
 
     /* Logic to draw bars */

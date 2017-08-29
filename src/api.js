@@ -1,5 +1,6 @@
 const axios = require('axios')
-let { repo, sha, ci } = require('ci-env')
+let { repo } = require('ci-env')
+const { sha, ci } = require('ci-env')
 const { warn } = require('prettycli')
 
 const token = require('./token')

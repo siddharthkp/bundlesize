@@ -1,7 +1,8 @@
 const readPkgUp = require('read-pkg-up')
+
 const pkg = readPkgUp.sync().pkg
 const program = require('commander')
-const { info, error } = require('prettycli')
+const { error } = require('prettycli')
 const debug = require('./debug')
 
 /* Config from package.json */

@@ -7,5 +7,7 @@ cache:
     - node_modules
 before_script:
   - npm run danger
+script:
+  - npm run lint
 notifications:
   email: false
