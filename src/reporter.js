@@ -6,14 +6,34 @@ const api = require('./api')
 const debug = require('./debug')
 const shortener = require('./shortener')
 
+const setBuildStatus = ({
+  url,
+  files,
+  globalMessage,
+  fail,
+  currentEvent,
+  currentBranch
+}) => {
+  if (fail) build.fail(globalMessage || 'bundle size > maxSize', url)
+  else {
+    if (currentEvent === 'push' && currentBranch === 'master') {
+      const values = []
+      files.map(file => values.push({ path: file.path, size: file.size }))
+      api.set(values)
+    }
+    build.pass(globalMessage || 'Good job! bundle size < maxSize', url)
+  }
+
+  debug('global message', globalMessage)
+}
+
 const compare = (files, masterValues = {}) => {
   let fail = false
   let globalMessage
 
-  files.map(file => (file.master = masterValues[file.path]))
-
   files.map(file => {
     const { path, size, master, maxSize } = file
+    file.master = masterValues[file.path]
 
     let message = `${path}: ${bytes(size)} `
     const prettySize = bytes(maxSize)
@@ -23,7 +43,7 @@ const compare = (files, masterValues = {}) => {
       else yay + pass
     */
 
-    if (size >maxSize) {
+    if (size > maxSize) {
       fail = true
       if (prettySize) message += `> maxSize ${prettySize} gzip`
       error(message, { fail: false, label: 'FAIL' })
@@ -41,13 +61,13 @@ const compare = (files, masterValues = {}) => {
         message += `(${bytes(diff)} larger than master, careful!)`
         warn(message)
       } else {
-        message += `(same as master)`
+        message += '(same as master)'
         info('PASS', message)
       }
     }
 
     if (files.length === 1) globalMessage = message
-    debug('message', message)
+    return debug('message', message)
   })
 
   /* prepare the build page */
@@ -65,24 +85,10 @@ const compare = (files, masterValues = {}) => {
       debug('url after shortening', url)
       setBuildStatus({ url, files, globalMessage, fail, event, branch })
     })
-    .catch(error => {
-      debug('error while shortening', error)
+    .catch(err => {
+      debug('err while shortening', err)
       setBuildStatus({ url, files, globalMessage, fail, event, branch })
     })
-}
-
-const setBuildStatus = ({ url, files, globalMessage, fail, event, branch }) => {
-  if (fail) build.fail(globalMessage || 'bundle size > maxSize', url)
-  else {
-    if (event === 'push' && branch === 'master') {
-      const values = []
-      files.map(file => values.push({ path: file.path, size: file.size }))
-      api.set(values)
-    }
-    build.pass(globalMessage || 'Good job! bundle size < maxSize', url)
-  }
-
-  debug('global message', globalMessage)
 }
 
 const reporter = files => {

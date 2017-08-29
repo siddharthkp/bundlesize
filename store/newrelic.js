@@ -1,5 +1,3 @@
-'use strict'
-
 if (process.env.dev) {
   require('dotenv').config()
 }
