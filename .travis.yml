@@ -5,5 +5,7 @@ node_js:
 cache:
   directories:
     - node_modules
+before_script:
+  - npm run danger
 notifications:
   email: false

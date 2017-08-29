@@ -48,7 +48,7 @@ PASS  ./index.js: 189B < maxSize 600B gzip
 - `src/files.js` Fetches files and their size based on the config
 - `src/reporter.js` Compares with threshold and prints output/message
 - `src/build.js` Handles CI builds
-- `src/environment.js` Holds CI environment information (sha, branch, token, etc.)
+- `src/token.js` Holds token information
 - `src/api.js` Fetches (for comparison) and updates numbers for master from the API layer
 
 API is hosted on zeit/now.
@@ -56,6 +56,8 @@ API is hosted on zeit/now.
 - `store/index.js` API router
 - `store/github.js` Exchanges code for auth token
 - `store/firebase.js` Fetches and updates values from firebase
+
+#### [Click here to join the slack channel](https://join.slack.com/t/bundlesize/shared_invite/MjMyNTA0NjUwNzg5LTE1MDM4NjAxNjEtMjFjZThlZmIxMw)
        
 #### Doubts?
 

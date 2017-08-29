@@ -23,7 +23,7 @@ const compare = (files, masterValues = {}) => {
       else yay + pass
     */
 
-    if (size > maxSize) {
+    if (size >maxSize) {
       fail = true
       if (prettySize) message += `> maxSize ${prettySize} gzip`
       error(message, { fail: false, label: 'FAIL' })
