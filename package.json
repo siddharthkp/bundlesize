@@ -12,6 +12,7 @@
     "bundlesize-init": "src/init-status.js"
   },
   "scripts": {
+    "danger": "danger",
     "precommit": "lint-staged",
     "test": "node index",
     "lint": "eslint src store/*.js"
@@ -27,6 +28,9 @@
     "index.js",
     "src"
   ],
+  "engines": {
+    "npm": "^5.0.0"
+  },
   "author": "siddharthkp",
   "license": "MIT",
   "dependencies": {
@@ -66,6 +70,7 @@
     "eslint-plugin-prettier": "^2.2.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
+    "danger": "^2.0.0-alpha.1",
     "husky": "^0.14.3",
     "lint-staged": "^4.0.4",
     "prettier": "^1.6.0"
