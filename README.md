@@ -82,7 +82,7 @@ This makes it great for using with applications that are bundled with another to
 
 #### 2) build status
 
-![build status](https://raw.githubusercontent.com/siddharthkp/bundlesize/master/art/status.png)
+![build status](https://cdn.rawgit.com/siddharthkp/bundlesize/master/art/status.png)
 
 Currently works for [Travis CI](https://travis-ci.org), [CircleCI](https://circleci.com/), [Wercker](http://www.wercker.com), and [Drone](http://readme.drone.io/).
 
