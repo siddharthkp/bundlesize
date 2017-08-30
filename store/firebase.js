@@ -24,15 +24,14 @@ const set = (repo, values, sha, token) => {
   authenticate(token)
   const ref = `${token}/${repo}`
   values[0].sha = sha
-  firebase.database().ref(ref).push(values)
+  database.ref(ref).push(values)
   logout()
 }
 
 const get = (repo, token) => {
   authenticate(token)
   const ref = `${token}/${repo}`
-  return firebase
-    .database()
+  database
     .ref(ref)
     .limitToLast(1)
     .once('value')

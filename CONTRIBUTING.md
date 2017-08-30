@@ -56,6 +56,8 @@ API is hosted on zeit/now.
 - `store/index.js` API router
 - `store/github.js` Exchanges code for auth token
 - `store/firebase.js` Fetches and updates values from firebase
+
+#### [Click here to join the slack channel](https://join.slack.com/t/bundlesize/shared_invite/MjMyNTA0NjUwNzg5LTE1MDM4NjAxNjEtMjFjZThlZmIxMw)
        
 #### Doubts?
 
