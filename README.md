@@ -134,10 +134,10 @@ For more granular configuration, we recommend configuring it in the `package.jso
 
 &nbsp;
 
-#### todo
+#### TODO
 
-- work with other CI tools (circle, appveyor, etc.)
-- automate setup (setting env_var)
+- Work with other CI tools ([AppVeyor](https://www.appveyor.com/), etc.)
+- Automate setup (setting env_var)
 
 &nbsp;
 
