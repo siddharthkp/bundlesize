@@ -12,6 +12,7 @@
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 [![Join us on Slack](https://bundlesize.now.sh/badge.svg)](https://bundlesize.now.sh/)
 
+[![NPM Downloads](https://img.shields.io/npm/dm/bundlesize.svg?style=flat)](https://www.npmjs.com/package/bundlesize)
 &nbsp;
 
 #### minimal setup
