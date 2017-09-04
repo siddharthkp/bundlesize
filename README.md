@@ -11,7 +11,7 @@
 [![NPM Version](https://img.shields.io/npm/v/bundlesize.svg)](https://npmjs.org/package/bundlesize)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 
-[![NPM](https://nodei.co/npm/bundlesize.png?months=1&downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/bundlesize/)
+[![NPM Downloads](https://img.shields.io/npm/dm/bundlesize.svg?style=flat)](https://www.npmjs.com/package/bundlesize)
 &nbsp;
 
 #### minimal setup
