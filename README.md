@@ -144,6 +144,11 @@ For more granular configuration, we recommend configuring it in the `package.jso
 
 &nbsp;
 
+#### similar projects
+
+- [BuildSize](https://buildsize.org/) - GitHub App, no manual configuration required
+- [travis-weigh-in](https://github.com/danvk/travis-weigh-in) - Uses Python rather than Node.js
+
 #### license
 
 MIT © [siddharthkp](https://github.com/siddharthkp)
