@@ -16,6 +16,8 @@
 &nbsp;
 
 #### minimal setup
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/siddharthkp/bundlesize.svg)](https://greenkeeper.io/)
 ```
 npm install bundlesize --save-dev
 ```

@@ -5,9 +5,14 @@ node_js:
 cache:
   directories:
     - node_modules
+before_install:
+  - npm install -g npm@5
+  - npm install -g greenkeeper-lockfile@1
 before_script:
+  - greenkeeper-lockfile-update
   - npm run danger
 script:
   - npm run lint
+after_script: greenkeeper-lockfile-upload
 notifications:
   email: false
