@@ -62,3 +62,13 @@ API is hosted on zeit/now.
 #### Doubts?
 
 Feel free to open an issue or reach out to me [on twitter](https://twitter.com/siddharthkp).
+
+#### Credits
+
+Once you have made some contribution. 
+
+* Pat yourself on the back!
+* Give yourself some credit by adding your name as a contributor. 
+* Use the command `npm run addContributors` and answer the questions...
+
+Refer to the [documentation](https://www.npmjs.com/package/all-contributors-cli) for further details.
