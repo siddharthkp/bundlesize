@@ -8,6 +8,7 @@
 &nbsp;
 
 [![Build Status](https://travis-ci.org/siddharthkp/bundlesize.svg?branch=master)](https://travis-ci.org/siddharthkp/bundlesize)
+[![Greenkeeper badge](https://badges.greenkeeper.io/siddharthkp/bundlesize.svg)](https://greenkeeper.io/)
 [![NPM Version](https://img.shields.io/npm/v/bundlesize.svg)](https://npmjs.org/package/bundlesize)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 [![Join us on Slack](https://bundlesize.now.sh/badge.svg)](https://bundlesize.now.sh/)
@@ -17,7 +18,6 @@
 
 #### minimal setup
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/siddharthkp/bundlesize.svg)](https://greenkeeper.io/)
 ```
 npm install bundlesize --save-dev
 ```
