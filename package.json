@@ -9,12 +9,13 @@
   "main": "index.js",
   "bin": {
     "bundlesize": "index.js",
-    "bundlesize-init": "src/init-status.js"
+    "bundlesize-init": "src/init-status.js",
+    "bundlesize-pipe": "pipe.js"
   },
   "scripts": {
     "danger": "danger",
     "precommit": "lint-staged",
-    "test": "node index",
+    "test": "node index && cat pipe.js | node pipe --name pipe.js --max-size 1kB",
     "lint": "eslint src store/*.js"
   },
   "keywords": [
