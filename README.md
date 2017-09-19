@@ -8,7 +8,7 @@
 &nbsp;
 
 [![Build Status](https://travis-ci.org/siddharthkp/bundlesize.svg?branch=master)](https://travis-ci.org/siddharthkp/bundlesize)
-[![Greenkeeper badge](https://badges.greenkeeper.io/siddharthkp/bundlesize.svg)](https://greenkeeper.io/)
+[![Backers on Open Collective](https://opencollective.com/bundlesize/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/bundlesize/sponsors/badge.svg)](#sponsors) [![Greenkeeper badge](https://badges.greenkeeper.io/siddharthkp/bundlesize.svg)](https://greenkeeper.io/)
 [![NPM Version](https://img.shields.io/npm/v/bundlesize.svg)](https://npmjs.org/package/bundlesize)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 [![Join us on Slack](https://bundlesize.now.sh/badge.svg)](https://bundlesize.now.sh/)
@@ -150,6 +150,36 @@ For more granular configuration, we recommend configuring it in the `package.jso
 
 - [BuildSize](https://buildsize.org/) - GitHub App, no manual configuration required
 - [travis-weigh-in](https://github.com/danvk/travis-weigh-in) - Uses Python rather than Node.js
+
+## Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute]](CONTRIBUTING.md).
+<a href="graphs/contributors"><img src="https://opencollective.com/bundlesize/contributors.svg?width=890" /></a>
+
+
+## Backers
+
+Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/bundlesize#backer)]
+
+<a href="https://opencollective.com/bundlesize#backers" target="_blank"><img src="https://opencollective.com/bundlesize/backers.svg?width=890"></a>
+
+
+## Sponsors
+
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/bundlesize#sponsor)]
+
+<a href="https://opencollective.com/bundlesize/sponsor/0/website" target="_blank"><img src="https://opencollective.com/bundlesize/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/bundlesize/sponsor/1/website" target="_blank"><img src="https://opencollective.com/bundlesize/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/bundlesize/sponsor/2/website" target="_blank"><img src="https://opencollective.com/bundlesize/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/bundlesize/sponsor/3/website" target="_blank"><img src="https://opencollective.com/bundlesize/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/bundlesize/sponsor/4/website" target="_blank"><img src="https://opencollective.com/bundlesize/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/bundlesize/sponsor/5/website" target="_blank"><img src="https://opencollective.com/bundlesize/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/bundlesize/sponsor/6/website" target="_blank"><img src="https://opencollective.com/bundlesize/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/bundlesize/sponsor/7/website" target="_blank"><img src="https://opencollective.com/bundlesize/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/bundlesize/sponsor/8/website" target="_blank"><img src="https://opencollective.com/bundlesize/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/bundlesize/sponsor/9/website" target="_blank"><img src="https://opencollective.com/bundlesize/sponsor/9/avatar.svg"></a>
+
+
 
 #### license
 
