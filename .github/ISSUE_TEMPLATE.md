@@ -18,3 +18,6 @@
 - Operating system
 - bundlesize version
 - CI you are using
+
+<!-- Love bundlesize? Please consider supporting our collective:
+👉  https://opencollective.com/bundlesize/donate -->
