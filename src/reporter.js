@@ -11,8 +11,8 @@ const setBuildStatus = ({
   files,
   globalMessage,
   fail,
-  currentEvent,
-  currentBranch
+  event: currentEvent,
+  branch: currentBranch
 }) => {
   if (fail) build.fail(globalMessage || 'bundle size > maxSize', url)
   else {
