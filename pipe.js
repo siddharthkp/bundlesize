@@ -9,7 +9,7 @@ const { error } = require('prettycli')
 const build = require('./src/build')
 const debug = require('./src/debug')
 
-if (Boolean(process.stdin.isTTY)) {
+if (process.stdin.isTTY) {
   error('bundlesize-pipe executable is meant for usage with piped data.')
 }
 
@@ -32,13 +32,14 @@ readStream(process.stdin).then(data => {
   const maxSize = bytes(config.maxSize) || Infinity
   const file = {
     path: config.name,
-    maxSize, size
+    maxSize,
+    size
   }
   debug('file', file)
   reporter([file])
 })
 
-process.on('unhandledRejection', function(reason) {
+process.on('unhandledRejection', reason => {
   console.log('Unhandled Promise')
   console.log(inspect(reason))
   build.error()
