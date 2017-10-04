@@ -1,6 +1,6 @@
 {
   "name": "bundlesize",
-  "version": "0.14.4",
+  "version": "0.15.0",
   "description": "Keep your library size in check",
   "repository": {
     "type": "git",
@@ -9,13 +9,15 @@
   "main": "index.js",
   "bin": {
     "bundlesize": "index.js",
-    "bundlesize-init": "src/init-status.js"
+    "bundlesize-init": "src/init-status.js",
+    "bundlesize-pipe": "pipe.js"
   },
   "scripts": {
     "danger": "danger",
     "precommit": "lint-staged",
-    "test": "node index",
-    "lint": "eslint src store/*.js"
+    "test": "node index && cat pipe.js | node pipe --name pipe.js --max-size 1kB",
+    "lint": "eslint src store/*.js",
+    "postinstall": "opencollective postinstall"
   },
   "keywords": [
     "library",
@@ -40,6 +42,7 @@
     "commander": "^2.11.0",
     "github-build": "^1.2.0",
     "glob": "^7.1.2",
+    "opencollective": "^1.0.3",
     "gzip-size": "^4.0.0",
     "prettycli": "^1.4.3",
     "read-pkg-up": "^2.0.0"
@@ -83,5 +86,10 @@
     "babel-preset-es2015": "7.0.0-alpha.19",
     "babel-preset-stage-3": "7.0.0-alpha.19",
     "babel-traverse": "7.0.0-alpha.19"
+  },
+  "collective": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/bundlesize",
+    "logo": "https://opencollective.com/opencollective/logo.txt"
   }
 }
