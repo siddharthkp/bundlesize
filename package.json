@@ -28,7 +28,8 @@
   ],
   "files": [
     "index.js",
-    "src"
+    "src",
+    "pipe.js"
   ],
   "engines": {
     "npm": "^5.0.0"
