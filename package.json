@@ -13,7 +13,6 @@
     "bundlesize-pipe": "pipe.js"
   },
   "scripts": {
-    "danger": "danger",
     "precommit": "lint-staged",
     "test": "node index && cat pipe.js | node pipe --name pipe.js --max-size 1kB",
     "lint": "eslint src store/*.js",
@@ -74,7 +73,6 @@
     "eslint-plugin-prettier": "^2.2.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
-    "danger": "^2.0.0-alpha.4",
     "husky": "^0.14.3",
     "lint-staged": "^4.0.4",
     "prettier": "^1.6.0",
