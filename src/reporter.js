@@ -1,5 +1,5 @@
 const bytes = require('bytes')
-const { error, warn, info } = require('prettycli')
+const { error, warn, info, loading } = require('prettycli')
 const { event, repo, branch, commit_message, sha } = require('ci-env')
 const build = require('./build')
 const api = require('./api')
@@ -33,7 +33,7 @@ const compare = (files, masterValues = {}) => {
 
   files.map(file => {
     file.master = masterValues[file.path]
-    const { path, size, master, maxSize } = file
+    const { path, size, master, maxSize, check } = file
 
     let message = `${path}: ${bytes(size)} `
     const prettySize = bytes(maxSize)
@@ -43,7 +43,10 @@ const compare = (files, masterValues = {}) => {
       else yay + pass
     */
 
-    if (size > maxSize) {
+    if (check) {
+      // just checking sizes here, no passing or failing
+      loading('CHECK', message)
+    } else if (size > maxSize) {
       fail = true
       if (prettySize) message += `> maxSize ${prettySize} gzip`
       error(message, { fail: false, label: 'FAIL' })

@@ -11,6 +11,7 @@ const packageJSONconfig = pkg.bundlesize
 /* Config from CLI */
 
 program
+  .option('-c, --check', 'do a simple check for the size of the file(s)')
   .option('-f, --files [files]', 'files to test against (dist/*.js)')
   .option('-s, --max-size [maxSize]', 'maximum size threshold (3Kb)')
   .option('--debug', 'run in debug mode')
@@ -22,7 +23,8 @@ if (program.files) {
   cliConfig = [
     {
       path: program.files,
-      maxSize: program.maxSize
+      maxSize: program.maxSize,
+      check: program.check || !program.maxSize
     }
   ]
 }
