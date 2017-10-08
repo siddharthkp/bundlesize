@@ -150,6 +150,7 @@ For more granular configuration, we recommend configuring it in the `package.jso
 
 - [BuildSize](https://buildsize.org/) - GitHub App, no manual configuration required
 - [travis-weigh-in](https://github.com/danvk/travis-weigh-in) - Uses Python rather than Node.js
+- [size-limit](https://github.com/ai/size-limit) - Uses webpack, builds your files for you.
 
 ## Contributors
 
