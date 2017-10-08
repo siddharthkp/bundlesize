@@ -123,6 +123,12 @@ For more granular configuration, we recommend configuring it in the `package.jso
 
 &nbsp;
 
+#### Featured on [Totally tooling tips](https://www.youtube.com/watch?v=Da6VxdGU2Ig)!
+
+[![totally tooling tips](https://i.ytimg.com/vi/Da6VxdGU2Ig/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAAfWzQIMvjH0TIzkAhi-114DIHPQ)](https://www.youtube.com/watch?v=Da6VxdGU2Ig)
+
+&nbsp;
+
 #### who uses bundlesize?
 
 - [preact](https://github.com/developit/preact)
