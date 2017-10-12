@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://cdn.rawgit.com/siddharthkp/bundlesize/master/art/logo.png" height="200px"/>
+  <img src="https://cdn.rawgit.com/siddharthkp/bundlesize/master/art/logo.png" height="200px">
   <br><br>
   <b>Keep your bundle size in check</b>
   <br>
@@ -18,14 +18,13 @@
 
 #### minimal setup
 
-```
+```sh
 npm install bundlesize --save-dev
 ```
 
 &nbsp;
 
 #### usage
-
 
 Add it to your scripts in `package.json`
 
@@ -39,7 +38,7 @@ Add it to your scripts in `package.json`
 
 Or you can use `npx` with [NPM 5.2+](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
 
-```bash
+```sh
 npx bundlesize
 ```
 
@@ -48,7 +47,6 @@ npx bundlesize
 &nbsp;
 
 #### 1) Add the path and gzip maxSize in your `package.json`
-
 
 ```json
 {
@@ -67,7 +65,7 @@ npx bundlesize
 
 Example:
 
-```
+```json
 "bundlesize": [
   {
     "path": "./dist/vendor-*.js",
@@ -186,7 +184,6 @@ Support this project by becoming a sponsor. Your logo will show up here with a l
 <a href="https://opencollective.com/bundlesize/sponsor/7/website" target="_blank"><img src="https://opencollective.com/bundlesize/sponsor/7/avatar.svg"></a>
 <a href="https://opencollective.com/bundlesize/sponsor/8/website" target="_blank"><img src="https://opencollective.com/bundlesize/sponsor/8/avatar.svg"></a>
 <a href="https://opencollective.com/bundlesize/sponsor/9/website" target="_blank"><img src="https://opencollective.com/bundlesize/sponsor/9/avatar.svg"></a>
-
 
 
 #### license
