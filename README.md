@@ -102,8 +102,10 @@ Currently works for [Travis CI](https://travis-ci.org), [CircleCI](https://circl
 example usage:
 
 ```sh
-bundlesize -f dist/*.js -s 20kB
+bundlesize -f 'dist/*.js' -s 20kB
 ```
+
+**note:** be sure to put quotes around the glob path, to prevent unix shells from parsing it before the node script.
 
 For more granular configuration, we recommend configuring it in the `package.json` (documented above).
 
