@@ -13,10 +13,7 @@ const packageJSONconfig = pkg.bundlesize
 program
   .option('-f, --files [files]', 'files to test against (dist/*.js)')
   .option('-s, --max-size [maxSize]', 'maximum size threshold (3Kb)')
-  .option(
-    '-n, --display-name [displayName]',
-    'filename to display on Github UI'
-  )
+  .option('-n, --display-name [displayName]', 'filename to display on Github UI')
   .option('--debug', 'run in debug mode')
   .parse(process.argv)
 
