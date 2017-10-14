@@ -102,7 +102,7 @@ Currently works for [Travis CI](https://travis-ci.org), [CircleCI](https://circl
 example usage:
 
 ```sh
-bundlesize -f dist/*.js -s 20kB
+bundlesize -f "dist/*.js" -s 20kB
 ```
 
 For more granular configuration, we recommend configuring it in the `package.json` (documented above).
