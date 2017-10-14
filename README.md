@@ -16,6 +16,12 @@
 [![NPM Downloads](https://img.shields.io/npm/dm/bundlesize.svg?style=flat)](https://www.npmjs.com/package/bundlesize)
 &nbsp;
 
+#### sponsor
+
+[![Sponsor](https://app.codesponsor.io/embed/LhLT2c31ydJzdLUuSR9f8mCA/siddharthkp/bundlesize.svg)](https://app.codesponsor.io/link/LhLT2c31ydJzdLUuSR9f8mCA/siddharthkp/bundlesize)
+
+&nbsp;
+
 #### minimal setup
 
 ```sh
@@ -162,34 +168,6 @@ For more granular configuration, we recommend configuring it in the `package.jso
 This project exists thanks to all the people who contribute. [[Contribute]](CONTRIBUTING.md).
 <a href="graphs/contributors"><img src="https://opencollective.com/bundlesize/contributors.svg?width=890" /></a>
 
-
-## Backers
-
-Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/bundlesize#backer)]
-
-<a href="https://opencollective.com/bundlesize#backers" target="_blank"><img src="https://opencollective.com/bundlesize/backers.svg?width=890"></a>
-
-
-## Sponsors
-
-Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/bundlesize#sponsor)]
-
-<a href="https://opencollective.com/bundlesize/sponsor/0/website" target="_blank"><img src="https://opencollective.com/bundlesize/sponsor/0/avatar.svg"></a>
-<a href="https://opencollective.com/bundlesize/sponsor/1/website" target="_blank"><img src="https://opencollective.com/bundlesize/sponsor/1/avatar.svg"></a>
-<a href="https://opencollective.com/bundlesize/sponsor/2/website" target="_blank"><img src="https://opencollective.com/bundlesize/sponsor/2/avatar.svg"></a>
-<a href="https://opencollective.com/bundlesize/sponsor/3/website" target="_blank"><img src="https://opencollective.com/bundlesize/sponsor/3/avatar.svg"></a>
-<a href="https://opencollective.com/bundlesize/sponsor/4/website" target="_blank"><img src="https://opencollective.com/bundlesize/sponsor/4/avatar.svg"></a>
-<a href="https://opencollective.com/bundlesize/sponsor/5/website" target="_blank"><img src="https://opencollective.com/bundlesize/sponsor/5/avatar.svg"></a>
-<a href="https://opencollective.com/bundlesize/sponsor/6/website" target="_blank"><img src="https://opencollective.com/bundlesize/sponsor/6/avatar.svg"></a>
-<a href="https://opencollective.com/bundlesize/sponsor/7/website" target="_blank"><img src="https://opencollective.com/bundlesize/sponsor/7/avatar.svg"></a>
-<a href="https://opencollective.com/bundlesize/sponsor/8/website" target="_blank"><img src="https://opencollective.com/bundlesize/sponsor/8/avatar.svg"></a>
-<a href="https://opencollective.com/bundlesize/sponsor/9/website" target="_blank"><img src="https://opencollective.com/bundlesize/sponsor/9/avatar.svg"></a>
-
-
 #### license
 
 MIT © [siddharthkp](https://github.com/siddharthkp)
-
-#### sponsor
-
-[![Sponsor](https://app.codesponsor.io/embed/LhLT2c31ydJzdLUuSR9f8mCA/siddharthkp/bundlesize.svg)](https://app.codesponsor.io/link/LhLT2c31ydJzdLUuSR9f8mCA/siddharthkp/bundlesize)
