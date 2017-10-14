@@ -33,9 +33,11 @@ const compare = (files, masterValues = {}) => {
 
   files.map(file => {
     file.master = masterValues[file.path]
-    const { path, size, master, maxSize } = file
+    const { path, size, master, maxSize, displayName } = file
 
-    let message = `${path}: ${bytes(size)} `
+    const fileName = displayName || path
+
+    let message = `${fileName}: ${bytes(size)} `
     const prettySize = bytes(maxSize)
     /*
       if size > maxSize, fail
