@@ -46,7 +46,7 @@ npx bundlesize
 
 &nbsp;
 
-#### 1) Add the path and gzip maxSize in your `package.json`
+#### 1) Add the path and gzip maxSize in your `package.json`. 
 
 ```json
 {
@@ -80,6 +80,19 @@ Example:
 ```
 
 This makes it great for using with applications that are bundled with another tool. It will match multiple files if necessary and create a new row for each file.
+
+You may optionally add a `displayName` property to customize the filename that gets posted to the Github status. For example, if the filepath is long and gets truncated on Github, you can input a custom display name.
+
+```json
+"bundlesize": [
+  {
+    "path": "./packages/more-subdirectories/long-filename.bundle.js",
+    "maxSize": "3 kB",
+    "displayName": "bundle.js"
+  }
+]
+
+```
 
 &nbsp;
 
