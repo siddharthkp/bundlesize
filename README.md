@@ -5,16 +5,18 @@
   <br>
 </p>
 
-&nbsp;
+<div align="center">
 
-[![Build Status](https://travis-ci.org/siddharthkp/bundlesize.svg?branch=master)](https://travis-ci.org/siddharthkp/bundlesize)
-[![Backers on Open Collective](https://opencollective.com/bundlesize/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/bundlesize/sponsors/badge.svg)](#sponsors) [![Greenkeeper badge](https://badges.greenkeeper.io/siddharthkp/bundlesize.svg)](https://greenkeeper.io/)
-[![NPM Version](https://img.shields.io/npm/v/bundlesize.svg)](https://npmjs.org/package/bundlesize)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
-[![Join us on Slack](https://bundlesize.now.sh/badge.svg)](https://bundlesize.now.sh/)
+  [![Build Status](https://travis-ci.org/siddharthkp/bundlesize.svg?branch=master)](https://travis-ci.org/siddharthkp/bundlesize)
+  [![Greenkeeper badge](https://badges.greenkeeper.io/siddharthkp/bundlesize.svg)](https://greenkeeper.io/)
+  [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 
-[![NPM Downloads](https://img.shields.io/npm/dm/bundlesize.svg?style=flat)](https://www.npmjs.com/package/bundlesize)
-&nbsp;
+  [![GitHub contributors](https://img.shields.io/github/contributors/siddharthkp/bundlesize.svg)](https://github.com/siddharthkp/bundlesize/graphs/contributors)
+  [![NPM Downloads](https://img.shields.io/npm/dm/bundlesize.svg?style=flat)](https://www.npmjs.com/package/bundlesize)
+
+  [![NPM Version](https://img.shields.io/npm/v/bundlesize.svg)](https://npmjs.org/package/bundlesize)
+  [![npm](https://img.shields.io/npm/l/express.svg)]()
+</div>
 
 #### sponsor
 
