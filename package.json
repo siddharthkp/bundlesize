@@ -15,8 +15,7 @@
   "scripts": {
     "precommit": "lint-staged",
     "test": "node index && cat pipe.js | node pipe --name pipe.js --max-size 1kB",
-    "lint": "eslint src store/*.js",
-    "postinstall": "opencollective postinstall"
+    "lint": "eslint src store/*.js"
   },
   "keywords": [
     "library",
