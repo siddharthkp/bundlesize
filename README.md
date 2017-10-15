@@ -15,7 +15,7 @@
   [![NPM Downloads](https://img.shields.io/npm/dm/bundlesize.svg?style=flat)](https://www.npmjs.com/package/bundlesize)
 
   [![NPM Version](https://img.shields.io/npm/v/bundlesize.svg)](https://npmjs.org/package/bundlesize)
-  [![npm](https://img.shields.io/npm/l/express.svg)]()
+  [![npm](https://img.shields.io/npm/l/express.svg)](https://github.com/siddharthkp/bundlesize/blob/master/LICENSE)
 </div>
 
 #### sponsor
