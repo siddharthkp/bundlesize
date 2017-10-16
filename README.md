@@ -146,6 +146,7 @@ For more granular configuration, we recommend configuring it in the `package.jso
 - [hyperapp](https://github.com/hyperapp/hyperapp)
 - [css-constructor](https://github.com/siddharthkp/css-constructor)
 - [redux-saga](https://github.com/redux-saga/redux-saga)
+- [micromodal](https://github.com/ghosh/micromodal)
 
 
 &nbsp;
