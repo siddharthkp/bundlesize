@@ -89,7 +89,27 @@ This makes it great for using with applications that are bundled with another to
 
 &nbsp;
 
-#### 2) build status
+#### 2) Disabling compression
+
+If you want to check the size of your bundle before compression, the `gzip` configuration option can be set to false (defaults to true):
+
+```json
+"bundlesize": [
+  {
+    "path": "./dist/vendor-*.js",
+    "maxSize": "3 kB",
+    "gzip": false
+  },
+  {
+    "path": "./dist/chunk-*.js",
+    "maxSize": "3 kB",
+    "gzip": false
+  }
+]
+
+```
+
+#### 3) build status
 
 ![build status](https://cdn.rawgit.com/siddharthkp/bundlesize/master/art/status.png)
 
