@@ -1,4 +1,0 @@
-- path: "./index.js"
-  maxSize: "600B"
-- path: "./src/files.js"
-  maxSize: "600B"
