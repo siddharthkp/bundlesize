@@ -111,6 +111,21 @@ example usage:
 bundlesize -f "dist/*.js" -s 20kB
 ```
 
+&nbsp;
+
+#### .bundlesize.yml
+
+`bundlesize` also supports configuration using a `.bundlesize.yml` file.
+
+example usage:
+
+```yml
+- path: "./index.js"
+  maxSize: "600B"
+- path: "./src/files.js"
+  maxSize: "600B"
+```
+
 For more granular configuration, we recommend configuring it in the `package.json` (documented above).
 
 &nbsp;
