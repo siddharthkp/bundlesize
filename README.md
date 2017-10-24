@@ -127,9 +127,14 @@ For more granular configuration, we recommend configuring it in the `package.jso
 
 &nbsp;
 
-#### Featured on [Totally tooling tips](https://www.youtube.com/watch?v=Da6VxdGU2Ig)!
+#### Featured on [Totally tooling tips](https://www.youtube.com/watch?v=Da6VxdGU2Ig) and [Chrome Dev Summit](https://www.youtube.com/watch?v=_srJ7eHS3IM)!!
 
-[![totally tooling tips](https://i.ytimg.com/vi/Da6VxdGU2Ig/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAAfWzQIMvjH0TIzkAhi-114DIHPQ)](https://www.youtube.com/watch?v=Da6VxdGU2Ig)
+<a href="https://www.youtube.com/watch?v=Da6VxdGU2Ig">
+  <img height="200px" src="https://i.ytimg.com/vi/Da6VxdGU2Ig/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAAfWzQIMvjH0TIzkAhi-114DIHPQ"/>
+</a>
+<a href="https://www.youtube.com/watch?v=_srJ7eHS3IM">
+  <img height="200px" src="https://cdn.rawgit.com/siddharthkp/bundlesize/master/art/chromedevsummit.png"/>
+</a>
 
 &nbsp;
 
