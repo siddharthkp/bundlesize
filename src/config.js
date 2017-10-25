@@ -40,7 +40,9 @@ if (!packageJSONconfig && !cliConfig) {
   )
 }
 
-const config = cliConfig || packageJSONconfig
+const config = {
+  files: cliConfig || packageJSONconfig
+}
 
 debug('cli config', cliConfig)
 debug('package json config', packageJSONconfig)
