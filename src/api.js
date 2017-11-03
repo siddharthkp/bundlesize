@@ -12,11 +12,13 @@ let enabled = false
 
 if (repo && token) enabled = true
 else if (ci) {
-  warn(`github token not found
+  if (ci !== 'gitlab') {
+    warn(`github token not found
 
     You are missing out on some cool features.
     Read more here: https://github.com/siddharthkp/bundlesize#2-build-status
   `)
+  }
 }
 
 debug('api enabled', enabled)
