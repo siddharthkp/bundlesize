@@ -1,6 +1,6 @@
 const axios = require('axios')
 let { repo } = require('ci-env')
-const { sha, ci } = require('ci-env')
+const { sha, ci, platform } = require('ci-env')
 const { warn } = require('prettycli')
 
 const token = require('./token')
@@ -12,7 +12,7 @@ let enabled = false
 
 if (repo && token) enabled = true
 else if (ci) {
-  if (ci !== 'gitlab') {
+  if (platform === 'github') {
     warn(`github token not found
 
     You are missing out on some cool features.
