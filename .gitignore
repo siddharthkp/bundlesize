@@ -60,3 +60,6 @@ typings/
 # Yarn
 yarn.lock
 store/yarn.lock
+
+# IDEs by JetBrains
+.idea
