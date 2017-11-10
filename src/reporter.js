@@ -108,14 +108,18 @@ const compare = (files, masterValues = {}) => {
   debug('globalMessage', globalMessage)
 
   /* prepare the build page */
+  const buildFiles = Object.assign({}, results)
+  delete buildFiles.fail
+  delete buildFiles.change
+  delete buildFiles.message
   const params = encodeURIComponent(
-    JSON.stringify({ files: results, repo, branch, commit_message, sha })
+    JSON.stringify({ files: buildFiles, repo, branch, commit_message, sha })
   )
   let url = `https://bundlesize-store.now.sh/build?info=${params}`
 
   debug('url before shortening', url)
 
-  return shortener
+  shortener
     .shorten(url)
     .then(res => {
       url = res.data.id
@@ -143,9 +147,8 @@ const compare = (files, masterValues = {}) => {
 }
 
 const reporter = files => {
-  return api.enabled
-    ? api.get().then(masterValues => compare(files, masterValues))
-    : compare(files)
+  if (api.enabled) api.get().then(masterValues => compare(files, masterValues))
+  else compare(files)
 }
 
 module.exports = reporter
