@@ -33,10 +33,10 @@ const compare = (files, masterValues = {}) => {
 
   const results = files.map(file => {
     const { path, size, maxSize } = file
-    const master = masterValues[path]
+    const master = masterValues[path] || size
 
     const fail = size > maxSize
-    const change = size - (master || size)
+    const change = size - master
 
     totalSize += size
     totalSizeMaster += master
@@ -65,7 +65,8 @@ const compare = (files, masterValues = {}) => {
       ...file,
       fail,
       change,
-      message
+      message,
+      master
     }
   })
 
@@ -83,7 +84,7 @@ const compare = (files, masterValues = {}) => {
       globalMessage = message
     } else if (failures) {
       // multiple files, multiple failures
-      const change = totalSize - (totalSizeMaster || totalSize)
+      const change = totalSize - totalSizeMaster
       const prettyChange =
         change === 0
           ? 'no change'
@@ -94,7 +95,7 @@ const compare = (files, masterValues = {}) => {
       // multiple files, no failures
       const prettySize = bytes(totalSize)
       const prettyMaxSize = bytes(totalMaxSize)
-      const change = totalSize - (totalSizeMaster || totalSize)
+      const change = totalSize - totalSizeMaster
       const prettyChange =
         change === 0
           ? 'no change'
