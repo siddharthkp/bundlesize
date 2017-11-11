@@ -73,7 +73,7 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "husky": "^0.14.3",
-    "lint-staged": "^4.0.4",
+    "lint-staged": "^5.0.0",
     "prettier": "^1.6.0",
     "babel-cli": "7.0.0-alpha.19",
     "babel-core": "7.0.0-alpha.19",
