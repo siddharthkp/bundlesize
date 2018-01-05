@@ -12,6 +12,10 @@ const packageJSONconfig = pkg.bundlesize
 
 program
   .option('-f, --files [files]', 'files to test against (dist/*.js)')
+  .option(
+    '-g, --gzip [gzip]',
+    'compress bundle with gzip before testing (true)'
+  )
   .option('-s, --max-size [maxSize]', 'maximum size threshold (3Kb)')
   .option('--debug', 'run in debug mode')
   .parse(process.argv)
@@ -22,7 +26,8 @@ if (program.files) {
   cliConfig = [
     {
       path: program.files,
-      maxSize: program.maxSize
+      maxSize: program.maxSize,
+      gzip: program.gzip === undefined || program.gzip.toLowerCase() === 'true'
     }
   ]
 }
@@ -41,9 +46,12 @@ if (!packageJSONconfig && !cliConfig) {
 }
 
 const config = cliConfig || packageJSONconfig
+const defaultedConfig = config.map(fileConfig =>
+  Object.assign({ gzip: true }, fileConfig)
+)
 
 debug('cli config', cliConfig)
 debug('package json config', packageJSONconfig)
 debug('selected config', config)
 
-module.exports = config
+module.exports = defaultedConfig

@@ -27,6 +27,10 @@ const setBuildStatus = ({
   debug('global message', globalMessage)
 }
 
+const generateMessage = (size, gzipEnabled) => {
+  return ` maxSize ${size} ${gzipEnabled ? 'gzip' : 'uncompressed'}`
+}
+
 const compare = (files, masterValues = {}) => {
   let fail = false
   let globalMessage
@@ -45,13 +49,13 @@ const compare = (files, masterValues = {}) => {
 
     if (size > maxSize) {
       fail = true
-      if (prettySize) message += `> maxSize ${prettySize} gzip`
+      if (prettySize) message += '>' + generateMessage(prettySize, file.gzip)
       error(message, { fail: false, label: 'FAIL' })
     } else if (!master) {
-      if (prettySize) message += `< maxSize ${prettySize} gzip`
+      if (prettySize) message += '<' + generateMessage(prettySize, file.gzip)
       info('PASS', message)
     } else {
-      if (prettySize) message += `< maxSize ${prettySize} gzip `
+      if (prettySize) message += '<' + generateMessage(prettySize, file.gzip)
       const diff = size - master
 
       if (diff < 0) {

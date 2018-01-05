@@ -53,7 +53,8 @@
     },
     {
       "path": "./src/files.js",
-      "maxSize": "600B"
+      "maxSize": "1KB",
+      "gzip": false
     }
   ],
   "lint-staged": {

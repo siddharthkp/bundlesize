@@ -8,6 +8,22 @@ const debug = require('./debug')
 
 const files = []
 
+const getFileSize = (path, gzipEnabled) => {
+  if (gzipEnabled) {
+    return gzip.sync(fs.readFileSync(path, 'utf8'))
+  } else {
+    return fs.statSync(path).size
+  }
+}
+
+const populateFileSizes = (paths, maxSize, gzipEnabled) => {
+  paths.forEach(path => {
+    const size = getFileSize(path, gzipEnabled)
+    const maxSizeBytes = bytes(maxSize) || Infinity
+    files.push({ maxSize: maxSizeBytes, path, size, gzip: gzipEnabled })
+  })
+}
+
 config.map(file => {
   const paths = glob.sync(file.path)
   if (!paths.length) {
@@ -15,11 +31,7 @@ config.map(file => {
       silent: true
     })
   } else {
-    paths.map(path => {
-      const size = gzip.sync(fs.readFileSync(path, 'utf8'))
-      const maxSize = bytes(file.maxSize) || Infinity
-      files.push({ maxSize, path, size })
-    })
+    populateFileSizes(paths, file.maxSize, file.gzip)
   }
 })
 
