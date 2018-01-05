@@ -36,13 +36,14 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.17.0",
+    "brotli-size": "0.0.1",
     "bytes": "^3.0.0",
     "ci-env": "^1.4.0",
     "commander": "^2.11.0",
     "github-build": "^1.2.0",
     "glob": "^7.1.2",
-    "opencollective": "^1.0.3",
     "gzip-size": "^4.0.0",
+    "opencollective": "^1.0.3",
     "prettycli": "^1.4.3",
     "read-pkg-up": "^3.0.0"
   },
