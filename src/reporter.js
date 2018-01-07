@@ -14,65 +14,106 @@ const setBuildStatus = ({
   event: currentEvent,
   branch: currentBranch
 }) => {
-  if (fail) build.fail(globalMessage || 'bundle size > maxSize', url)
+  if (fail) build.fail(globalMessage, url)
   else {
     if (currentEvent === 'push' && currentBranch === 'master') {
       const values = []
       files.map(file => values.push({ path: file.path, size: file.size }))
       api.set(values)
     }
-    build.pass(globalMessage || 'Good job! bundle size < maxSize', url)
+    build.pass(globalMessage, url)
   }
-
-  debug('global message', globalMessage)
 }
 
 const compare = (files, masterValues = {}) => {
-  let fail = false
-  let globalMessage
+  let failures = 0
+  let totalSize = 0
+  let totalSizeMaster = 0
+  let totalMaxSize = 0
 
-  files.map(file => {
-    file.master = masterValues[file.path]
-    const { path, size, master, maxSize } = file
+  const results = files.map(file => {
+    const { path, size, maxSize } = file
+    const master = masterValues[path] || size
 
-    let message = `${path}: ${bytes(size)} `
-    const prettySize = bytes(maxSize)
-    /*
-      if size > maxSize, fail
-      else if size > master, warn + pass
-      else yay + pass
-    */
+    const fail = size > maxSize
+    const change = size - master
 
-    if (size > maxSize) {
-      fail = true
-      if (prettySize) message += `> maxSize ${prettySize} gzip`
+    totalSize += size
+    totalSizeMaster += master
+    totalMaxSize += maxSize
+
+    let message
+    const prettySize = bytes(size)
+    const prettyMaxSize = bytes(maxSize)
+    const prettyChange =
+      change === 0
+        ? 'no change'
+        : change > 0 ? `+${bytes(change)}` : `-${bytes(Math.abs(change))}`
+
+    if (fail) {
+      failures++
+      message = `${path} is too big: ${prettySize}/${prettyMaxSize} gzip (${prettyChange})`
       error(message, { fail: false, label: 'FAIL' })
-    } else if (!master) {
-      if (prettySize) message += `< maxSize ${prettySize} gzip`
-      info('PASS', message)
     } else {
-      if (prettySize) message += `< maxSize ${prettySize} gzip `
-      const diff = size - master
-
-      if (diff < 0) {
-        message += `(${bytes(Math.abs(diff))} smaller than master, good job!)`
-        info('PASS', message)
-      } else if (diff > 0) {
-        message += `(${bytes(diff)} larger than master, careful!)`
-        warn(message)
-      } else {
-        message += '(same as master)'
-        info('PASS', message)
-      }
+      message = `${path} is: ${prettySize}/${prettyMaxSize} gzip (${prettyChange})`
+      change > 0
+        ? warn(message, { fail: false, label: 'PASS' })
+        : info('PASS', message)
     }
 
-    if (files.length === 1) globalMessage = message
-    return debug('message', message)
+    return {
+      ...file,
+      fail,
+      change,
+      message,
+      master
+    }
   })
 
+  let globalMessage
+
+  if (results.length === 1) {
+    const { message } = results[0]
+    globalMessage = message
+  } else {
+    if (failures === 1) {
+      // multiple files, one failure
+      const result = results.find(result => result.fail)
+      const { message } = result
+
+      globalMessage = message
+    } else if (failures) {
+      // multiple files, multiple failures
+      const change = totalSize - totalSizeMaster
+      const prettyChange =
+        change === 0
+          ? 'no change'
+          : change > 0 ? `+${bytes(change)}` : `-${bytes(Math.abs(change))}`
+
+      globalMessage = `${failures} out of ${results.length} bundles are too big! (${prettyChange})`
+    } else {
+      // multiple files, no failures
+      const prettySize = bytes(totalSize)
+      const prettyMaxSize = bytes(totalMaxSize)
+      const change = totalSize - totalSizeMaster
+      const prettyChange =
+        change === 0
+          ? 'no change'
+          : change > 0 ? `+${bytes(change)}` : `-${bytes(Math.abs(change))}`
+
+      globalMessage = `Total bundle size is ${prettySize}/${prettyMaxSize} gzip (${prettyChange})`
+    }
+  }
+
+  debug('globalMessage', globalMessage)
+
   /* prepare the build page */
+  const buildFiles = Object.assign({}, results)
+  delete buildFiles.fail
+  delete buildFiles.change
+  delete buildFiles.message
   const params = encodeURIComponent(
-    JSON.stringify({ files, repo, branch, commit_message, sha })
+    JSON.stringify({ files: buildFiles, repo, branch, commit_message, sha })
   )
   let url = `https://bundlesize-store.now.sh/build?info=${params}`
 
@@ -83,11 +124,25 @@ const compare = (files, masterValues = {}) => {
     .then(res => {
       url = res.data.id
       debug('url after shortening', url)
-      setBuildStatus({ url, files, globalMessage, fail, event, branch })
+      setBuildStatus({
+        url,
+        files: results,
+        globalMessage,
+        fail: !!failures,
+        event,
+        branch
+      })
     })
     .catch(err => {
       debug('err while shortening', err)
-      setBuildStatus({ url, files, globalMessage, fail, event, branch })
+      setBuildStatus({
+        url,
+        files: results,
+        globalMessage,
+        fail: !!failures,
+        event,
+        branch
+      })
     })
 }
 
