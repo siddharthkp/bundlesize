@@ -33,10 +33,19 @@ const compare = (files, masterValues = {}) => {
 
   files.map(file => {
     file.master = masterValues[file.path]
-    const { path, size, master, maxSize } = file
+    const { path, size, master, maxSize, compression = 'gzip' } = file
+
+    let compressionText = '(no compression)'
+    if (compression && compression !== 'none') {
+      compressionText = `(${compression})`
+    }
 
     let message = `${path}: ${bytes(size)} `
+    if (maxSize === Infinity) {
+      message += compressionText
+    }
     const prettySize = bytes(maxSize)
+
     /*
       if size > maxSize, fail
       else if size > master, warn + pass
@@ -45,13 +54,13 @@ const compare = (files, masterValues = {}) => {
 
     if (size > maxSize) {
       fail = true
-      if (prettySize) message += `> maxSize ${prettySize} gzip`
+      if (prettySize) message += `> maxSize ${prettySize} ${compressionText}`
       error(message, { fail: false, label: 'FAIL' })
     } else if (!master) {
-      if (prettySize) message += `< maxSize ${prettySize} gzip`
+      if (prettySize) message += `< maxSize ${prettySize} ${compressionText}`
       info('PASS', message)
     } else {
-      if (prettySize) message += `< maxSize ${prettySize} gzip `
+      if (prettySize) message += `< maxSize ${prettySize} ${compressionText}`
       const diff = size - master
 
       if (diff < 0) {

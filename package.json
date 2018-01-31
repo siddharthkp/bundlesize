@@ -14,7 +14,10 @@
   },
   "scripts": {
     "precommit": "lint-staged",
-    "test": "node index && cat pipe.js | node pipe --name pipe.js --max-size 1kB",
+    "test": "npm run test:default && npm run test:no-compression && npm run test:brotli-compression",
+    "test:default": "node index && cat pipe.js | node pipe --name pipe.js --max-size 1kB",
+    "test:no-compression": "cat pipe.js | node pipe --compression none --name pipe.js",
+    "test:brotli-compression": "cat pipe.js | node pipe --compression brotli --name pipe.js",
     "lint": "eslint src store/*.js"
   },
   "keywords": [
@@ -36,13 +39,14 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.17.0",
+    "brotli-size": "0.0.1",
     "bytes": "^3.0.0",
     "ci-env": "^1.4.0",
     "commander": "^2.11.0",
     "github-build": "^1.2.0",
     "glob": "^7.1.2",
-    "opencollective": "^1.0.3",
     "gzip-size": "^4.0.0",
+    "opencollective": "^1.0.3",
     "prettycli": "^1.4.3",
     "read-pkg-up": "^3.0.0"
   },
@@ -54,6 +58,11 @@
     {
       "path": "./src/files.js",
       "maxSize": "600B"
+    },
+    {
+      "path": "./src/compressed-size.js",
+      "maxSize": "420B",
+      "compression": "none"
     }
   ],
   "lint-staged": {
