@@ -47,7 +47,8 @@ npx bundlesize
 
 &nbsp;
 
-#### 1) Add the path and gzip maxSize in your `package.json`
+#### 1) Add the path and maxSize in your `package.json`.
+By default the gzipped size is tested. You can use the `compression` option to change this. (`gzip`, `brotli`, or `none`).
 
 ```json
 {
