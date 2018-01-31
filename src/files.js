@@ -18,7 +18,7 @@ config.map(file => {
     paths.map(path => {
       const size = gzip.sync(fs.readFileSync(path, 'utf8'))
       const maxSize = bytes(file.maxSize) || Infinity
-      files.push({ maxSize, path, size })
+      files.push({ maxSize, path, size, compression: 'gzip' })
     })
   }
 })
