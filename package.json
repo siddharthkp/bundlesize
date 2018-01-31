@@ -58,6 +58,11 @@
     {
       "path": "./src/files.js",
       "maxSize": "600B"
+    },
+    {
+      "path": "./src/compressed-size.js",
+      "maxSize": "420B",
+      "compression": "none"
     }
   ],
   "lint-staged": {

@@ -2,13 +2,13 @@
 const { inspect } = require('util')
 const program = require('commander')
 const reporter = require('./src/reporter')
-const gzip = require('gzip-size')
-const brotli = require('brotli-size')
+
 const bytes = require('bytes')
 const readStream = require('./src/readStream')
 const { error } = require('prettycli')
 const build = require('./src/build')
 const debug = require('./src/debug')
+const compressedSize = require('./src/compressed-size')
 
 if (process.stdin.isTTY) {
   error('bundlesize-pipe executable is meant for usage with piped data.')
@@ -34,18 +34,7 @@ debug('config', config)
 
 process.stdin.setEncoding('utf8')
 readStream(process.stdin).then(data => {
-  let size
-  switch (config.compression) {
-    case 'gzip':
-      size = gzip.sync(data)
-      break
-    case 'brotli':
-      size = brotli.sync(data)
-      break
-    case 'none':
-    default:
-      size = Buffer.byteLength(data)
-  }
+  const size = compressedSize(data, config.compression)
   const maxSize = bytes(config.maxSize) || Infinity
   const file = {
     path: config.name,

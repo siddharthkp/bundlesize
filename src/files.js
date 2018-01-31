@@ -1,11 +1,10 @@
 const fs = require('fs')
 const bytes = require('bytes')
 const glob = require('glob')
-const gzip = require('gzip-size')
 const { error } = require('prettycli')
 const config = require('./config')
 const debug = require('./debug')
-
+const compressedSize = require('./compressed-size')
 const files = []
 
 config.map(file => {
@@ -16,9 +15,10 @@ config.map(file => {
     })
   } else {
     paths.map(path => {
-      const size = gzip.sync(fs.readFileSync(path, 'utf8'))
       const maxSize = bytes(file.maxSize) || Infinity
-      files.push({ maxSize, path, size, compression: 'gzip' })
+      const compression = file.compression || 'gzip'
+      const size = compressedSize(fs.readFileSync(path, 'utf8'), compression)
+      files.push({ maxSize, path, size, compression })
     })
   }
 })

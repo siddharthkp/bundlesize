@@ -15,7 +15,7 @@ program
   .option('-s, --max-size [maxSize]', 'maximum size threshold (3Kb)')
   .option('--debug', 'run in debug mode')
   .option(
-    '-c, --compression [gzip|brotli|none]',
+    '-c, --compression [compression]',
     'specify which compression algorithm to use'
   )
   .parse(process.argv)
