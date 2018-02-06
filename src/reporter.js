@@ -70,7 +70,7 @@ const getGlobalMessage = a => {
 }
 
 const analyse = ({ files, masterValues }) => {
-  const results = files.map(file => {
+  return files.map(file => {
     let fail = false
     file.master = masterValues[file.path]
     const { path, size, master, maxSize, compression = 'gzip' } = file
@@ -123,22 +123,6 @@ const analyse = ({ files, masterValues }) => {
       maxSize
     }
   })
-
-  let globalMessage = getGlobalMessage({
-    results,
-    totalSize: results.reduce((acc, result) => acc + result.size, 0),
-    totalSizeMaster: results.reduce((acc, result) => acc + result.master, 0),
-    totalMaxSize: results.reduce((acc, result) => acc + result.maxSize, 0)
-  })
-
-  if (results.length === 1) {
-    globalMessage = results[0].message
-  }
-
-  return {
-    globalMessage,
-    fail: results.filter(result => result.fail).length > 0
-  }
 }
 
 const report = ({ files, globalMessage, fail }) => {
@@ -164,7 +148,16 @@ const report = ({ files, globalMessage, fail }) => {
 }
 
 const compare = (files, masterValues = {}) => {
-  let { globalMessage, fail } = analyse({ files, masterValues })
+  let results = analyse({ files, masterValues })
+
+  let globalMessage = getGlobalMessage({
+    results,
+    totalSize: results.reduce((acc, result) => acc + result.size, 0),
+    totalSizeMaster: results.reduce((acc, result) => acc + result.master, 0),
+    totalMaxSize: results.reduce((acc, result) => acc + result.maxSize, 0)
+  })
+
+  let fail = results.filter(result => result.fail).length > 0
   report({ files, globalMessage, fail })
 }
 
