@@ -63,7 +63,7 @@ const getGlobalMessage = a => {
           ? 'no change'
           : change > 0 ? `+${bytes(change)}` : `-${bytes(Math.abs(change))}`
 
-      globalMessage = `Total bundle size is ${prettySize}/${prettyMaxSize} gzip (${prettyChange})`
+      globalMessage = `Total bundle size is ${prettySize}/${prettyMaxSize} (${prettyChange})`
     }
   }
   return globalMessage
