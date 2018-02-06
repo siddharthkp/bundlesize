@@ -28,8 +28,12 @@ const setBuildStatus = ({
 }
 
 // Generate global message as per https://github.com/siddharthkp/bundlesize/issues/182#issuecomment-343274689
-const getGlobalMessage = a => {
-  let { results, totalSize, totalSizeMaster, totalMaxSize } = a
+const getGlobalMessage = ({
+  results,
+  totalSize,
+  totalSizeMaster,
+  totalMaxSize
+}) => {
   let globalMessage
 
   let failures = results.filter(result => !!result.fail).length
