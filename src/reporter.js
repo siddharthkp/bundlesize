@@ -27,16 +27,51 @@ const setBuildStatus = ({
   debug('global message', globalMessage)
 }
 
-// TODO:
-// one file, passes checks: "app.js is 46.88/75kB (+1B)"
-// one file, fails checks: "app.js is too big! 76.88/75kB (+2B)"
-// multiple files, all pass checks: "Total bundle size is 360.07/485kB (+8B)"
-// multiple files, one fails checks: "app.js is too big! 76.88/75kB (+2B)"
-// multiple files, multiple fail checks: "Some of your files became too big! (+2B)"
+// Generate global message as per https://github.com/siddharthkp/bundlesize/issues/182#issuecomment-343274689
+const getGlobalMessage = a => {
+  let { results, totalSize, totalSizeMaster, totalMaxSize } = a
+  let globalMessage
+
+  let failures = results.filter(result => !!result.fail).length
+
+  if (results.length === 1) {
+    const { message } = results[0]
+    globalMessage = message
+  } else {
+    if (failures === 1) {
+      // multiple files, one failure
+      const result = results.find(message => message.fail)
+      const { message } = result
+
+      globalMessage = message
+    } else if (failures) {
+      // multiple files, multiple failures
+      const change = totalSize - totalSizeMaster
+      const prettyChange =
+        change === 0
+          ? 'no change'
+          : change > 0 ? `+${bytes(change)}` : `-${bytes(Math.abs(change))}`
+
+      globalMessage = `${failures} out of ${results.length} bundles are too big! (${prettyChange})`
+    } else {
+      // multiple files, no failures
+      const prettySize = bytes(totalSize)
+      const prettyMaxSize = bytes(totalMaxSize)
+      const change = totalSize - totalSizeMaster
+      const prettyChange =
+        change === 0
+          ? 'no change'
+          : change > 0 ? `+${bytes(change)}` : `-${bytes(Math.abs(change))}`
+
+      globalMessage = `Total bundle size is ${prettySize}/${prettyMaxSize} gzip (${prettyChange})`
+    }
+  }
+  return globalMessage
+}
 
 const analyse = ({ files, masterValues }) => {
-  let fail = false
-  const messages = files.map(file => {
+  const results = files.map(file => {
+    let fail = false
     file.master = masterValues[file.path]
     const { path, size, master, maxSize, compression = 'gzip' } = file
 
@@ -80,16 +115,30 @@ const analyse = ({ files, masterValues }) => {
       }
     }
     debug('message', message)
-    return message
+    return {
+      message,
+      fail,
+      size,
+      master,
+      maxSize
+    }
   })
 
-  let globalMessage
+  let globalMessage = getGlobalMessage({
+    results,
+    totalSize: results.reduce((acc, result) => acc + result.size, 0),
+    totalSizeMaster: results.reduce((acc, result) => acc + result.master, 0),
+    totalMaxSize: results.reduce((acc, result) => acc + result.maxSize, 0)
+  })
 
-  if (messages.length === 1) {
-    globalMessage = messages[0]
+  if (results.length === 1) {
+    globalMessage = results[0].message
   }
 
-  return { globalMessage, fail }
+  return {
+    globalMessage,
+    fail: results.filter(result => result.fail).length > 0
+  }
 }
 
 const report = ({ files, globalMessage, fail }) => {
