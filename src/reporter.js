@@ -27,10 +27,9 @@ const setBuildStatus = ({
   debug('global message', globalMessage)
 }
 
-const compare = (files, masterValues = {}) => {
+const analyse = ({ files, masterValues }) => {
   let fail = false
   let globalMessage
-
   files.map(file => {
     file.master = masterValues[file.path]
     const { path, size, master, maxSize, compression = 'gzip' } = file
@@ -78,7 +77,10 @@ const compare = (files, masterValues = {}) => {
     if (files.length === 1) globalMessage = message
     return debug('message', message)
   })
+  return { globalMessage, fail }
+}
 
+const report = ({ files, globalMessage, fail }) => {
   /* prepare the build page */
   const params = encodeURIComponent(
     JSON.stringify({ files, repo, branch, commit_message, sha })
@@ -98,6 +100,11 @@ const compare = (files, masterValues = {}) => {
       debug('err while shortening', err)
       setBuildStatus({ url, files, globalMessage, fail, event, branch })
     })
+}
+
+const compare = (files, masterValues = {}) => {
+  let { globalMessage, fail } = analyse({ files, masterValues })
+  report({ files, globalMessage, fail })
 }
 
 const reporter = files => {
