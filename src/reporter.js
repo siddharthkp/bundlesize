@@ -27,10 +27,16 @@ const setBuildStatus = ({
   debug('global message', globalMessage)
 }
 
+// TODO:
+// one file, passes checks: "app.js is 46.88/75kB (+1B)"
+// one file, fails checks: "app.js is too big! 76.88/75kB (+2B)"
+// multiple files, all pass checks: "Total bundle size is 360.07/485kB (+8B)"
+// multiple files, one fails checks: "app.js is too big! 76.88/75kB (+2B)"
+// multiple files, multiple fail checks: "Some of your files became too big! (+2B)"
+
 const analyse = ({ files, masterValues }) => {
   let fail = false
-  let globalMessage
-  files.map(file => {
+  const messages = files.map(file => {
     file.master = masterValues[file.path]
     const { path, size, master, maxSize, compression = 'gzip' } = file
 
@@ -73,10 +79,16 @@ const analyse = ({ files, masterValues }) => {
         info('PASS', message)
       }
     }
-
-    if (files.length === 1) globalMessage = message
-    return debug('message', message)
+    debug('message', message)
+    return message
   })
+
+  let globalMessage
+
+  if (messages.length === 1) {
+    globalMessage = messages[0]
+  }
+
   return { globalMessage, fail }
 }
 
