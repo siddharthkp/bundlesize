@@ -37,6 +37,7 @@ readStream(process.stdin).then(data => {
   const size = compressedSize(data, config.compression)
   const maxSize = bytes(config.maxSize) || Infinity
   const file = {
+    pattern: config.name,
     path: config.name,
     maxSize,
     size,

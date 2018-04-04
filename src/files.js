@@ -8,7 +8,8 @@ const compressedSize = require('./compressed-size')
 const files = []
 
 config.map(file => {
-  const paths = glob.sync(file.path)
+  const pattern = file.path
+  const paths = glob.sync(pattern)
   if (!paths.length) {
     error(`There is no matching file for ${file.path} in ${process.cwd()}`, {
       silent: true
@@ -18,7 +19,7 @@ config.map(file => {
       const maxSize = bytes(file.maxSize) || Infinity
       const compression = file.compression || 'gzip'
       const size = compressedSize(fs.readFileSync(path, 'utf8'), compression)
-      files.push({ maxSize, path, size, compression })
+      files.push({ pattern, maxSize, path, size, compression })
     })
   }
 })

@@ -5,6 +5,7 @@ const build = require('./build')
 const api = require('./api')
 const debug = require('./debug')
 const shortener = require('./shortener')
+const getMasterValue = require('./get-master-value')
 
 const setBuildStatus = ({
   url,
@@ -74,7 +75,7 @@ const getGlobalMessage = ({
 const analyse = ({ files, masterValues }) => {
   return files.map(file => {
     let fail = false
-    file.master = masterValues[file.path]
+    file.master = getMasterValue({ file, masterValues })
     const { path, size, master, maxSize, compression = 'gzip' } = file
 
     let compressionText = '(no compression)'
@@ -160,7 +161,15 @@ const compare = (files, masterValues = {}) => {
   })
 
   let fail = results.filter(result => result.fail).length > 0
-  report({ files, globalMessage, fail })
+
+  // trim files to only send what is necessary for the report
+  const trimmedFiles = files.map(({ path, size, master, maxSize }) => ({
+    path,
+    size,
+    master,
+    maxSize
+  }))
+  report({ files: trimmedFiles, globalMessage, fail })
 }
 
 const reporter = files => {

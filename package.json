@@ -46,6 +46,7 @@
     "github-build": "^1.2.0",
     "glob": "^7.1.2",
     "gzip-size": "^4.0.0",
+    "micromatch": "^3.1.10",
     "prettycli": "^1.4.3",
     "read-pkg-up": "^3.0.0"
   },
