@@ -17,6 +17,7 @@ if (process.stdin.isTTY) {
 program
   .option('-n, --name [name]', 'custom name for a file (lib.min.js)')
   .option('-s, --max-size [maxSize]', 'maximum size threshold (3Kb)')
+  .option('--min-size [minSize]', 'minimum size threshold (2Kb)')
   .option(
     '-c, --compression [gzip|brotli|none]',
     'specify which compression algorithm to use'
@@ -27,6 +28,7 @@ program
 const config = {
   name: program.name || require('read-pkg-up').sync().pkg.name,
   maxSize: program.maxSize,
+  minSize: program.minSize,
   compression: program.compression || 'gzip'
 }
 
@@ -36,9 +38,11 @@ process.stdin.setEncoding('utf8')
 readStream(process.stdin).then(data => {
   const size = compressedSize(data, config.compression)
   const maxSize = bytes(config.maxSize) || Infinity
+  const minSize = bytes(config.minSize) || 0
   const file = {
     path: config.name,
     maxSize,
+    minSize,
     size,
     compression: config.compression
   }

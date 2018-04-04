@@ -32,7 +32,8 @@ const getGlobalMessage = ({
   results,
   totalSize,
   totalSizeMaster,
-  totalMaxSize
+  totalMaxSize,
+  totalMinSize
 }) => {
   let globalMessage
 
@@ -60,13 +61,14 @@ const getGlobalMessage = ({
     // multiple files, no failures
     const prettySize = bytes(totalSize)
     const prettyMaxSize = bytes(totalMaxSize)
+    const prettyMinSize = bytes(totalMinSize)
     const change = totalSize - totalSizeMaster
     const prettyChange =
       change === 0
         ? 'no change'
         : change > 0 ? `+${bytes(change)}` : `-${bytes(Math.abs(change))}`
 
-    globalMessage = `Total bundle size is ${prettySize}/${prettyMaxSize} (${prettyChange})`
+    globalMessage = `Total bundle size is ${prettyMinSize} < ${prettySize} < ${prettyMaxSize} (${prettyChange})`
   }
   return globalMessage
 }
@@ -75,21 +77,27 @@ const analyse = ({ files, masterValues }) => {
   return files.map(file => {
     let fail = false
     file.master = masterValues[file.path]
-    const { path, size, master, maxSize, compression = 'gzip' } = file
-
+    const { path, size, master, maxSize, minSize, compression = 'gzip' } = file
     let compressionText = '(no compression)'
     if (compression && compression !== 'none') {
       compressionText = `(${compression})`
     }
 
-    let message = `${path}: ${bytes(size)} `
+    const prettySize = bytes(maxSize)
+    const prettyMinSize = bytes(minSize)
+
+    let minSizeText = ''
+    if (minSize > 0) {
+      minSizeText = `minSize ${prettyMinSize} < `
+    }
+    let message = `${path}: ${minSizeText}${bytes(size)} `
     if (maxSize === Infinity) {
       message += compressionText
     }
-    const prettySize = bytes(maxSize)
 
     /*
       if size > maxSize, fail
+      else if size < minSize, fail
       else if size > master, warn + pass
       else yay + pass
     */
@@ -97,6 +105,10 @@ const analyse = ({ files, masterValues }) => {
     if (size > maxSize) {
       fail = true
       if (prettySize) message += `> maxSize ${prettySize} ${compressionText}`
+      error(message, { fail: false, label: 'FAIL' })
+    } else if (size < minSize) {
+      fail = true
+      if (prettyMinSize) message += `< minSize ${prettySize} ${compressionText}`
       error(message, { fail: false, label: 'FAIL' })
     } else if (!master) {
       if (prettySize) message += `< maxSize ${prettySize} ${compressionText}`
@@ -156,7 +168,8 @@ const compare = (files, masterValues = {}) => {
     results,
     totalSize: results.reduce((acc, result) => acc + result.size, 0),
     totalSizeMaster: results.reduce((acc, result) => acc + result.master, 0),
-    totalMaxSize: results.reduce((acc, result) => acc + result.maxSize, 0)
+    totalMaxSize: results.reduce((acc, result) => acc + result.maxSize, 0),
+    totalMinSize: results.reduce((acc, result) => acc + result.minSize, 0)
   })
 
   let fail = results.filter(result => result.fail).length > 0
