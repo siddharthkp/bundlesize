@@ -9,7 +9,10 @@ const debug = require('./debug')
 /* Config from CLI */
 program
   .option('-f, --files [files]', 'files to test against (dist/*.js)')
-  .option('-n, --config [config]', 'set external config (bundlesize.json)')
+  .option(
+    '-n, --config [config]',
+    'set external config (ex: ./.bundlesizeconfig)'
+  )
   .option('-s, --max-size [maxSize]', 'maximum size threshold (3Kb)')
   .option('--debug', 'run in debug mode')
   .option(
@@ -31,14 +34,11 @@ if (program.files) {
   ]
 }
 
-/* Config from package.json or bundlesize.json */
-let jsonConfig
-if (program.config && fs.existsSync('./bundlesize.json')) {
-  const cnfg = JSON.parse(fs.readFileSync('bundlesize.json', 'utf8'))
-  jsonConfig = cnfg.bundlesize
-} else {
-  jsonConfig = pkg.bundlesize
-}
+/* Config from package.json or config */
+const jsonConfig =
+  program.config && fs.existsSync(program.config)
+    ? JSON.parse(fs.readFileSync(program.config, 'utf8')).bundlesize
+    : pkg.bundlesize
 
 /* Send to readme if no configuration is provided */
 if (!jsonConfig && !cliConfig) {

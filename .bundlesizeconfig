@@ -1,0 +1,8 @@
+{
+  "bundlesize": [
+    {
+      "path": "./index.js",
+      "maxSize": "1000B"
+    }
+  ]
+}
