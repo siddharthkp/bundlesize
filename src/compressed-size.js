@@ -1,5 +1,4 @@
 const gzip = require('gzip-size')
-const brotli = require('brotli-size')
 
 const getCompressedSize = (data, compression = 'gzip') => {
   let size
@@ -8,7 +7,12 @@ const getCompressedSize = (data, compression = 'gzip') => {
       size = gzip.sync(data)
       break
     case 'brotli':
-      size = brotli.sync(data)
+      try {
+        const brotli = require('brotli-size')
+        size = brotli.sync(data)
+      } catch (e) {
+        console.warn('Missing optional dependency: brotli-size')
+      }
       break
     case 'none':
     default:
