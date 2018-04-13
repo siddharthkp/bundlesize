@@ -39,7 +39,6 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.17.0",
-    "brotli-size": "0.0.1",
     "bytes": "^3.0.0",
     "ci-env": "^1.4.0",
     "commander": "^2.11.0",
@@ -48,6 +47,9 @@
     "gzip-size": "^4.0.0",
     "prettycli": "^1.4.3",
     "read-pkg-up": "^3.0.0"
+  },
+  "optionalDependencies": {
+    "brotli-size": "0.0.1"
   },
   "bundlesize": [
     {
