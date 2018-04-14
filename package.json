@@ -49,7 +49,7 @@
     "read-pkg-up": "^3.0.0"
   },
   "optionalDependencies": {
-    "brotli-size": "0.0.1"
+    "brotli-size": "0.0.2"
   },
   "bundlesize": [
     {
