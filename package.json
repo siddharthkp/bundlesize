@@ -48,9 +48,6 @@
     "prettycli": "^1.4.3",
     "read-pkg-up": "^3.0.0"
   },
-  "peerDependencies": {
-    "brotli-size": ">=0.0.1"
-  },
   "bundlesize": [
     {
       "path": "./index.js",
