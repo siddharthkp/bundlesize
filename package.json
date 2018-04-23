@@ -48,8 +48,8 @@
     "prettycli": "^1.4.3",
     "read-pkg-up": "^3.0.0"
   },
-  "optionalDependencies": {
-    "brotli-size": "0.0.2"
+  "peerDependencies": {
+    "brotli-size": ">=0.0.1"
   },
   "bundlesize": [
     {
