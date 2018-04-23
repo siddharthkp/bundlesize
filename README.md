@@ -1,3 +1,6 @@
+## Fork of [https://github.com/siddharthkp/bundlesize](https://github.com/siddharthkp/bundlesize)
+> While awaiting [https://github.com/siddharthkp/bundlesize/pull/212](https://github.com/siddharthkp/bundlesize/pull/212)
+
 <p align="center">
   <img src="https://cdn.rawgit.com/siddharthkp/bundlesize/master/art/logo.png" height="200px">
   <br><br>
