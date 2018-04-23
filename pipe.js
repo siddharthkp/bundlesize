@@ -39,9 +39,9 @@ const bundlesizeConfigFile = program.config
   ? JSON.parse(fs.readFileSync(program.config, 'utf8')).bundlesize[0]
   : false
 
-const config = !bundlesizeConfigFile
-  ? { ...configBase }
-  : { ...configBase, name: bundlesizeConfigFile.path }
+const config = bundlesizeConfigFile
+  ? { ...configBase, name: bundlesizeConfigFile.path }
+  : { ...configBase }
 
 debug('config', config)
 
