@@ -47,9 +47,10 @@ npx bundlesize
 
 &nbsp;
 
-#### 1) Add the path and maxSize in your `package.json`.
+#### 1) Add the path and maxSize in your `package.json` or a defined config file.
 By default the gzipped size is tested. You can use the `compression` option to change this. (`gzip`, `brotli`, or `none`).
 
+##### within `package.json`
 ```json
 {
   "name": "your cool library",
@@ -62,6 +63,27 @@ By default the gzipped size is tested. You can use the `compression` option to c
   ]
 }
 ```
+
+##### external config file `.bundlesizeconfig`
+```json
+{
+  "bundlesize": [
+    {
+      "path": "./index.js",
+      "maxSize": "1000B"
+    }
+  ]
+}
+```
+and then your package scripts:
+```json
+"scripts": {
+  "test": "bundlesize --config ./.bundlesizeconfig"
+}
+```
+
+&nbsp;
+
 
 `bundlesize` also supports [glob patterns](https://github.com/isaacs/node-glob)
 
