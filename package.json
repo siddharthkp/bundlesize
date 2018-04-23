@@ -1,6 +1,6 @@
 {
-  "name": "bundlesize",
-  "version": "0.17.0",
+  "name": "bundlesize-extconfig",
+  "version": "0.17.1",
   "description": "Keep your library size in check",
   "repository": {
     "type": "git",
@@ -14,10 +14,11 @@
   },
   "scripts": {
     "precommit": "lint-staged",
-    "test": "npm run test:default && npm run test:no-compression && npm run test:brotli-compression",
+    "test": "npm run test:default && npm run test:no-compression && npm run test:brotli-compression && npm run test:config-file",
     "test:default": "node index && cat pipe.js | node pipe --name pipe.js --max-size 1kB",
     "test:no-compression": "cat pipe.js | node pipe --compression none --name pipe.js",
     "test:brotli-compression": "cat pipe.js | node pipe --compression brotli --name pipe.js",
+    "test:config-file": "cat pipe.js | node pipe --config ./.bundlesizeconfig",
     "lint": "eslint src store/*.js"
   },
   "keywords": [

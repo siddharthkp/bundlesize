@@ -1,17 +1,18 @@
 const readPkgUp = require('read-pkg-up')
+const fs = require('fs')
 
 const pkg = readPkgUp.sync().pkg
 const program = require('commander')
 const { error } = require('prettycli')
 const debug = require('./debug')
 
-/* Config from package.json */
-const packageJSONconfig = pkg.bundlesize
-
 /* Config from CLI */
-
 program
   .option('-f, --files [files]', 'files to test against (dist/*.js)')
+  .option(
+    '-n, --config [config]',
+    'set external config (ex: ./.bundlesizeconfig)'
+  )
   .option('-s, --max-size [maxSize]', 'maximum size threshold (3Kb)')
   .option('--debug', 'run in debug mode')
   .option(
@@ -25,6 +26,7 @@ let cliConfig
 if (program.files) {
   cliConfig = [
     {
+      config: program.config,
       path: program.files,
       maxSize: program.maxSize,
       compression: program.compression || 'gzip'
@@ -32,9 +34,14 @@ if (program.files) {
   ]
 }
 
-/* Send to readme if no configuration is provided */
+/* Config from package.json or config */
+const jsonConfig =
+  program.config && fs.existsSync(program.config)
+    ? JSON.parse(fs.readFileSync(program.config, 'utf8')).bundlesize
+    : pkg.bundlesize
 
-if (!packageJSONconfig && !cliConfig) {
+/* Send to readme if no configuration is provided */
+if (!jsonConfig && !cliConfig) {
   error(
     `Config not found.
 
@@ -45,10 +52,10 @@ if (!packageJSONconfig && !cliConfig) {
   )
 }
 
-const config = cliConfig || packageJSONconfig
+const config = cliConfig || jsonConfig
 
 debug('cli config', cliConfig)
-debug('package json config', packageJSONconfig)
+debug('json config', jsonConfig)
 debug('selected config', config)
 
 module.exports = config

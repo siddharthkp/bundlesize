@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const { inspect } = require('util')
 const program = require('commander')
+const fs = require('fs')
 const reporter = require('./src/reporter')
 
 const bytes = require('bytes')
@@ -16,6 +17,10 @@ if (process.stdin.isTTY) {
 
 program
   .option('-n, --name [name]', 'custom name for a file (lib.min.js)')
+  .option(
+    '-n, --config [config]',
+    'set external config (ex: ./.bundlesizeconfig)'
+  )
   .option('-s, --max-size [maxSize]', 'maximum size threshold (3Kb)')
   .option(
     '-c, --compression [gzip|brotli|none]',
@@ -24,11 +29,19 @@ program
   .option('--debug', 'run in debug mode')
   .parse(process.argv)
 
-const config = {
+const configBase = {
   name: program.name || require('read-pkg-up').sync().pkg.name,
   maxSize: program.maxSize,
   compression: program.compression || 'gzip'
 }
+
+const bundlesizeConfigFile = program.config
+  ? JSON.parse(fs.readFileSync(program.config, 'utf8')).bundlesize[0]
+  : false
+
+const config = !bundlesizeConfigFile
+  ? { ...configBase }
+  : { ...configBase, name: bundlesizeConfigFile.path }
 
 debug('config', config)
 
