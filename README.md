@@ -50,6 +50,8 @@ npx bundlesize
 #### 1) Add the path and maxSize in your `package.json`.
 By default the gzipped size is tested. You can use the `compression` option to change this. (`gzip`, `brotli`, or `none`).
 
+To use the `brotli` compression option, you must install the peer dependency: `npm install --save brotli-size`
+
 ```json
 {
   "name": "your cool library",

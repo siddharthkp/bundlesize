@@ -1,5 +1,6 @@
+const { warn } = require('prettycli')
 const gzip = require('gzip-size')
-const brotli = require('brotli-size')
+let brotli
 
 const getCompressedSize = (data, compression = 'gzip') => {
   let size
@@ -8,7 +9,13 @@ const getCompressedSize = (data, compression = 'gzip') => {
       size = gzip.sync(data)
       break
     case 'brotli':
-      size = brotli.sync(data)
+      try {
+        brotli = require('brotli-size')
+      } catch (e) {
+        warn(`Missing optional dependency. Install it with:
+          npm install --save brotli-size`)
+      }
+      size = brotli ? brotli.sync(data) : 0
       break
     case 'none':
     default:
