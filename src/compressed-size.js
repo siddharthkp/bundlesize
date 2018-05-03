@@ -12,10 +12,10 @@ const getCompressedSize = (data, compression = 'gzip') => {
       try {
         brotli = require('brotli-size')
       } catch (e) {
-        warn(`Missing optional dependency. Install it with:
+        throw new Error(`Missing optional dependency. Install it with:
           npm install --save brotli-size`)
       }
-      size = brotli ? brotli.sync(data) : 0
+      size = brotli.sync(data)
       break
     case 'none':
     default:
