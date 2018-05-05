@@ -1,4 +1,3 @@
-const { warn } = require('prettycli')
 const gzip = require('gzip-size')
 let brotli
 
