@@ -36,7 +36,7 @@ const configBase = {
 }
 
 const bundlesizeConfigFile = program.config
-  ? JSON.parse(fs.readFileSync(program.config, 'utf8')).bundlesize[0]
+  ? JSON.parse(fs.readFileSync(program.config, 'utf8')).files[0]
   : false
 
 const config = bundlesizeConfigFile

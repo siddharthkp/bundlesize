@@ -37,7 +37,7 @@ if (program.files) {
 /* Config from package.json or config */
 const jsonConfig =
   program.config && fs.existsSync(program.config)
-    ? JSON.parse(fs.readFileSync(program.config, 'utf8')).bundlesize
+    ? JSON.parse(fs.readFileSync(program.config, 'utf8')).files
     : pkg.bundlesize
 
 /* Send to readme if no configuration is provided */
