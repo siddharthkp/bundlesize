@@ -67,7 +67,7 @@ By default the gzipped size is tested. You can use the `compression` option to c
 ##### external config file `.bundlesizeconfig`
 ```json
 {
-  "bundlesize": [
+  "files": [
     {
       "path": "./index.js",
       "maxSize": "1000B"
