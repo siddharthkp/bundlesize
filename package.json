@@ -45,7 +45,7 @@
     "commander": "^2.11.0",
     "github-build": "^1.2.0",
     "glob": "^7.1.2",
-    "gzip-size": "^4.0.0",
+    "gzip-size": "^5.0.0",
     "prettycli": "^1.4.3",
     "read-pkg-up": "^3.0.0"
   },
