@@ -8,6 +8,9 @@ cache:
 before_install:
   - npm install -g npm@5
   - npm install -g greenkeeper-lockfile@1
+
+install: case $TRAVIS_BRANCH in greenkeeper*) npm i;; *) npm ci;; esac;
+
 before_script:
   - greenkeeper-lockfile-update
 script:
