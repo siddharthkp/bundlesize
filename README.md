@@ -150,7 +150,8 @@ For more granular configuration, we recommend configuring it in the `package.jso
 
 #### TODO
 
-- Work with other CI tools ([AppVeyor](https://www.appveyor.com/), etc.)
+- Work with other CI tools 
+  - [AppVeyor](https://www.appveyor.com/) ([#234](https://github.com/siddharthkp/bundlesize/issues/234))
 - Automate setup (setting env_var)
 
 &nbsp;
