@@ -79,7 +79,7 @@
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-prettier": "^2.2.0",
     "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1",
+    "eslint-plugin-standard": "^4.0.0",
     "husky": "^0.14.3",
     "lint-staged": "^7.1.1",
     "prettier": "^1.6.0",
