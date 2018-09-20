@@ -75,26 +75,42 @@ const analyse = ({ files, masterValues }) => {
   return files.map(file => {
     let fail = false
     file.master = masterValues[file.path]
-    const { path, size, master, maxSize, compression = 'gzip' } = file
+    const {
+      path,
+      size,
+      master,
+      maxSize,
+      compression = 'gzip',
+      externals
+    } = file
 
     let compressionText = '(no compression)'
     if (compression && compression !== 'none') {
       compressionText = `(${compression})`
     }
 
-    let message = `${path}: ${bytes(size)} `
+    let externalsTotalSize = 0
+    if (externals) {
+      Object.keys(externals).forEach(key => {
+        externalsTotalSize = externalsTotalSize + bytes(externals[key])
+      })
+    }
+    const prettyExternalSize =
+      externalsTotalSize > 0 && bytes(size - externalsTotalSize)
+
+    let message = `${path}: ${prettyExternalSize || bytes(size)} `
     if (maxSize === Infinity) {
       message += compressionText
     }
     const prettySize = bytes(maxSize)
 
     /*
-      if size > maxSize, fail
+      if size - externalsTotalSize > maxSize, fail
       else if size > master, warn + pass
       else yay + pass
     */
 
-    if (size > maxSize) {
+    if (size - externalsTotalSize > maxSize) {
       fail = true
       if (prettySize) message += `> maxSize ${prettySize} ${compressionText}`
       error(message, { fail: false, label: 'FAIL' })

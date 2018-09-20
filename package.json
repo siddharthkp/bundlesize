@@ -60,6 +60,21 @@
       "maxSize": "600B"
     },
     {
+      "path": "./index.js",
+      "maxSize": "150B",
+      "externals": {
+        "package-one": "30B",
+        "package-two": "20B"
+      }
+    },
+    {
+      "path": "./index.js",
+      "maxSize": "200B",
+      "externals": {
+        "package-one": "60B"
+      }
+    },
+    {
       "path": "./src/compressed-size.js",
       "maxSize": "420B",
       "compression": "none"
