@@ -88,6 +88,18 @@ This makes it great for using with applications that are bundled with another to
 
 &nbsp;
 
+If there are any package exclusions in your bundles, please add the object to the associated file. The keys only tell the package name for reference. Would recomend [bundlephobia](https://bundlephobia.com/), compressed size values you need:
+```json
+{
+  "path": "./dist/index.js",
+  "externals": {
+    "react": "2.3 kB",
+    "react-dom": "29.1 kB"
+  },
+  "maxSize": "50 kB"
+}
+```
+
 #### 2) build status
 
 ![build status](https://cdn.rawgit.com/siddharthkp/bundlesize/master/art/status.png)
