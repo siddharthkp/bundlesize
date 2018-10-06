@@ -1,6 +1,6 @@
 const bytes = require('bytes')
 const { error, warn, info } = require('prettycli')
-const { event, repo, branch, commit_message, sha } = require('ci-env')
+const { event, repo, branch, commit_message, sha } = require('ci-env') //eslint-disable-line
 const build = require('./build')
 const api = require('./api')
 const debug = require('./debug')
@@ -12,7 +12,7 @@ const setBuildStatus = ({
   globalMessage,
   fail,
   event: currentEvent,
-  branch: currentBranch
+  branch: currentBranch,
 }) => {
   if (fail) build.fail(globalMessage || 'bundle size > maxSize', url)
   else {
@@ -28,12 +28,7 @@ const setBuildStatus = ({
 }
 
 // Generate global message as per https://github.com/siddharthkp/bundlesize/issues/182#issuecomment-343274689
-const getGlobalMessage = ({
-  results,
-  totalSize,
-  totalSizeMaster,
-  totalMaxSize
-}) => {
+const getGlobalMessage = ({ results, totalSize, totalSizeMaster, totalMaxSize }) => {
   let globalMessage
 
   let failures = results.filter(result => !!result.fail).length
@@ -51,9 +46,7 @@ const getGlobalMessage = ({
     // multiple files, multiple failures
     const change = totalSize - totalSizeMaster
     const prettyChange =
-      change === 0
-        ? 'no change'
-        : change > 0 ? `+${bytes(change)}` : `-${bytes(Math.abs(change))}`
+      change === 0 ? 'no change' : change > 0 ? `+${bytes(change)}` : `-${bytes(Math.abs(change))}`
 
     globalMessage = `${failures} out of ${results.length} bundles are too big! (${prettyChange})`
   } else {
@@ -62,9 +55,7 @@ const getGlobalMessage = ({
     const prettyMaxSize = bytes(totalMaxSize)
     const change = totalSize - totalSizeMaster
     const prettyChange =
-      change === 0
-        ? 'no change'
-        : change > 0 ? `+${bytes(change)}` : `-${bytes(Math.abs(change))}`
+      change === 0 ? 'no change' : change > 0 ? `+${bytes(change)}` : `-${bytes(Math.abs(change))}`
 
     globalMessage = `Total bundle size is ${prettySize}/${prettyMaxSize} (${prettyChange})`
   }
@@ -122,16 +113,14 @@ const analyse = ({ files, masterValues }) => {
       fail,
       size,
       master,
-      maxSize
+      maxSize,
     }
   })
 }
 
 const report = ({ files, globalMessage, fail }) => {
   /* prepare the build page */
-  const params = encodeURIComponent(
-    JSON.stringify({ files, repo, branch, commit_message, sha })
-  )
+  const params = encodeURIComponent(JSON.stringify({ files, repo, branch, commit_message, sha })) //eslint-disable-line
   let url = `https://bundlesize-store.now.sh/build?info=${params}`
 
   debug('url before shortening', url)
@@ -156,7 +145,7 @@ const compare = (files, masterValues = {}) => {
     results,
     totalSize: results.reduce((acc, result) => acc + result.size, 0),
     totalSizeMaster: results.reduce((acc, result) => acc + result.master, 0),
-    totalMaxSize: results.reduce((acc, result) => acc + result.maxSize, 0)
+    totalMaxSize: results.reduce((acc, result) => acc + result.maxSize, 0),
   })
 
   let fail = results.filter(result => result.fail).length > 0

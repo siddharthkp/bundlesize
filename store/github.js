@@ -12,8 +12,8 @@ const token = code =>
     data: {
       code,
       client_id: process.env.githubId,
-      client_secret: process.env.githubSecret
-    }
+      client_secret: process.env.githubSecret,
+    },
   })
     .then(response => response.data)
     .catch(response => response.response.status)

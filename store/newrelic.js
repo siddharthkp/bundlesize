@@ -5,5 +5,5 @@ if (process.env.dev) {
 exports.config = {
   app_name: ['bundlesize store'],
   license_key: process.env.newrelicKey,
-  logging: { level: 'info' }
+  logging: { level: 'info' },
 }

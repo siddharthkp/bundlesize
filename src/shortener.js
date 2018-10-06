@@ -8,8 +8,8 @@ const shorten = longUrl =>
     method: 'POST',
     url: `${url}?key=${googleApiKey}`,
     data: {
-      longUrl
-    }
+      longUrl,
+    },
   })
 
 const shortener = { shorten }

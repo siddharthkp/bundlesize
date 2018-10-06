@@ -9,5 +9,6 @@ module.exports = {
         semi: false,
       },
     ],
+    'comma-dangle': ["error", "always-multiline"],
   },
 };
