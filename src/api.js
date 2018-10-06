@@ -46,7 +46,9 @@ const set = values => {
     repo = repo.replace(/\./g, '_')
     debug('saving values')
 
-    axios.post(url, { repo, token, sha, values }).catch(error => console.log(error))
+    axios
+      .post(url, { repo, token, sha, values })
+      .catch(error => console.log(error))
   }
 }
 
