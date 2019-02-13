@@ -1,4 +1,5 @@
 const bytes = require('bytes')
+const zlib = require('zlib')
 const { error, warn, info } = require('prettycli')
 const { event, repo, branch, commit_message, sha } = require('ci-env')
 const build = require('./build')
@@ -129,10 +130,11 @@ const analyse = ({ files, masterValues }) => {
 
 const report = ({ files, globalMessage, fail }) => {
   /* prepare the build page */
-  const params = encodeURIComponent(
-    JSON.stringify({ files, repo, branch, commit_message, sha })
+  const params = JSON.stringify({ files, repo, branch, commit_message, sha })
+  const compressedData = encodeURIComponent(
+    zlib.gzipSync(params).toString('base64')
   )
-  let url = `https://bundlesize-store.now.sh/build?info=${params}`
+  let url = `https://bundlesize-store.now.sh/build?data=${compressedData}`
 
   debug('url before shortening', url)
 

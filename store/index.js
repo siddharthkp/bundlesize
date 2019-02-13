@@ -1,4 +1,5 @@
 require('newrelic')
+const zlib = require('zlib')
 const express = require('express')
 
 const server = express()
@@ -52,8 +53,16 @@ server.get('/auth', (req, res) => {
 })
 
 server.get('/build', (req, res) => {
-  let { info } = req.query
-  info = JSON.parse(info)
+  /* For backwards compatibility, we allow either the info or data params to be used.
+  info is raw JSON, whereas data is base64 encoded gzipped JSON */
+  let { info, data } = req.query
+  if (info) {
+    info = JSON.parse(info)
+  } else {
+    const decoded = Buffer.from(decodeURIComponent(data), 'base64').toString()
+    const decompressed = zlib.gunzipSync(decoded)
+    info = JSON.parse(decompressed)
+  }
   info.sha = info.sha.slice(0, 8)
   info.files.map(f => {
     f.prettySize = parseFloat(bytes(f.size))
