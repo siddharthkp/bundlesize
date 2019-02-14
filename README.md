@@ -90,6 +90,12 @@ Currently works for [Travis CI](https://travis-ci.org), [CircleCI](https://circl
 - [Authorize `bundlesize` for status access](https://github.com/login/oauth/authorize?scope=repo%3Astatus&client_id=6756cb03a8d6528aca5a), copy the token provided.
 - Add this token as `BUNDLESIZE_GITHUB_TOKEN` as environment parameter in your CIs project settings.
 
+Using a different CI? You will need to supply an additional 4 environment variables.
+- `CI_REPO_OWNER` given the repo  `https://github.com/myusername/myrepo` would be `myusername`
+- `CI_REPO_NAME` given the repo `https://github.com/myusername/myrepo` would be `myrepo`
+- `CI_COMMIT_MESSAGE` the commit message
+- `CI_COMMIT_SHA` the SHA of the CI commit, in [Jenkins](https://jenkins.io/) you would use `${env.GIT_COMMIT}`
+
 (Ask me for help if you're stuck)
 
 
