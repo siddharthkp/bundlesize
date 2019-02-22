@@ -1,6 +1,6 @@
 const bytes = require('bytes')
 const { error, warn, info } = require('prettycli')
-const { event, repo, branch, commit_message, sha } = require('ci-env')
+const { event, repo, branch, commit_message, sha } = require('ci-env') //eslint-disable-line
 const build = require('./build')
 const api = require('./api')
 const debug = require('./debug')
@@ -12,7 +12,7 @@ const setBuildStatus = ({
   globalMessage,
   fail,
   event: currentEvent,
-  branch: currentBranch
+  branch: currentBranch,
 }) => {
   if (fail) build.fail(globalMessage || 'bundle size > maxSize', url)
   else {
@@ -32,7 +32,7 @@ const getGlobalMessage = ({
   results,
   totalSize,
   totalSizeMaster,
-  totalMaxSize
+  totalMaxSize,
 }) => {
   let globalMessage
 
@@ -122,7 +122,7 @@ const analyse = ({ files, masterValues }) => {
       fail,
       size,
       master,
-      maxSize
+      maxSize,
     }
   })
 }
@@ -131,7 +131,7 @@ const report = ({ files, globalMessage, fail }) => {
   /* prepare the build page */
   const params = encodeURIComponent(
     JSON.stringify({ files, repo, branch, commit_message, sha })
-  )
+  ) //eslint-disable-line
   let url = `https://bundlesize-store.now.sh/build?info=${params}`
 
   debug('url before shortening', url)
@@ -156,7 +156,7 @@ const compare = (files, masterValues = {}) => {
     results,
     totalSize: results.reduce((acc, result) => acc + result.size, 0),
     totalSizeMaster: results.reduce((acc, result) => acc + result.master, 0),
-    totalMaxSize: results.reduce((acc, result) => acc + result.maxSize, 0)
+    totalMaxSize: results.reduce((acc, result) => acc + result.maxSize, 0),
   })
 
   let fail = results.filter(result => result.fail).length > 0

@@ -27,8 +27,8 @@ if (program.files) {
     {
       path: program.files,
       maxSize: program.maxSize,
-      compression: program.compression || 'gzip'
-    }
+      compression: program.compression || 'gzip',
+    },
   ]
 }
 
