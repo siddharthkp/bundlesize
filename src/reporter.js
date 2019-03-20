@@ -139,7 +139,7 @@ const report = ({ files, globalMessage, fail }) => {
   shortener
     .shorten(url)
     .then(res => {
-      url = res.data.id
+      url = res.data
       debug('url after shortening', url)
       setBuildStatus({ url, files, globalMessage, fail, event, branch })
     })

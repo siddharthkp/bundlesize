@@ -1,15 +1,12 @@
 const axios = require('axios')
-
-const googleApiKey = 'AIzaSyACIqikanS3eoHsy14JYyFAHU1aU5w1YoA'
-const url = 'https://www.googleapis.com/urlshortener/v1/url'
+const qs = require('querystring')
 
 const shorten = longUrl =>
   axios({
     method: 'POST',
-    url: `${url}?key=${googleApiKey}`,
-    data: {
-      longUrl
-    }
+    url: 'https://tinyurl.com/api-create.php',
+    headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    data: qs.stringify({ url: longUrl })
   })
 
 const shortener = { shorten }
