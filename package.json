@@ -47,7 +47,7 @@
     "glob": "^7.1.2",
     "gzip-size": "^4.0.0",
     "prettycli": "^1.4.3",
-    "read-pkg-up": "^3.0.0"
+    "read-pkg-up": "^5.0.0"
   },
   "bundlesize": [
     {
