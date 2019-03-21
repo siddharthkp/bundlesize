@@ -9,6 +9,10 @@ jobs:
     steps:
       - checkout
 
+      - run:
+          name: "Print Node.js version"
+          command: node --version
+
       - restore_cache:
           keys:
             - v1-dep-{{ .Branch }}-{{ checksum "package-lock.json" }}
