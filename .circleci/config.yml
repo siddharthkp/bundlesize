@@ -1,0 +1,25 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:6
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - v1-dep-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - v1-dep-{{ .Branch }}-
+            - v1-dep-
+
+      - run: npm install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dep-{{ .Branch }}-{{ checksum "package-lock.json" }}
+
+      - run: npm test
