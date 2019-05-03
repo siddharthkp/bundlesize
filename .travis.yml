@@ -1,12 +1,11 @@
 dist: trusty
 language: node_js
 node_js:
-  - "6"
+  - "10"
 cache:
   directories:
     - node_modules
 before_install:
-  - npm install -g npm@5
   - npm install -g greenkeeper-lockfile@1
 install: npm install
 before_script:
