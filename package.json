@@ -39,7 +39,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.17.0",
-    "brotli-size": "0.0.3",
+    "brotli-size": "0.1.0",
     "bytes": "^3.0.0",
     "ci-env": "^1.4.0",
     "commander": "^2.11.0",
