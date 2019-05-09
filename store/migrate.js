@@ -8,7 +8,7 @@ tokens.map(token => {
     const repos = Object.keys(initial[token][users])
     repos.map(repo => {
       const future = {
-        '-Kp6JuK8QrSeYBh4g_0K': initial[token][users][repo]
+        '-Kp6JuK8QrSeYBh4g_0K': initial[token][users][repo],
       }
       initial[token][users][repo] = future
     })
