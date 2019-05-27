@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "name": "bundlesize-store",
+  "builds": [{ "src": "index.js", "use": "@now/node" }],
+  "routes": [{ "src": "/(.*)", "dest": "/index.js" }],
+  "env": {
+    "apiKey": "@bundlesize_apikey",
+    "databaseURL": "@bundlesize_databaseurl",
+    "githubId": "@bundlesize_githubid",
+    "githubSecret": "@bundlesize_githubsecret",
+    "newrelicKey": "@bundlesize_newrelickey"
+  }
+}
