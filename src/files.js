@@ -6,6 +6,7 @@ const config = require('./config')
 const debug = require('./debug')
 const compressedSize = require('./compressed-size')
 const files = []
+let enabledOpenMode = false
 
 config.map(file => {
   const paths = glob.sync(file.path)
@@ -18,6 +19,7 @@ config.map(file => {
       const maxSize = bytes(file.maxSize) || Infinity
       const compression = file.compression || 'gzip'
       const size = compressedSize(fs.readFileSync(path, 'utf8'), compression)
+      enabledOpenMode = !!file.openMode
       files.push({ maxSize, path, size, compression })
     })
   }
@@ -25,4 +27,4 @@ config.map(file => {
 
 debug('files', files)
 
-module.exports = files
+module.exports = { files, enabledOpenMode }

@@ -163,8 +163,11 @@ const compare = (files, masterValues = {}) => {
   report({ files, globalMessage, fail })
 }
 
-const reporter = files => {
+const getTotalSize = files => console.log(files.reduce((acc, file) => acc + file.size, 0))
+
+const reporter = (files, enabledOpenMode) => {
   if (api.enabled) api.get().then(masterValues => compare(files, masterValues))
+  else if (enabledOpenMode) getTotalSize(files)
   else compare(files)
 }
 
