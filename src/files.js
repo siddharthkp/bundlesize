@@ -16,9 +16,10 @@ config.map(file => {
   } else {
     paths.map(path => {
       const maxSize = bytes(file.maxSize) || Infinity
+      const minSize = bytes(file.minSize) || 0
       const compression = file.compression || 'gzip'
       const size = compressedSize(fs.readFileSync(path, 'utf8'), compression)
-      files.push({ maxSize, path, size, compression })
+      files.push({ maxSize, minSize, path, size, compression })
     })
   }
 })

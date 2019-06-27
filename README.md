@@ -77,6 +77,21 @@ Example:
 
 ```
 
+You can check for minimum size too.
+
+Example:
+
+```json
+"bundlesize": [
+  {
+    "path": "./dist.js",
+    "maxSize": "3 kB"
+    "minSize": "2 kB"
+  }
+]
+
+```
+
 This makes it great for using with applications that are bundled with another tool. It will match multiple files if necessary and create a new row for each file.
 
 &nbsp;
@@ -107,6 +122,7 @@ example usage:
 
 ```sh
 bundlesize -f "dist/*.js" -s 20kB
+bundlesize -f "dist/*.js" -s 20kB --min-size 15kB
 ```
 
 For more granular configuration, we recommend configuring it in the `package.json` (documented above).

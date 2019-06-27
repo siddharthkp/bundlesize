@@ -13,6 +13,7 @@ const packageJSONconfig = pkg.bundlesize
 program
   .option('-f, --files [files]', 'files to test against (dist/*.js)')
   .option('-s, --max-size [maxSize]', 'maximum size threshold (3Kb)')
+  .option('--min-size [minSize]', 'minimum size threshold (2Kb)')
   .option('--debug', 'run in debug mode')
   .option(
     '-c, --compression [compression]',
@@ -21,12 +22,12 @@ program
   .parse(process.argv)
 
 let cliConfig
-
 if (program.files) {
   cliConfig = [
     {
       path: program.files,
       maxSize: program.maxSize,
+      minSize: program.minSize,
       compression: program.compression || 'gzip'
     }
   ]
