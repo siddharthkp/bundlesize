@@ -40,11 +40,11 @@
     "bytes": "^3.1.0",
     "ci-env": "^1.4.0",
     "commander": "^2.20.0",
+    "cosmiconfig": "^5.2.1",
     "github-build": "^1.2.0",
     "glob": "^7.1.4",
     "gzip-size": "^4.0.0",
-    "prettycli": "^1.4.3",
-    "read-pkg-up": "^3.0.0"
+    "prettycli": "^1.4.3"
   },
   "bundlesize": [
     {
