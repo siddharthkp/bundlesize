@@ -59,7 +59,21 @@ By default the gzipped size is tested. You can use the `compression` option to c
 }
 ```
 
-You can also keep the config in a separate file as well. Create a `bundlesize.config.json` in your project root OR in a `config` folder.
+You can also keep the config in a separate file as well. These are the supported files:
+
+```md
+// put this file in root of your application
+bundlesize.config.js
+
+// if you don't want to crowd your root folder,
+// you can put this file in a config folder instead
+config/bundlesize.config.js
+
+// You can also create a dotfile if you want
+// it to be hidden in your terminal/IDE
+.bundlesize.config.js
+.config/bundlesize.config.js
+```
 
 ```json
 {

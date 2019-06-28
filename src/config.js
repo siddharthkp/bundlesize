@@ -9,7 +9,13 @@ const debug = require('./debug')
 let fileConfig
 
 const explorer = cosmiconfig('bundlesize', {
-  searchPlaces: ['package.json', 'bundlesize.config.json', 'config/bundlesize.config.json']
+  searchPlaces: [
+    'package.json',
+    'bundlesize.config.json',
+    'config/bundlesize.config.json',
+    '.bundlesize.config.json',
+    '.config/bundlesize.config.json'
+  ]
 })
 
 const result = explorer.searchSync()
