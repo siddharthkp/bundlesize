@@ -4,40 +4,30 @@ const program = require('commander')
 const { error } = require('prettycli')
 const debug = require('./debug')
 
-/* Config from file */
+// default places we check
+const configPaths = ['package.json', 'bundlesize.config.json']
 
-let fileConfig
-
-const explorer = cosmiconfig('bundlesize', {
-  searchPlaces: [
-    'package.json',
-    'bundlesize.config.json',
-    'config/bundlesize.config.json',
-    '.bundlesize.config.json',
-    '.config/bundlesize.config.json'
-  ]
-})
-
-const result = explorer.searchSync()
-
-if (result) {
-  if (result.filepath.includes('package.json')) fileConfig = result.config
-  else fileConfig = result.config.files
-}
-
-/* Config from CLI */
+/* Config + Flags from CLI */
+// TODO: Deprecate the config part
 
 program
   .option('-f, --files [files]', 'files to test against (dist/*.js)')
   .option('-s, --max-size [maxSize]', 'maximum size threshold (3Kb)')
   .option('--debug', 'run in debug mode')
-  .option('-c, --compression [compression]', 'specify which compression algorithm to use')
+  .option('--config [config]', 'Get path of configuration file')
+  .option(
+    '-c, --compression [compression]',
+    'specify which compression algorithm to use'
+  )
   .parse(process.argv)
 
-let cliConfig
+let configFromCli
+
+// add to the list of files to check
+if (program.config) configPaths.push(program.config)
 
 if (program.files) {
-  cliConfig = [
+  configFromCli = [
     {
       path: program.files,
       maxSize: program.maxSize,
@@ -46,9 +36,21 @@ if (program.files) {
   ]
 }
 
+/* Config from file */
+
+let configFromFile
+
+const explorer = cosmiconfig('bundlesize', { searchPlaces: configPaths })
+const result = explorer.searchSync()
+
+if (result) {
+  if (result.filepath.includes('package.json')) configFromFile = result.config
+  else configFromFile = result.config.files
+}
+
 /* Send to readme if no configuration is provided */
 
-if (!fileConfig && !cliConfig) {
+if (!configFromFile && !configFromCli) {
   error(
     `Config not found.
 
@@ -59,10 +61,10 @@ if (!fileConfig && !cliConfig) {
   )
 }
 
-const config = cliConfig || fileConfig
+const config = configFromCli || configFromFile
 
-debug('cli config', cliConfig)
-debug('file config', fileConfig)
+debug('cli config', configFromCli)
+debug('file config', configFromFile)
 debug('selected config', config)
 
 module.exports = config
