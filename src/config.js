@@ -23,8 +23,8 @@ program
 
 let configFromCli
 
-// add to the list of files to check
-if (program.config) configPaths.push(program.config)
+// add to the list of files to check at the 1st position
+if (program.config) configPaths.unshift(program.config)
 
 if (program.files) {
   configFromCli = [
