@@ -1,4 +1,5 @@
 const cosmiconfig = require('cosmiconfig')
+const fs = require('fs')
 
 const program = require('commander')
 const { error } = require('prettycli')
@@ -23,8 +24,22 @@ program
 
 let configFromCli
 
-// add to the list of files to check at the 1st position
-if (program.config) configPaths.unshift(program.config)
+if (program.config) {
+  if (!fs.existsSync(program.config)) {
+    // throw error if file doesn't exist
+    error(
+      `Custom config file does not exist. Make sure the path is relative to the project root.
+
+      You can read about the configuration options here:
+      https://github.com/siddharthkp/bundlesize#configuration
+    `,
+      { silent: true }
+    )
+  } else {
+    // add to the list of files to check at the 1st position
+    configPaths.unshift(program.config)
+  }
+}
 
 if (program.files) {
   configFromCli = [
