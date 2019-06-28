@@ -107,7 +107,9 @@ You can keep this array either in
 
 &nbsp;
 
-### Customisation
+#### Customisation
+
+&nbsp;
 
 1. Fuzzy matching
 
@@ -131,6 +133,8 @@ You can keep this array either in
    ```
 
    It will match multiple files if necessary and create a new row for each file.
+
+   &nbsp;
 
 2. Compression options
 
