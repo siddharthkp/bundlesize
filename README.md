@@ -59,7 +59,7 @@ By default the gzipped size is tested. You can use the `compression` option to c
 }
 ```
 
-You can also keep the config in a separate file as well. Create a `bundlesize.config.json` in your project root in a `config` folder.
+You can also keep the config in a separate file as well. Create a `bundlesize.config.json` in your project root OR in a `config` folder.
 
 ```json
 {
