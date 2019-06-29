@@ -12,16 +12,21 @@
 [![NPM Downloads](https://img.shields.io/npm/dm/bundlesize.svg?style=flat)](https://www.npmjs.com/package/bundlesize)
 &nbsp;
 
-
-#### minimal setup
+#### Setup
 
 ```sh
 npm install bundlesize --save-dev
+
+# or
+
+yarn add bundlesize --dev
 ```
 
 &nbsp;
 
-#### usage
+#### Usage
+
+&nbsp;
 
 Add it to your scripts in `package.json`
 
@@ -31,79 +36,169 @@ Add it to your scripts in `package.json`
 }
 ```
 
-&nbsp;
-
-Or you can use `npx` with [NPM 5.2+](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
+Or you can use it with `npx` from [NPM 5.2+](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
 
 ```sh
 npx bundlesize
 ```
 
-#### configuration
+&nbsp;
+
+#### Configuration
 
 &nbsp;
 
-#### 1) Add the path and maxSize in your `package.json`.
-By default the gzipped size is tested. You can use the `compression` option to change this. (`gzip`, `brotli`, or `none`).
+`bundlesize` accepts an array of files to check.
 
 ```json
-{
-  "name": "your cool library",
-  "version": "1.1.2",
-  "bundlesize": [
-    {
-      "path": "./dist.js",
-      "maxSize": "3 kB"
-    }
-  ]
-}
-```
-
-`bundlesize` also supports [glob patterns](https://github.com/isaacs/node-glob)
-
-Example:
-
-```json
-"bundlesize": [
+[
   {
-    "path": "./dist/vendor-*.js",
-    "maxSize": "3 kB"
+    "path": "./build/vendor.js",
+    "maxSize": "30 kB"
   },
   {
-    "path": "./dist/chunk-*.js",
-    "maxSize": "3 kB"
+    "path": "./build/chunk-*.js",
+    "maxSize": "10 kB"
   }
 ]
-
 ```
-
-This makes it great for using with applications that are bundled with another tool. It will match multiple files if necessary and create a new row for each file.
 
 &nbsp;
 
-#### 2) build status
+You can keep this array either in
+
+1. `package.json`
+
+   ```json
+   {
+     "name": "your cool library",
+     "version": "1.1.2",
+     "bundlesize": [
+       {
+         "path": "./build/vendor.js",
+         "maxSize": "3 kB"
+       }
+     ]
+   }
+   ```
+
+   or in a separate file
+
+2. `bundlesize.config.js`
+
+   Format:
+
+   ```json
+   {
+     "files": [
+       {
+         "path": "./dist.js",
+         "maxSize": "3 kB"
+       }
+     ]
+   }
+   ```
+
+   You can give a different file by using the `--config` flag:
+
+   ```
+   bundlesize --config configs/bundlesize.json
+   ```
+
+&nbsp;
+
+#### Customisation
+
+&nbsp;
+
+1. Fuzzy matching
+
+   If the names of your build files are not predictable, you can use the [glob pattern](https://github.com/isaacs/node-glob) to specify files.
+
+   This is common if you append a hash to the name or use a tool like create-react-app/nextjs.
+
+   ```json
+   {
+     "files": [
+       {
+         "path": "build/**/main-*.js",
+         "maxSize": "5 kB"
+       },
+       {
+         "path": "build/**/*.chunk.js",
+         "maxSize": "50 kB"
+       }
+     ]
+   }
+   ```
+
+   It will match multiple files if necessary and create a new row for each file.
+
+   &nbsp;
+
+2. Compression options
+
+   By default, bundlesize `gzips` your build files before comparing.
+
+   If you are using `brotli` instead of gzip, you can specify that with each file:
+
+   ```json
+   {
+     "files": [
+       {
+         "path": "./build/vendor.js",
+         "maxSize": "5 kB",
+         "compression": "brotli"
+       }
+     ]
+   }
+   ```
+
+   If you do not use any compression before sending your files to the client, you can switch compression off:
+
+   ```json
+   {
+     "files": [
+       {
+         "path": "./build/vendor.js",
+         "maxSize": "5 kB",
+         "compression": "none"
+       }
+     ]
+   }
+   ```
+
+&nbsp;
+
+#### Build status for GitHub
+
+&nbsp;
+
+If your repository is hosted on GitHub, you can set bundlesize up to create a "check" on every pull request.
 
 ![build status](https://cdn.rawgit.com/siddharthkp/bundlesize/master/art/status.png)
 
-Currently works for [Travis CI](https://travis-ci.org), [CircleCI](https://circleci.com/), [Wercker](http://www.wercker.com), and [Drone](http://readme.drone.io/).
+Currently works with [Travis CI](https://travis-ci.org), [CircleCI](https://circleci.com/), [Wercker](http://www.wercker.com), and [Drone](http://readme.drone.io/).
 
 - [Authorize `bundlesize` for status access](https://github.com/login/oauth/authorize?scope=repo%3Astatus&client_id=6756cb03a8d6528aca5a), copy the token provided.
 - Add this token as `BUNDLESIZE_GITHUB_TOKEN` as environment parameter in your CIs project settings.
 
 Using a different CI? You will need to supply an additional 4 environment variables.
-- `CI_REPO_OWNER` given the repo  `https://github.com/myusername/myrepo` would be `myusername`
+
+- `CI_REPO_OWNER` given the repo `https://github.com/myusername/myrepo` would be `myusername`
 - `CI_REPO_NAME` given the repo `https://github.com/myusername/myrepo` would be `myrepo`
 - `CI_COMMIT_MESSAGE` the commit message
 - `CI_COMMIT_SHA` the SHA of the CI commit, in [Jenkins](https://jenkins.io/) you would use `${env.GIT_COMMIT}`
 
 (Ask me for help if you're stuck)
 
+&nbsp;
+
+#### Usage with CLI
 
 &nbsp;
 
-#### CLI
-
-example usage:
+bundlesize can also be used without creating a configuration file. We do not recommend this approach and it might be deprecated in a future version.
 
 ```sh
 bundlesize -f "dist/*.js" -s 20kB
@@ -156,7 +251,7 @@ For more granular configuration, we recommend configuring it in the `package.jso
 
 #### TODO
 
-- Work with other CI tools 
+- Work with other CI tools
   - [AppVeyor](https://www.appveyor.com/) ([#234](https://github.com/siddharthkp/bundlesize/issues/234))
 - Automate setup (setting env_var)
 

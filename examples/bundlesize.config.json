@@ -1,0 +1,16 @@
+{
+  "files": [
+    {
+      "path": "./build/direct-path.js",
+      "maxSize": "50Kb"
+    },
+    {
+      "path": "./dist/generated-file-chunk-*.js",
+      "maxSize": "50Kb"
+    },
+    {
+      "path": "./dist/all-files-in-folder/**/*.js",
+      "maxSize": "50Kb"
+    }
+  ]
+}
