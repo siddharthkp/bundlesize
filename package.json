@@ -14,6 +14,7 @@
   },
   "scripts": {
     "precommit": "lint-staged",
+    "t": "yarn test",
     "test": "ava -v tests/index.js",
     "test:old": "npm run test:default && npm run test:no-compression && npm run test:brotli-compression",
     "test:default": "node index && cat pipe.js | node pipe --name pipe.js --max-size 1kB",

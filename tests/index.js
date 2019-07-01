@@ -22,25 +22,30 @@ function run(fixture, customParams = '') {
 
 test.serial('pass: single file smaller than limit', t => {
   const { stdout, exitCode } = run(1)
-  t.snapshot({ stdout, exitCode })
+  t.is(exitCode, 0)
+  t.snapshot(stdout)
 })
 
 test.serial('fail: single file larger than limit', t => {
   const { stdout, exitCode } = run(2)
-  t.snapshot({ stdout, exitCode })
+  t.is(exitCode, 1)
+  t.snapshot(stdout)
 })
 
-test.serial('pass: use brotli which should pass', t => {
+test.serial('pass: use brotli', t => {
   const { stdout, exitCode } = run(3)
-  t.snapshot({ stdout, exitCode })
+  t.is(exitCode, 0)
+  t.snapshot(stdout)
 })
 
-test.serial('fail: use no compression which should fail', t => {
+test.serial('fail: dont use compression', t => {
   const { stdout, exitCode } = run(4)
-  t.snapshot({ stdout, exitCode })
+  t.is(exitCode, 1)
+  t.snapshot(stdout)
 })
 
 test.serial('pass: custom config file', t => {
   const { stdout, exitCode } = run(5, '--config config/bundlesize.json')
-  t.snapshot({ stdout, exitCode })
+  t.is(exitCode, 0)
+  t.snapshot(stdout)
 })
