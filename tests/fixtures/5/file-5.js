@@ -2,9 +2,9 @@
 The contents of this file aren't important,
 what's important is the size
 
-300B gzip
-239B brotli
-491B without compression
+269B gzip
+240B brotli
+437B without compression
 
 */
 
