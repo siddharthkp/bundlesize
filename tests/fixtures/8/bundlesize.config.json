@@ -1,0 +1,12 @@
+{
+  "files": [
+    {
+      "path": "file-61.js",
+      "maxSize": "300B"
+    },
+    {
+      "path": "file-62.js",
+      "maxSize": "200B"
+    }
+  ]
+}

@@ -49,3 +49,21 @@ test.serial('pass: custom config file', t => {
   t.is(exitCode, 0)
   t.snapshot(stdout)
 })
+
+test.serial('pass: multiple files, both smaller than limit', t => {
+  const { stdout, exitCode } = run(6)
+  t.is(exitCode, 0)
+  t.snapshot(stdout)
+})
+
+test.serial('fail: multiple files, both bigger than limit', t => {
+  const { stdout, exitCode } = run(7)
+  t.is(exitCode, 1)
+  t.snapshot(stdout)
+})
+
+test.serial('fail: multiple files, one smaller + one bigger than limit', t => {
+  const { stdout, exitCode } = run(8)
+  t.is(exitCode, 1)
+  t.snapshot(stdout)
+})
