@@ -67,3 +67,9 @@ test.serial('8. fail: multiple files, 1 smaller + 1 bigger than limit', t => {
   t.is(exitCode, 1)
   t.snapshot(stdout)
 })
+
+test.serial('9. pass: fuzzy search', t => {
+  const { stdout, exitCode } = run(9)
+  t.is(exitCode, 0)
+  t.snapshot(stdout)
+})
