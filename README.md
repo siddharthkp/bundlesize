@@ -84,7 +84,7 @@ You can keep this array either in
 
    or in a separate file
 
-2. `bundlesize.config.js`
+2. `bundlesize.config.json`
 
    Format:
 
