@@ -79,3 +79,30 @@ test.serial('10. pass: match by fuzzy name', t => {
   t.is(exitCode, 0)
   t.snapshot(stdout)
 })
+
+/*
+  Bug repro!
+
+  With a config like:
+  { path: "build/**\/*.js", maxSize: "250B" }
+  { path: "build/**\/chunk-*.js", maxSize: "300B" },
+
+  The intented config here is - 250B for all JS files,
+  and a more lineant 300B for chunk files.
+
+  but, the ** wildcard matches the more specific chunk file
+  as well - which means it's compared with both the limits.
+
+  PASS  build/chunks/chunk-ch0nk.js: 270B < maxSize 300B (gzip)
+  FAIL  build/chunks/chunk-ch0nk.js: 270B > maxSize 250B (gzip)
+
+  This fails the build which is silly.
+
+  FIX: Deduplicate files with preference to more specific path.
+*/
+
+test.serial('11. bug repro: bundlesize should dedup files', t => {
+  const { stdout, exitCode } = run(11)
+  t.is(exitCode, 1) // this is bad
+  t.snapshot(stdout)
+})
