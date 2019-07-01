@@ -2,7 +2,8 @@
   "files": [
     {
       "path": "file-1.js",
-      "maxSize": "250B"
+      "maxSize": "250B",
+      "compression": "brotli"
     }
   ]
 }

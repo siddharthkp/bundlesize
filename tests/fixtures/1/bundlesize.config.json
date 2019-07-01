@@ -2,7 +2,7 @@
   "files": [
     {
       "path": "file-1.js",
-      "maxSize": "60B"
+      "maxSize": "300B"
     }
   ]
 }
