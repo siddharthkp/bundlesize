@@ -14,7 +14,8 @@
   },
   "scripts": {
     "precommit": "lint-staged",
-    "test": "npm run test:default && npm run test:no-compression && npm run test:brotli-compression",
+    "test": "ava -v tests/index.js",
+    "test:old": "npm run test:default && npm run test:no-compression && npm run test:brotli-compression",
     "test:default": "node index && cat pipe.js | node pipe --name pipe.js --max-size 1kB",
     "test:no-compression": "cat pipe.js | node pipe --compression none --name pipe.js",
     "test:brotli-compression": "cat pipe.js | node pipe --compression brotli --name pipe.js"
@@ -52,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "ava": "^2.1.0",
     "babel-cli": "^7.0.0-beta.3",
     "babel-core": "^7.0.0-bridge.0",
     "babel-plugin-syntax-async-functions": "7.0.0-alpha.19",
@@ -61,6 +63,7 @@
     "babel-preset-es2015": "^7.0.0-beta.3",
     "babel-preset-stage-3": "^7.0.0-beta.3",
     "babel-traverse": "^7.0.0-beta.3",
+    "execa": "^2.0.1",
     "husky": "^0.14.3",
     "lint-staged": "^7.1.1",
     "prettier": "^1.6.0"
