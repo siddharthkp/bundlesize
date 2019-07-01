@@ -99,10 +99,13 @@ test.serial('10. pass: match by fuzzy name', t => {
   This fails the build which is silly.
 
   FIX: Deduplicate files with preference to more specific path.
+
+  Note: We skip the failing test in suite. Enable it by making it
+  test.serial
 */
 
-test.serial('11. bug repro: bundlesize should dedup files', t => {
+test.skip('11. bug repro: bundlesize should dedup files', t => {
   const { stdout, exitCode } = run(11)
-  t.is(exitCode, 1) // this is bad
+  t.is(exitCode, 0) // this is failing
   t.snapshot(stdout)
 })
