@@ -14,6 +14,9 @@ function run(fixture, customParams = '') {
     output = error
   }
 
+  // make it a little easier to compare
+  output.stdout = output.stdout.trim()
+
   return output
 }
 
