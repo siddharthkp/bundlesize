@@ -1,0 +1,9 @@
+{
+  "files": [
+    {
+      "path": "file-3.js",
+      "maxSize": "250B",
+      "compression": "brotli"
+    }
+  ]
+}
