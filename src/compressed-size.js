@@ -1,5 +1,5 @@
 const gzip = require('gzip-size')
-const brotli = require('brotli-size')
+const brotli = require('./brotli')
 
 const getCompressedSize = (data, compression = 'gzip') => {
   let size
