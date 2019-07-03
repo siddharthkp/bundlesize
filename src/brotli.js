@@ -24,7 +24,8 @@ function getBrotliSync() {
     return polyfill
   } catch (err) {
     // if they haven't, show them an error and exit with error code 1
-    const message = `Missing dependency: bundlesize-plugin-brotli
+    if (err && err.code === 'MODULE_NOT_FOUND') {
+      const message = `Missing dependency: bundlesize-plugin-brotli
 
   To use brotli with Node versions lower than v10.16.0,
   please install bundlesize-plugin-brotli as a dev dependency.
@@ -32,7 +33,11 @@ function getBrotliSync() {
   You can read about the compression options here:
   https://github.com/siddharthkp/bundlesize#customisation`
 
-    error(message, { silent: true })
+      error(message, { silent: true })
+    } else {
+      // if it's a different error, show the raw error
+      error(err, { silent: true })
+    }
   }
 }
 
