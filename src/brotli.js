@@ -27,7 +27,8 @@ function getBrotliSync() {
     // if they haven't, show them an error and exit with error code 1
     const message = `Missing dependency: bundlesize-plugin-brotli
 
-  To use compression: brotli, please install bundlesize-plugin-brotli as a dev dependency.
+  To use brotli with Node versions lower than v10.16.0,
+  please install bundlesize-plugin-brotli as a dev dependency.
 
   You can read about the compression options here:
   https://github.com/siddharthkp/bundlesize#customisation`
