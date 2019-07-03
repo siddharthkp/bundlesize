@@ -64,7 +64,6 @@
     "babel-preset-es2015": "^7.0.0-beta.3",
     "babel-preset-stage-3": "^7.0.0-beta.3",
     "babel-traverse": "^7.0.0-beta.3",
-    "brotli-size": "^0.1.0",
     "execa": "^2.0.2",
     "husky": "^0.14.3",
     "lint-staged": "^7.1.1",
