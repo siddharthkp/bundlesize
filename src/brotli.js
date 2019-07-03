@@ -21,7 +21,7 @@ function getBrotliSync() {
   try {
     const polyfill = require('bundlesize-plugin-brotli')
     // if the user has installed the plugin, we can safely return it
-    return polyfill
+    return polyfill.sync
   } catch (err) {
     // if they haven't, show them an error and exit with error code 1
     if (err && err.code === 'MODULE_NOT_FOUND') {
