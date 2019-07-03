@@ -40,7 +40,6 @@
     "bytes": "^3.1.0",
     "ci-env": "^1.4.0",
     "commander": "^2.20.0",
-    "compare-versions": "^3.5.0",
     "cosmiconfig": "^5.2.1",
     "github-build": "^1.2.0",
     "glob": "^7.1.4",

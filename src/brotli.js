@@ -1,4 +1,3 @@
-const compare = require('compare-versions')
 const { error } = require('prettycli')
 const zlib = require('zlib')
 
