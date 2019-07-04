@@ -11,7 +11,7 @@ function report(results) {
 
   results.forEach(function(row) {
     console.log()
-    console.log(colors.path(`${figures.line} ${row.path}`))
+    console.log(colors.subtle(`${figures.line} ${row.path}`))
     row.filesMatched.forEach(function(file) {
       const symbol = getSymbol(file)
       const operator = getOperator(file, row)
@@ -27,8 +27,10 @@ function report(results) {
         bytes(file.size),
         operator,
         row.maxSize,
-        colors.compression(row.compression || 'gzip')
+        colors.subtle(row.compression || 'gzip')
       )
+
+      // > maxSize ${prettySize} ${compressionText}
     })
   })
   console.log()

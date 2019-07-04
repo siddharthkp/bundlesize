@@ -1,10 +1,9 @@
 const chalk = require('chalk')
 
 module.exports = {
-  path: chalk.gray,
+  subtle: chalk.gray,
   pass: chalk.green,
   fail: chalk.red,
-  compression: chalk.gray,
   title: chalk.bold,
-  information: chalk.magenta
+  info: chalk.magenta
 }
