@@ -29,8 +29,6 @@ function report(results) {
         row.maxSize,
         colors.compression(row.compression || 'gzip')
       )
-
-      // > maxSize ${prettySize} ${compressionText}
     })
   })
   console.log()
