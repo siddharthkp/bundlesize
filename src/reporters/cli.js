@@ -62,19 +62,11 @@ function printRow(file, row, maxFileLength) {
   )
 }
 
-function printSummary(counter) {
+function printSummary({ pass, fail }) {
   console.log()
 
-  if (counter.pass) {
-    console.log(
-      colors.pass(' ', counter.pass, plur('check', counter.pass), 'passed')
-    )
-  }
-  if (counter.fail) {
-    console.log(
-      colors.fail(' ', counter.fail, plur('check', counter.fail), 'failed')
-    )
-  }
+  if (pass) console.log(colors.pass(' ', pass, plur('check', pass), 'passed'))
+  if (fail) console.log(colors.fail(' ', fail, plur('check', fail), 'failed'))
 
   console.log()
 }
