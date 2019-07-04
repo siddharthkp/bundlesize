@@ -26,7 +26,8 @@ function report(results) {
         '  ',
         bytes(file.size),
         operator,
-        row.maxSize
+        row.maxSize,
+        colors.compression(row.compression || 'gzip')
       )
 
       // > maxSize ${prettySize} ${compressionText}
