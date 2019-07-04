@@ -5,25 +5,25 @@ const { error } = require('prettycli')
 const config = require('./config')
 const debug = require('./debug')
 const compressedSize = require('./compressed-size')
-const files = []
 
-config.map(file => {
-  const paths = glob.sync(file.path)
-  if (!paths.length) {
-    error(`There is no matching file for ${file.path} in ${process.cwd()}`, {
+config.files.map(row => {
+  row.filesMatched = []
+
+  const files = glob.sync(row.path)
+
+  files.map(path => {
+    const compression = row.compression || 'gzip'
+    const size = compressedSize(fs.readFileSync(path, 'utf8'), compression)
+    row.filesMatched.push({ path, size })
+  })
+
+  if (!row.filesMatched.length) {
+    error(`There is no matching file for ${row.path} in ${process.cwd()}`, {
       silent: true
-    })
-  } else {
-    paths.map(path => {
-      const maxSize = bytes(file.maxSize) || Infinity
-      const compression = file.compression || 'gzip'
-      const size = compressedSize(fs.readFileSync(path, 'utf8'), compression)
-      const pathMatched = file.path
-      files.push({ size, maxSize, compression, path, pathMatched })
     })
   }
 })
 
-debug('files', files)
+debug('files', config)
 
-module.exports = files
+module.exports = config

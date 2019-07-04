@@ -53,9 +53,13 @@ const getGlobalMessage = ({
     const prettyChange =
       change === 0
         ? 'no change'
-        : change > 0 ? `+${bytes(change)}` : `-${bytes(Math.abs(change))}`
+        : change > 0
+        ? `+${bytes(change)}`
+        : `-${bytes(Math.abs(change))}`
 
-    globalMessage = `${failures} out of ${results.length} bundles are too big! (${prettyChange})`
+    globalMessage = `${failures} out of ${
+      results.length
+    } bundles are too big! (${prettyChange})`
   } else {
     // multiple files, no failures
     const prettySize = bytes(totalSize)
@@ -64,7 +68,9 @@ const getGlobalMessage = ({
     const prettyChange =
       change === 0
         ? 'no change'
-        : change > 0 ? `+${bytes(change)}` : `-${bytes(Math.abs(change))}`
+        : change > 0
+        ? `+${bytes(change)}`
+        : `-${bytes(Math.abs(change))}`
 
     globalMessage = `Total bundle size is ${prettySize}/${prettyMaxSize} (${prettyChange})`
   }
@@ -127,7 +133,7 @@ const analyse = ({ files, masterValues }) => {
   })
 }
 
-const report = ({ files, globalMessage, fail }) => {
+const globalReport = ({ files, globalMessage, fail }) => {
   /* prepare the build page */
   const params = encodeURIComponent(
     JSON.stringify({ files, repo, branch, commit_message, sha })
@@ -160,7 +166,7 @@ const compare = (files, masterValues = {}) => {
   })
 
   let fail = results.filter(result => result.fail).length > 0
-  report({ files, globalMessage, fail })
+  globalReport({ files, globalMessage, fail })
 }
 
 const reporter = files => {

@@ -76,10 +76,10 @@ if (!configFromFile && !configFromCli) {
   )
 }
 
-const config = configFromCli || configFromFile
+const files = configFromCli || configFromFile
 
 debug('cli config', configFromCli)
 debug('file config', configFromFile)
-debug('selected config', config)
+debug('selected config', files)
 
-module.exports = config
+module.exports = { files }
