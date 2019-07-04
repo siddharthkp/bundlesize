@@ -1,6 +1,7 @@
 const rightpad = require('right-pad')
 const figures = require('figures')
 const bytes = require('bytes')
+const plur = require('plur')
 
 const colors = require('../utils/colors')
 
@@ -10,37 +11,19 @@ function report(results) {
   const counter = { pass: 0, fail: 0 }
 
   results.forEach(function(row) {
-    console.log()
-    console.log(colors.subtle(`${figures.line} ${row.path}`))
+    printBlockHeader(row)
+
     row.filesMatched.forEach(function(file) {
-      const symbol = getSymbol(file)
-      const operator = getOperator(file, row)
+      printRow(file, row, maxFileLength)
 
       if (file.pass) counter.pass++
       else counter.fail++
-
-      console.log(
-        ' ',
-        symbol,
-        rightpad(file.path, maxFileLength),
-        '  ',
-        bytes(file.size),
-        operator,
-        row.maxSize,
-        colors.subtle(row.compression || 'gzip')
-      )
-
-      // > maxSize ${prettySize} ${compressionText}
     })
   })
-  console.log()
 
-  if (counter.pass) console.log(' ', colors.pass(counter.pass, 'checks passed'))
-  if (counter.fail) console.log(' ', colors.fail(counter.fail, 'checks failed'))
+  printSummary(counter)
 
-  console.log()
-
-  // exit with error code 1 if there are any errors
+  // exit with error code 1 if there are any failed checks
   if (counter.fail) process.exit(1)
 }
 
@@ -56,6 +39,44 @@ function getMaxFileLenght(results) {
   })
 
   return maxFileLength
+}
+
+function printBlockHeader(row) {
+  console.log()
+  console.log(colors.subtle(`${figures.line} ${row.path}`))
+}
+
+function printRow(file, row, maxFileLength) {
+  const symbol = getSymbol(file)
+  const operator = getOperator(file, row)
+
+  console.log(
+    ' ',
+    symbol,
+    rightpad(file.path, maxFileLength),
+    '  ',
+    bytes(file.size),
+    operator,
+    row.maxSize,
+    colors.subtle(row.compression || 'gzip')
+  )
+}
+
+function printSummary(counter) {
+  console.log()
+
+  if (counter.pass) {
+    console.log(
+      colors.pass(' ', counter.pass, plur('check', counter.pass), 'passed')
+    )
+  }
+  if (counter.fail) {
+    console.log(
+      colors.fail(' ', counter.fail, plur('check', counter.fail), 'failed')
+    )
+  }
+
+  console.log()
 }
 
 function getSymbol(file) {

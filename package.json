@@ -46,6 +46,7 @@
     "github-build": "^1.2.0",
     "glob": "^7.1.4",
     "gzip-size": "^4.0.0",
+    "plur": "^3.1.1",
     "prettycli": "^1.4.3",
     "right-pad": "^1.0.1"
   },
