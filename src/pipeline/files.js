@@ -1,10 +1,11 @@
 const fs = require('fs')
-const bytes = require('bytes')
 const glob = require('glob')
+const bytes = require('bytes')
 const { error } = require('prettycli')
+
 const config = require('./config')
-const debug = require('./debug')
-const compressedSize = require('./compressed-size')
+const debug = require('../utils/debug')
+const compressedSize = require('../utils/compressed-size')
 
 config.files.map(row => {
   row.filesMatched = []
