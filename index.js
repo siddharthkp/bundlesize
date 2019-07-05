@@ -7,10 +7,14 @@ const cli = require('./src/reporters/cli')
 const reporter = require('./src/reporter')
 const build = require('./src/build')
 
-const report = analyse(config)
-cli.report(report)
-// broke this
+const results = analyse(config)
+
 // reporter(report.files)
+
+cli.report(results)
+
+// exit with error code 1 if there are any failed checks
+if (results.status === 'fail') process.exit(1)
 
 process.on('unhandledRejection', function(reason) {
   console.log('Unhandled Promise')
