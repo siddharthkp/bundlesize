@@ -1,0 +1,12 @@
+{
+  "name": "bundlesize-plugin-brotli",
+  "version": "1.0.0",
+  "description": "Plugin to use brotli compression with bundlesize",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "brotli-size": "0.1.0"
+  }
+}
