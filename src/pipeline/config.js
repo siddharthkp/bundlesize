@@ -1,9 +1,9 @@
 const cosmiconfig = require('cosmiconfig')
+const { error } = require('prettycli')
+const program = require('commander')
 const fs = require('fs')
 
-const program = require('commander')
-const { error } = require('prettycli')
-const debug = require('./debug')
+const debug = require('../utils/debug')
 
 // default places we check
 const configPaths = ['package.json', 'bundlesize.config.json']

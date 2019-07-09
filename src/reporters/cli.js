@@ -6,33 +6,27 @@ const plur = require('plur')
 const colors = require('../utils/colors')
 
 function report(results) {
-  const maxFileLength = getMaxFileLenght(results)
+  const files = results.files
 
-  const counter = { pass: 0, fail: 0 }
+  const maxFileLength = getMaxFileLenght(files)
 
-  results.forEach(function(row) {
+  files.forEach(function(row) {
     printBlockHeader(row)
 
     row.filesMatched.forEach(function(file) {
       printRow(file, row, maxFileLength)
-
-      if (file.pass) counter.pass++
-      else counter.fail++
     })
   })
 
-  printSummary(counter)
-
-  // exit with error code 1 if there are any failed checks
-  if (counter.fail) process.exit(1)
+  printSummary(results.counter)
 }
 
 module.exports = { report }
 
-function getMaxFileLenght(results) {
+function getMaxFileLenght(files) {
   let maxFileLength = 0
 
-  results.forEach(function(row) {
+  files.forEach(function(row) {
     row.filesMatched.forEach(function(file) {
       if (file.path.length > maxFileLength) maxFileLength = file.path.length
     })
@@ -48,7 +42,7 @@ function printBlockHeader(row) {
 
 function printRow(file, row, maxFileLength) {
   const symbol = getSymbol(file)
-  const operator = getOperator(file, row)
+  const operator = getOperator(file)
 
   console.log(
     ' ',
@@ -75,11 +69,12 @@ function getSymbol(file) {
   return file.pass ? colors.pass(figures.tick) : colors.fail(figures.cross)
 }
 
-function getOperator(file, row) {
-  const fileSize = bytes.parse(file.size)
-  const maxSize = bytes.parse(row.maxSize)
+function getOperator(file) {
+  const map = {
+    '>': colors.fail('>'),
+    '<': colors.pass('<'),
+    '=': colors.pass('=')
+  }
 
-  if (fileSize > maxSize) return colors.fail('>')
-  if (fileSize === maxSize) return colors.pass('=')
-  return colors.pass('<')
+  return map[file.operator]
 }

@@ -1,11 +1,11 @@
 const { error } = require('prettycli')
 const zlib = require('zlib')
 
-const config = require('./config')
+const config = require('../pipeline/config')
 
 function getBrotliSync() {
   // Does this project want brotli compression?
-  const needsBrotli = config.find(row => row.compression === 'brotli')
+  const needsBrotli = config.files.find(row => row.compression === 'brotli')
 
   // If it doesn't, save us the trouble.
   if (!needsBrotli) return null
