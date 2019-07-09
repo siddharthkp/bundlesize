@@ -1,5 +1,7 @@
 language: node_js
 node_js:
+  - 12 # Latest
+  - 10 # LTS
   - 8
 cache:
   directories:
