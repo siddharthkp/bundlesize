@@ -42,10 +42,13 @@
     "ci-env": "^1.4.0",
     "commander": "^2.20.0",
     "cosmiconfig": "^5.2.1",
+    "figures": "^3.0.0",
     "github-build": "^1.2.0",
     "glob": "^7.1.4",
     "gzip-size": "^4.0.0",
-    "prettycli": "^1.4.3"
+    "plur": "^3.1.1",
+    "prettycli": "^1.4.3",
+    "right-pad": "^1.0.1"
   },
   "lint-staged": {
     "*.js": [
