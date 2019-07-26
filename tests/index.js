@@ -45,7 +45,7 @@ test.serial('4. fail: dont use compression', t => {
 })
 
 test.serial('5. pass: custom config file', t => {
-  const { stdout, exitCode } = run(5, '--config config/bundlesize.json')
+  const { stdout, exitCode } = run(5, '--config ../5/config/bundlesize.json')
   t.is(exitCode, 0)
   t.snapshot(stdout)
 })
