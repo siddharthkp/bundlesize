@@ -246,6 +246,7 @@ For more granular configuration, we recommend configuring it in the `package.jso
 - [redux-saga](https://github.com/redux-saga/redux-saga)
 - [micromodal](https://github.com/ghosh/micromodal)
 - [unistore](https://github.com/developit/unistore)
+- [ngxs](https://github.com/ngxs/store)
 
 &nbsp;
 
