@@ -1,7 +1,9 @@
 {
   "name": "bundlesize",
   "version": "0.18.0",
+  "author": "siddharthkp",
   "description": "Keep your library size in check",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/siddharthkp/bundlesize.git"
@@ -14,7 +16,6 @@
   },
   "scripts": {
     "precommit": "lint-staged",
-    "t": "yarn test",
     "test": "ava -v tests/index.js",
     "test:old": "npm run test:default && npm run test:no-compression && npm run test:brotli-compression",
     "test:default": "node index && cat pipe.js | node pipe --name pipe.js --max-size 1kB",
@@ -29,12 +30,10 @@
     "maxSize"
   ],
   "files": [
+    "src/*.js",
     "index.js",
-    "src",
     "pipe.js"
   ],
-  "author": "siddharthkp",
-  "license": "MIT",
   "dependencies": {
     "axios": "^0.19.0",
     "brotli-size": "0.1.0",
@@ -68,10 +67,5 @@
     "husky": "^0.14.3",
     "lint-staged": "^7.1.1",
     "prettier": "^1.6.0"
-  },
-  "collective": {
-    "type": "opencollective",
-    "url": "https://opencollective.com/bundlesize",
-    "logo": "https://opencollective.com/opencollective/logo.txt"
   }
 }
