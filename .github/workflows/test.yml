@@ -1,0 +1,30 @@
+name: Tests
+on: [push, pull_request]
+
+jobs:
+  run:
+    name: Node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [6, 8, 10, 12]
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@master
+
+      - name: Set Node.js version
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+
+      - run: node --version
+      - run: npm --version
+
+      - name: Install npm dependencies
+        run: npm install # switch to `npm ci` when Node.js 6.x is dropped
+
+      - name: Run tests
+        run: npm test
