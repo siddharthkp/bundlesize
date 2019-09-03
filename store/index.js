@@ -82,6 +82,14 @@ server.get('/build', (req, res) => {
   res.render('build', info)
 })
 
+server.get('/favicon.ico', (req, res) => {
+  res.redirect('/img/favicons/favicon.ico')
+})
+
+server.get('/apple-touch-icon.png', (req, res) => {
+  res.redirect('/img/favicons/apple-touch-icon.png')
+})
+
 server.get('/', (req, res) => {
   res.redirect('/status')
 })
