@@ -73,10 +73,10 @@ server.get('/build', (req, res) => {
     f.length = Math.max(f.size, f.maxSize)
     if (f.size < f.length) {
       f.fillLength = f.size
-      f.baseColor = '#EEE'
+      f.baseColor = '#eee'
     } else {
       f.fillLength = f.maxSize
-      f.baseColor = '#FA5E7C'
+      f.baseColor = '#fa5e7c'
     }
   })
   res.render('build', info)

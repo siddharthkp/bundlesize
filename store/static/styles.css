@@ -3,7 +3,7 @@ html, body {
   padding: 0;
 }
 body {
-  background: #F5F7FA;
+  background-color: #f5f7fa;
   font-family: 'Nunito', sans-serif;
   font-size: 16px;
   line-height: 1.6;
@@ -14,28 +14,31 @@ body {
   margin: 50px auto;
 }
 .big {
-  font-size: 25px;
+  font-size: 1.5rem;
 }
 .dark {
   color: #192235;
 }
 .light {
-  color: #969FA5;
+  color: #6f787e;
+}
+.big.light {
+  color: #8d969c;
 }
 .card {
   width: 80%;
   margin: 0 auto;
   padding: 25px;
-  background: #FFF;
+  background-color: #fff;
   border-radius: 5px;
-  box-shadow: 0px 3px 5px 2px rgba(201, 214, 255, 0.15);
+  box-shadow: 0 3px 5px 2px rgba(201, 214, 255, 0.15);
 }
 .files {
   margin: 50px 0;
 }
 .files .label {
   display: inline-block;
-  font-size: 12px;
+  font-size: 0.8rem;
 }
 .file {
   margin: 25px 0;
@@ -60,12 +63,12 @@ body {
 }
 .bar {
   height: 7px;
-  background: #EEE;
+  background-color: #eee;
   border-radius: 10px;
   width: 100%;
 }
 .bar.first {
-  background: #4680FF;
+  background-color: #4680ff;
   z-index: 2;
   position: relative;
   top: 7px;
@@ -73,17 +76,12 @@ body {
 .guides {
   line-height: 2;
 }
-.sponsor {
-  border-top: 1px solid #EEE;
-  padding-top: 20px;
-}
-.sponsor-image {
-  margin-top: 20px;
-  zoom: 0.75;
-}
 
 .mobile {
   display: none;
+}
+.text-uppercase {
+  text-transform: uppercase;
 }
 @media (max-width: 800px) {
   .desktop {
