@@ -87,8 +87,8 @@ test.serial('10. pass: match by fuzzy name', t => {
   { path: "build/**\/*.js", maxSize: "250B" }
   { path: "build/**\/chunk-*.js", maxSize: "300B" },
 
-  The intented config here is - 250B for all JS files,
-  and a more lineant 300B for chunk files.
+  The intended config here is - 250B for all JS files,
+  and a more lenient 300B for chunk files.
 
   but, the ** wildcard matches the more specific chunk file
   as well - which means it's compared with both the limits.

@@ -189,7 +189,7 @@ Using a different CI? You will need to supply an additional 5 environment variab
 - `CI_REPO_NAME` given the repo `https://github.com/myusername/myrepo` would be `myrepo`
 - `CI_COMMIT_MESSAGE` the commit message
 - `CI_COMMIT_SHA` the SHA of the CI commit, in [Jenkins](https://jenkins.io/) you would use `${env.GIT_COMMIT}`
-- `CI=true` usually set automtically in CI enviroments 
+- `CI=true` usually set automatically in CI environments
 
 (Ask me for help if you're stuck)
 
