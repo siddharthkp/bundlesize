@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 const { inspect } = require('util')
 const program = require('commander')
 const reporter = require('./src/reporter')
@@ -9,6 +10,7 @@ const { error } = require('prettycli')
 const build = require('./src/build')
 const debug = require('./src/debug')
 const compressedSize = require('./src/compressed-size')
+const pkg = require('./package.json')
 
 if (process.stdin.isTTY) {
   error('bundlesize-pipe executable is meant for usage with piped data.')
@@ -25,7 +27,7 @@ program
   .parse(process.argv)
 
 const config = {
-  name: program.name || require('read-pkg-up').sync().pkg.name,
+  name: program.name || pkg.name,
   maxSize: program.maxSize,
   compression: program.compression || 'gzip'
 }
