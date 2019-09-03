@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://cdn.rawgit.com/siddharthkp/bundlesize/master/art/logo.png" height="200px">
+  <img src="https://cdn.rawgit.com/siddharthkp/bundlesize/master/art/logo.png" height="200">
   <br><br>
   <b>Keep your bundle size in check</b>
   <br>
@@ -224,10 +224,10 @@ For more granular configuration, we recommend configuring it in the `package.jso
 #### Featured on [Totally tooling tips](https://www.youtube.com/watch?v=Da6VxdGU2Ig) and [Chrome Dev Summit](https://www.youtube.com/watch?v=_srJ7eHS3IM)!!
 
 <a href="https://www.youtube.com/watch?v=Da6VxdGU2Ig">
-  <img height="200px" src="https://i.ytimg.com/vi/Da6VxdGU2Ig/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAAfWzQIMvjH0TIzkAhi-114DIHPQ"/>
+  <img height="200" src="https://i.ytimg.com/vi/Da6VxdGU2Ig/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAAfWzQIMvjH0TIzkAhi-114DIHPQ">
 </a>
 <a href="https://www.youtube.com/watch?v=_srJ7eHS3IM">
-  <img height="200px" src="https://cdn.rawgit.com/siddharthkp/bundlesize/master/art/chromedevsummit.png"/>
+  <img height="200" src="https://cdn.rawgit.com/siddharthkp/bundlesize/master/art/chromedevsummit.png">
 </a>
 
 &nbsp;
@@ -268,7 +268,7 @@ For more granular configuration, we recommend configuring it in the `package.jso
 ## Contributors
 
 This project exists thanks to all the people who contribute. [[Contribute]](CONTRIBUTING.md).
-<a href="graphs/contributors"><img src="https://opencollective.com/bundlesize/contributors.svg?width=890" /></a>
+<a href="graphs/contributors"><img src="https://opencollective.com/bundlesize/contributors.svg?width=890"></a>
 
 #### license
 
