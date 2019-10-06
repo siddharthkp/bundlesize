@@ -31,17 +31,19 @@ const set = (repo, values, sha, token) => {
 const get = (repo, token) => {
   authenticate(token)
   const ref = `${token}/${repo}`
-  database
+  return database
     .ref(ref)
     .limitToLast(1)
     .once('value')
     .then(snapshot => {
+      logout()
       const object = snapshot.val()
       if (!object) return []
-      const values = Object.values(object)[0]
-      return values
+      return Object.values(object)[0]
     })
-  logout()
+    .catch(() => {
+      logout()
+    })
 }
 
 module.exports = { set, get }
