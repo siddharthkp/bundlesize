@@ -36,12 +36,11 @@ const get = (repo, token) => {
     .limitToLast(1)
     .once('value')
     .then(snapshot => {
-      logout()
       const object = snapshot.val()
       if (!object) return []
       return Object.values(object)[0]
     })
-    .catch(() => {
+    .finally(() => {
       logout()
     })
 }
