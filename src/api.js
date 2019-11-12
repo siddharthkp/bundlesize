@@ -12,13 +12,15 @@ let enabled = false
 
 if (repo && token) enabled = true
 else if (ci) {
-  if (platform === 'github') {
-    warn(`github token not found
+  // skip this for a while
+  // TODO: maybe bring it back!
+  // if (platform === 'github') {
+  //   warn(`github token not found
 
-    You are missing out on some cool features.
-    Read more here: https://github.com/siddharthkp/bundlesize#2-build-status
-  `)
-  }
+  //   You are missing out on some cool features.
+  //   Read more here: https://github.com/siddharthkp/bundlesize#2-build-status
+  // `)
+  // }
 }
 
 debug('api enabled', enabled)

@@ -1,0 +1,8 @@
+{
+  "files": [
+    {
+      "path": "build/**/*.js",
+      "maxSize": "300B"
+    }
+  ]
+}

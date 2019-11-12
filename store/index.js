@@ -1,6 +1,6 @@
 require('newrelic')
 const express = require('express')
-
+const path = require('path')
 const server = express()
 const bodyParser = require('body-parser')
 const querystring = require('querystring')
@@ -9,8 +9,11 @@ const { get, set } = require('./firebase')
 const github = require('./github')
 
 server.use(bodyParser.json())
+
 server.set('view engine', 'pug')
-server.use(express.static('static'))
+server.set('views', path.join(__dirname, './views'))
+server.engine('.pug', require('pug').__express)
+server.use(express.static(path.join(__dirname, './static')))
 
 server.get('/status', (req, res) => {
   res.status(200).end('OK')
@@ -83,4 +86,4 @@ server.get('/', (req, res) => {
   res.redirect('/status')
 })
 
-server.listen(3001)
+module.exports = server
