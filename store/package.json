@@ -33,6 +33,6 @@
     "pug-lint": "^2.5.0"
   },
   "engines": {
-    "node": "10.x"
+    "node": "12.x"
   }
 }
