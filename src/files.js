@@ -6,6 +6,7 @@ const { error } = require('prettycli')
 const config = require('./config')
 const debug = require('./debug')
 const compressedSize = require('./compressed-size')
+const minimatch = require("minimatch")
 const files = []
 
 config.map(file => {
@@ -14,7 +15,8 @@ config.map(file => {
     const buildPath = path.dirname(file.assetManifest);
     const rawdata = fs.readFileSync(file.assetManifest, 'utf8');
     const assets = JSON.parse(rawdata);
-    paths = Object.values(assets).map(asset => `${buildPath}${asset}`);
+    paths = Object.values(assets).map(asset => `${buildPath}${asset}`)
+      .filter(filename => minimatch(filename, file.path));
   } else {
     paths = glob.sync(file.path)
   }
