@@ -11,7 +11,6 @@ function run(fixture, customParams = '') {
       cwd: `tests/fixtures/${fixture}`
     })
   } catch (error) {
-    console.log(error);
     output = error
   }
 
