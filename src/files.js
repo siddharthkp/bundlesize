@@ -13,8 +13,8 @@ config.map(file => {
   let paths = [];
   if (file.assetManifest) {
     const buildPath = path.dirname(file.assetManifest);
-    const rawdata = fs.readFileSync(file.assetManifest, 'utf8');
-    const assets = JSON.parse(rawdata);
+    const rawData = fs.readFileSync(file.assetManifest, 'utf8');
+    const assets = JSON.parse(rawData);
     paths = Object.values(assets).map(asset => `${buildPath}${asset}`)
       .filter(filename => !file.path || minimatch(filename, file.path));
   } else {
