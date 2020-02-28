@@ -16,7 +16,7 @@ config.map(file => {
     const rawdata = fs.readFileSync(file.assetManifest, 'utf8');
     const assets = JSON.parse(rawdata);
     paths = Object.values(assets).map(asset => `${buildPath}${asset}`)
-      .filter(filename => minimatch(filename, file.path));
+      .filter(filename => !file.path || minimatch(filename, file.path));
   } else {
     paths = glob.sync(file.path)
   }
