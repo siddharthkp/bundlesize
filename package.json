@@ -1,6 +1,6 @@
 {
-  "name": "@samk/bundlesize",
-  "version": "0.1.0",
+  "name": "bundlesize",
+  "version": "0.18.0",
   "description": "Keep your library size in check",
   "repository": {
     "type": "git",
@@ -45,6 +45,7 @@
     "github-build": "^1.2.0",
     "glob": "^7.1.4",
     "gzip-size": "^4.0.0",
+    "minimatch": "^3.0.4",
     "prettycli": "^1.4.3"
   },
   "lint-staged": {
@@ -67,7 +68,6 @@
     "execa": "^2.0.1",
     "husky": "^0.14.3",
     "lint-staged": "^7.1.1",
-    "minimatch": "^3.0.4",
     "prettier": "^1.6.0"
   },
   "collective": {
