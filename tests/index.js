@@ -11,6 +11,7 @@ function run(fixture, customParams = '') {
       cwd: `tests/fixtures/${fixture}`
     })
   } catch (error) {
+    console.log(error);
     output = error
   }
 
@@ -106,6 +107,12 @@ test.serial('10. pass: match by fuzzy name', t => {
 
 test.skip('11. bug repro: bundlesize should dedup files', t => {
   const { stdout, exitCode } = run(11)
+  t.is(exitCode, 0) // this is failing
+  t.snapshot(stdout)
+})
+
+test.serial('12. bug repro: bundlesize should read and process files from an asset manifest', t => {
+  const { stdout, exitCode } = run(12)
   t.is(exitCode, 0) // this is failing
   t.snapshot(stdout)
 })

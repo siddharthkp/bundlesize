@@ -1,4 +1,5 @@
 const fs = require('fs')
+const path = require('path')
 const bytes = require('bytes')
 const glob = require('glob')
 const { error } = require('prettycli')
@@ -8,7 +9,15 @@ const compressedSize = require('./compressed-size')
 const files = []
 
 config.map(file => {
-  const paths = glob.sync(file.path)
+  let paths = [];
+  if (file.assetManifest) {
+    const buildPath = path.dirname(file.assetManifest);
+    const rawdata = fs.readFileSync(file.assetManifest, 'utf8');
+    const assets = JSON.parse(rawdata);
+    paths = Object.values(assets).map(asset => `${buildPath}${asset}`);
+  } else {
+    paths = glob.sync(file.path)
+  }
   if (!paths.length) {
     error(`There is no matching file for ${file.path} in ${process.cwd()}`, {
       silent: true
