@@ -1,3 +1,4 @@
+
 <p align="center">
   <img src="https://cdn.rawgit.com/siddharthkp/bundlesize/master/art/logo.png" height="200px">
   <br><br>
@@ -10,6 +11,7 @@
 [![Build Status](https://travis-ci.org/siddharthkp/bundlesize.svg?branch=master)](https://travis-ci.org/siddharthkp/bundlesize)
 [![NPM Version](https://img.shields.io/npm/v/bundlesize.svg)](https://npmjs.org/package/bundlesize)
 [![NPM Downloads](https://img.shields.io/npm/dm/bundlesize.svg?style=flat)](https://www.npmjs.com/package/bundlesize)
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/siddharthkp/bundlesize)
 &nbsp;
 
 #### Setup
@@ -189,7 +191,7 @@ Using a different CI? You will need to supply an additional 5 environment variab
 - `CI_REPO_NAME` given the repo `https://github.com/myusername/myrepo` would be `myrepo`
 - `CI_COMMIT_MESSAGE` the commit message
 - `CI_COMMIT_SHA` the SHA of the CI commit, in [Jenkins](https://jenkins.io/) you would use `${env.GIT_COMMIT}`
-- `CI=true` usually set automtically in CI enviroments 
+- `CI=true` usually set automtically in CI enviroments
 
 (Ask me for help if you're stuck)
 

@@ -16,6 +16,15 @@ Super exciting to see your contribution!
 
 #### How do I contribute code?
 
+##### Contribute using one click online setup
+
+You can use Gitpod (a free online VS Code-like IDE) for contributing. With a single click it'll launch a workspace and automatically:
+
+- clone the bundle-size repo.
+- install all the dependencies.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
+
 1. Fork this repo on github.
 
 2. Clone it on your machine: `git clone https://github.com/YOUR_USERNAME/bundlesize.git`
@@ -25,7 +34,7 @@ Super exciting to see your contribution!
 4. Run `npm test` to ensure the repository is setup correctly. You should see a dummy output:
 
 ```
-PASS  ./index.js: 189B < maxSize 600B gzip 
+PASS  ./index.js: 189B < maxSize 600B gzip
 ```
 
 5. Make your changes.
@@ -58,7 +67,7 @@ API is hosted on zeit/now.
 - `store/firebase.js` Fetches and updates values from firebase
 
 #### [Click here to join the slack channel](https://join.slack.com/t/bundlesize/shared_invite/MjMyNTA0NjUwNzg5LTE1MDM4NjAxNjEtMjFjZThlZmIxMw)
-       
+
 #### Doubts?
 
 Feel free to open an issue or reach out to me [on twitter](https://twitter.com/siddharthkp).
