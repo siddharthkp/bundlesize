@@ -23,7 +23,7 @@ function report(results) {
 
 module.exports = { report }
 
-function getMaxFileLenght(files) {
+function getMaxFileLength(files) {
   let maxFileLength = 0
 
   files.forEach(function(row) {
