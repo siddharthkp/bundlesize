@@ -8,7 +8,7 @@ const colors = require('../utils/colors')
 function report(results) {
   const files = results.files
 
-  const maxFileLength = getMaxFileLenght(files)
+  const maxFileLength = getMaxFileLength(files)
 
   files.forEach(function(row) {
     printBlockHeader(row)
