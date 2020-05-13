@@ -183,7 +183,9 @@ Currently works with [Travis CI](https://travis-ci.org), [CircleCI](https://circ
 - [Authorize `bundlesize` for status access](https://github.com/login/oauth/authorize?scope=repo%3Astatus&client_id=6756cb03a8d6528aca5a), copy the token provided.
 - Add this token as `BUNDLESIZE_GITHUB_TOKEN` as environment parameter in your CIs project settings.
 
-Using a different CI? You will need to supply an additional 5 environment variables.
+#### Using a different CI?
+
+You will need to supply an additional 5 environment variables.
 
 - `CI_REPO_OWNER` given the repo `https://github.com/myusername/myrepo` would be `myusername`
 - `CI_REPO_NAME` given the repo `https://github.com/myusername/myrepo` would be `myrepo`
@@ -209,13 +211,13 @@ For more granular configuration, we recommend configuring it in the `package.jso
 
 &nbsp;
 
-#### like it?
+#### Like it?
 
 :star: this repo
 
 &nbsp;
 
-#### how to contribute?
+#### How to contribute?
 
 - [CONTRIBUTING.md](CONTRIBUTING.md)
 
