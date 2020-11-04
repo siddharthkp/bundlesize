@@ -237,7 +237,7 @@ For more granular configuration, we recommend configuring it in the `package.jso
 #### who uses bundlesize?
 
 - [bootstrap](https://github.com/twbs/bootstrap)
-- [preact](https://github.com/developit/preact)
+- ~~[preact](https://github.com/preactjs/preact)~~ → [compressed-size-action](https://github.com/preactjs/compressed-size-action)
 - [lighthouse](https://github.com/GoogleChrome/lighthouse)
 - [styled-components](https://github.com/styled-components/styled-components)
 - [emotion](https://github.com/tkh44/emotion)
