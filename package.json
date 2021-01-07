@@ -36,13 +36,13 @@
   "author": "siddharthkp",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "brotli-size": "0.1.0",
     "bytes": "^3.1.0",
     "ci-env": "^1.4.0",
     "commander": "^2.20.0",
     "cosmiconfig": "^5.2.1",
-    "github-build": "^1.2.0",
+    "github-build": "^1.2.2",
     "glob": "^7.1.4",
     "gzip-size": "^4.0.0",
     "prettycli": "^1.4.3"
