@@ -18,7 +18,7 @@ program
   .option('-n, --name [name]', 'custom name for a file (lib.min.js)')
   .option('-s, --max-size [maxSize]', 'maximum size threshold (3Kb)')
   .option(
-    '-c, --compression [gzip|brotli|none]',
+    '-c, --compression [gzip|none]',
     'specify which compression algorithm to use'
   )
   .option('--debug', 'run in debug mode')
