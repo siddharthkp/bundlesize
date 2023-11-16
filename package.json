@@ -36,7 +36,7 @@
   "author": "siddharthkp",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^1.6.0",
     "brotli-size": "0.1.0",
     "bytes": "^3.1.0",
     "ci-env": "^1.4.0",
