@@ -14,12 +14,14 @@ config.map(file => {
       silent: true
     })
   } else {
-    paths.map(path => {
-      const maxSize = bytes(file.maxSize) || Infinity
-      const compression = file.compression || 'gzip'
-      const size = compressedSize(fs.readFileSync(path, 'utf8'), compression)
-      files.push({ maxSize, path, size, compression })
-    })
+    paths
+      .filter(path => !files.some(file => file.path === path))
+      .map(path => {
+        const maxSize = bytes(file.maxSize) || Infinity
+        const compression = file.compression || 'gzip'
+        const size = compressedSize(fs.readFileSync(path, 'utf8'), compression)
+        files.push({ maxSize, path, size, compression })
+      })
   }
 })
 

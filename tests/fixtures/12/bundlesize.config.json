@@ -1,0 +1,16 @@
+{
+  "files": [
+    {
+      "path": "build/file-734B.js",
+      "maxSize": "1KB"
+    },
+    {
+      "path": "build/file-*.js",
+      "maxSize": "250B"
+    },
+    {
+      "path": "build/file-241B.js",
+      "maxSize": "100B"
+    }
+  ]
+}

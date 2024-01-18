@@ -12,6 +12,11 @@
 [![NPM Downloads](https://img.shields.io/npm/dm/bundlesize.svg?style=flat)](https://www.npmjs.com/package/bundlesize)
 &nbsp;
 
+#### Why this fork exists?
+It seems there is no active maintenance of the original repository. This fork is intended to fix.
+* remove deprecated brotli compression to improve performance
+* [fix wrong multiple matches](https://github.com/siddharthkp/bundlesize/issues/383)
+
 #### Setup
 
 ```sh
