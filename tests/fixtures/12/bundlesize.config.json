@@ -1,0 +1,8 @@
+{
+  "files": [
+    {
+      "assetManifest": "build/asset-manifest.json",
+      "maxSize": "300B"
+    }
+  ]
+}
