@@ -1,6 +1,7 @@
 const bytes = require('bytes')
 const { error, warn, info } = require('prettycli')
 const { event, repo, branch, commit_message, sha } = require('ci-env')
+const minimatch = require('minimatch')
 const build = require('./build')
 const api = require('./api')
 const debug = require('./debug')
@@ -74,7 +75,7 @@ const getGlobalMessage = ({
 const analyse = ({ files, masterValues }) => {
   return files.map(file => {
     let fail = false
-    file.master = masterValues[file.path]
+    file.master = masterValues[Object.keys(masterValues).find((key) => minimatch(key, file.globPath))]
     const { path, size, master, maxSize, compression = 'gzip' } = file
 
     let compressionText = '(no compression)'
