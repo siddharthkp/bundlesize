@@ -24,7 +24,7 @@
     "bytes": "2.5.0",
     "dotenv": "4.0.0",
     "ejs": "^2.6.1",
-    "express": "4.17.1",
+    "express": "4.19.2",
     "firebase": "4.1.2",
     "newrelic": "1.40.0",
     "pug": "2.0.3"
