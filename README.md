@@ -249,6 +249,7 @@ For more granular configuration, we recommend configuring it in the `package.jso
 - [micromodal](https://github.com/ghosh/micromodal)
 - [unistore](https://github.com/developit/unistore)
 - [ngxs](https://github.com/ngxs/store)
+- [react-hook-form](https://github.com/react-hook-form/react-hook-form)
 
 &nbsp;
 
