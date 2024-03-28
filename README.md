@@ -178,7 +178,7 @@ If your repository is hosted on GitHub, you can set bundlesize up to create a "c
 
 ![build status](https://cdn.rawgit.com/siddharthkp/bundlesize/master/art/status.png)
 
-Currently works with [Travis CI](https://travis-ci.org), [CircleCI](https://circleci.com/), [Wercker](http://www.wercker.com), and [Drone](http://readme.drone.io/).
+Currently works with [GitHub Actions](https://github.com/features/actions), [Travis CI](https://travis-ci.org), [CircleCI](https://circleci.com/), [Wercker](http://www.wercker.com), and [Drone](http://readme.drone.io/).
 
 - [Authorize `bundlesize` for status access](https://github.com/login/oauth/authorize?scope=repo%3Astatus&client_id=6756cb03a8d6528aca5a), copy the token provided.
 - Add this token as `BUNDLESIZE_GITHUB_TOKEN` as environment parameter in your CIs project settings.
