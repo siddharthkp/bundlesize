@@ -18,8 +18,10 @@
         <div class="labels desktop">
           <div class="light label path">PATH</div>
           <div class="light label threshold"></div>
-          <div class="light label size">SIZE/THRESHOLD</div>
-          <div class="light label master">MASTER</div>
+          <div class="size-wrapper">
+            <div class="light label size">SIZE/THRESHOLD</div>
+            <div class="light label master">MASTER</div>
+          </div>
         </div>
         each file in files
           <div class="file">
@@ -28,9 +30,11 @@
               <div class="bar first" style="width: #{file.fillLength * 100 / file.length}%"></div>
               <div class="bar length" style="background-color: #{file.baseColor}"></div>
             </div>
-            <div class="size light">#{file.prettySize}/#{file.prettyMaxSize}#{file.unit}</div>
-            if file.diff
-              <div class="master light"><span class="mobile">master</span> #{file.diff}</div>
+            <div class="size-wrapper">
+              <div class="size light">#{file.prettySize}/#{file.prettyMaxSize}#{file.unit}</div>
+              if file.diff
+                <div class="master light"><span class="mobile">master</span> #{file.diff}</div>
+            </div>
           </div>
       </div>
     </div>
