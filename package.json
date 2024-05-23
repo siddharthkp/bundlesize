@@ -36,15 +36,15 @@
   "author": "siddharthkp",
   "license": "MIT",
   "dependencies": {
-    "axios": "^1.6.2",
-    "brotli-size": "0.1.0",
-    "bytes": "^3.1.0",
-    "ci-env": "^1.4.0",
+    "axios": "^1.7.2",
+    "brotli-size": "^4.0.0",
+    "bytes": "^3.1.2",
+    "ci-env": "^1.17.0",
     "commander": "^2.20.0",
     "cosmiconfig": "^5.2.1",
     "github-build": "^1.2.4",
-    "glob": "^7.1.4",
-    "gzip-size": "^4.0.0",
+    "glob": "^7.2.1",
+    "gzip-size": "^6.0.0",
     "prettycli": "^1.4.3"
   },
   "lint-staged": {
