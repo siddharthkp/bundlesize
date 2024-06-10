@@ -4,9 +4,10 @@ const { repo, sha } = require('ci-env')
 const token = require('./token')
 const debug = require('./debug')
 
+const exit = () => process.exit(1)
 let pass = () => {} // noop
-let fail = () => process.exit(1)
-let error = () => process.exit(1)
+let fail = exit
+let error = exit
 
 const label = 'bundlesize'
 const description = 'Checking output size...'
@@ -28,8 +29,16 @@ if (token) {
 
   build.start().catch(handleError)
   pass = (message, url) => build.pass(message, url).catch(handleError)
-  fail = (message, url) => build.fail(message, url).catch(handleError)
-  error = (message, url) => build.error(message, url).catch(handleError)
+  fail = (message, url) =>
+    build
+      .fail(message, url)
+      .catch(handleError)
+      .then(exit)
+  error = (message, url) =>
+    build
+      .error(message, url)
+      .catch(handleError)
+      .then(exit)
 }
 
 module.exports = { pass, fail, error }
