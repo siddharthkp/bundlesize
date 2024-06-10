@@ -1,6 +1,6 @@
 const Build = require('github-build')
 const prettycli = require('prettycli')
-const { repo, sha } = require('ci-env')
+const { repo, sha, ci } = require('ci-env')
 const token = require('./token')
 const debug = require('./debug')
 
@@ -18,7 +18,7 @@ debug('token exists', !!token)
 debug('repo', repo)
 debug('sha', sha)
 
-if (token) {
+if (ci && token) {
   const handleError = err => {
     const message = `Could not add github status.
         ${err.status}: ${err.error.message}`
