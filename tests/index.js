@@ -109,3 +109,15 @@ test.skip('11. bug repro: bundlesize should dedup files', t => {
   t.is(exitCode, 0) // this is failing
   t.snapshot(stdout)
 })
+
+test.serial('12. bug repro: bundlesize should read and process files from an asset manifest', t => {
+  const { stdout, exitCode } = run(12)
+  t.is(exitCode, 0) // this is failing
+  t.snapshot(stdout)
+})
+
+test.serial('13. bug repro: bundlesize should read and process files from an asset manifest and filter by path', t => {
+  const { stdout, exitCode } = run(12)
+  t.is(exitCode, 0) // this is failing
+  t.snapshot(stdout)
+})
