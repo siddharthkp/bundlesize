@@ -44,19 +44,17 @@ body {
   display: inline-block;
   word-wrap: break-word;
 }
-.path {
-  width: 20%;
-}
-.threshold {
-  width: 50%;
+.size-wrapper {
+  display: flex;
+  justify-content: flex-end;
 }
 .size {
   text-align: right;
-  width: 15%;
+  margin: 0 .2em;
 }
 .master {
   text-align: right;
-  width: 10%;
+  margin: 0 .2em;
 }
 .bar {
   height: 7px;
