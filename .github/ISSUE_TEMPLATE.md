@@ -1,3 +1,4 @@
+.github/ISSUE_TEMPLATE.md
 <!-- Please don't delete this template -->
 
 **Do you want to request a *feature* or report a *bug*?**
