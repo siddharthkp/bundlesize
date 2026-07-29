@@ -5,6 +5,7 @@ const build = require('./build')
 const api = require('./api')
 const debug = require('./debug')
 const shortener = require('./shortener')
+const reportJson = require('./report-json')
 
 const setBuildStatus = ({
   url,
@@ -93,14 +94,14 @@ const analyse = ({ files, masterValues }) => {
       else if size > master, warn + pass
       else yay + pass
     */
-
+   
     if (size > maxSize) {
       fail = true
       if (prettySize) message += `> maxSize ${prettySize} ${compressionText}`
-      error(message, { fail: false, label: 'FAIL' })
+      if (process.argv.indexOf('--report-json') === -1) error(message, { fail: false, label: 'FAIL' })
     } else if (!master) {
       if (prettySize) message += `< maxSize ${prettySize} ${compressionText}`
-      info('PASS', message)
+      if (process.argv.indexOf('--report-json') === -1) info('PASS', message)
     } else {
       if (prettySize) message += `< maxSize ${prettySize} ${compressionText}`
       const diff = size - master
@@ -159,8 +160,11 @@ const compare = (files, masterValues = {}) => {
     totalMaxSize: results.reduce((acc, result) => acc + result.maxSize, 0)
   })
 
-  let fail = results.filter(result => result.fail).length > 0
+  let fail;
+  if (process.argv.indexOf('--report-json') === -1) fail = results.filter(result => result.fail).length > 0
+  reportJson(results);
   report({ files, globalMessage, fail })
+  
 }
 
 const reporter = files => {

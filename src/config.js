@@ -20,6 +20,7 @@ program
     '-c, --compression [compression]',
     'specify which compression algorithm to use'
   )
+  .option('--report-json', 'output json')
   .parse(process.argv)
 
 let configFromCli
