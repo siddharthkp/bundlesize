@@ -1,6 +1,6 @@
 const axios = require('axios')
 let { repo } = require('ci-env')
-const { sha, ci } = require('ci-env')
+const { sha, ci, platform } = require('ci-env')
 const { warn } = require('prettycli')
 
 const token = require('./token')
@@ -14,11 +14,13 @@ if (repo && token) enabled = true
 else if (ci) {
   // skip this for a while
   // TODO: maybe bring it back!
-  // warn(`github token not found
-  //
+  // if (platform === 'github') {
+  //   warn(`github token not found
+
   //   You are missing out on some cool features.
   //   Read more here: https://github.com/siddharthkp/bundlesize#build-status-for-github
   // `)
+  // }
 }
 
 debug('api enabled', enabled)
