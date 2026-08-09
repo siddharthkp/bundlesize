@@ -6,7 +6,7 @@ const { warn } = require('prettycli')
 const token = require('./token')
 const debug = require('./debug')
 
-const url = 'https://bundlesize-store.now.sh/values'
+const url = 'https://bundlesize-store.vercel.app/values'
 
 let enabled = false
 
