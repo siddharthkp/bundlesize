@@ -1,7 +1,0 @@
-machine:
-  node:
-    version: 6
-
-dependencies:
-  cache_directories:
-    - "node_modules"
